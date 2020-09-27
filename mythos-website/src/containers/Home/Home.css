@@ -1,0 +1,28 @@
+.Home {
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #282828;
+    height: 100vh;
+}
+
+.TopImage {
+    width: 100%;
+    height: 20%;
+}
+
+.Recruitement {
+    height: 50%;
+}
+
+.Progress {
+    height: 50%;
+}
+
+.Middle {
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: stretch;
+}

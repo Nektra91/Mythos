@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Dashboard() {
+function Recruitment() {
     return (
         <div>
-            Dashboard
+            Recruitment
         </div>
     )
 }
 
-export default Dashboard;
+export default Recruitment;

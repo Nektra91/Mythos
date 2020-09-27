@@ -15,11 +15,15 @@ class About extends Component {
     }
 
     componentDidMount () {
-        //console.log(this.props);
         axios.post('https://light-jackal-86.hasura.app/v1/graphql', {
             query: `query MyQuery {
                 GuildInfo {
                   InfoText
+                }
+                Officers {
+                  Id
+                  Name
+                  Role
                 }
               }`
         }).then(res => {
