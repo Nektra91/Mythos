@@ -5,8 +5,26 @@ import SignOutButton from '../SignOut'
 import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
 
+import logo from '../../images/logo.png';
+import styles from './navigation.css';
+import '../../images/images.css';
+
 const Navigation = () => (
-  <div>
+  <div className={styles.NavigationBackground}>
+    <div>
+      <Link to={ROUTES.HOME}>
+        <img src={logo} alt="Logo" style={{height: 75, width: 100}} />      
+      </Link>
+    </div>
+    <div className={styles.Tile}>
+      <Link to={ROUTES.HOME}>Home</Link>
+    </div>
+    <div className={styles.Tile}>
+      <Link to={ROUTES.ABOUT}>About us</Link>
+    </div>
+    <div className={styles.Tile}>
+      <Link to={ROUTES.RULES}>Guild rules</Link>
+    </div> 
     <AuthUserContext.Consumer>
       {authUser =>
         authUser ? <NavigationAuth /> : <NavigationNonAuth />
@@ -16,32 +34,35 @@ const Navigation = () => (
 );
  
 const NavigationAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
+  <div className={styles.Tiles}>
+    <div className={styles.Tile}>
       <Link to={ROUTES.HOME}>Home</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
-    <li>
+    </div>
+    <div className={styles.Tile}>
+      <Link to={ROUTES.APPLY}>Apply</Link>
+    </div>
+       
+    <div className={styles.Tile}>
       <Link to={ROUTES.ADMIN}>Admin</Link>
-    </li>
-    <li>
+    </div>
+    <div className={styles.Tile}>
+      <Link to={ROUTES.ACCOUNT}>Account</Link>
+    </div>
+    <div className={styles.Tile}>
+      Cog for logout - login - admin - account
       <SignOutButton />
-    </li>
-  </ul>
+    </div>
+  </div>
+  
 );
  
 const NavigationNonAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+      <Link to={ROUTES.HOME}>Home</Link>
     </li>
     <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+      <Link to={ROUTES.SIGN_IN}>Cog for logout - login - admin - account</Link>
     </li>
   </ul>
 );
