@@ -36,12 +36,8 @@ const Navigation = () => (
 const NavigationAuth = () => (
   <div className={styles.Tiles}>
     <div className={styles.Tile}>
-      <Link to={ROUTES.HOME}>Home</Link>
-    </div>
-    <div className={styles.Tile}>
       <Link to={ROUTES.APPLY}>Apply</Link>
-    </div>
-       
+    </div>       
     <div className={styles.Tile}>
       <Link to={ROUTES.ADMIN}>Admin</Link>
     </div>

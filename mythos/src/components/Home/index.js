@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
  
 import { withAuthorization } from '../Session';
+import Recruitment from './Recruitment';
  
-const HomePage = () => (
-  <div>
-    <h1>Home Page</h1>
-    <p>Application form
-      
-    </p>
-  </div>
-);
+class HomePage extends Component {
+  state = {
+    classes: []
+  }
+
+  render() {
+    return (
+      <div>
+        <Recruitment classes={this.state.classes}>
+          
+        </Recruitment>
+      </div>
+    )
+  }
+
+  componentDidMount() {
+    axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+      query: `query MyQuery {
+        Class {
+          Id
+          Name
+          Recruitments {
+            Specialization {
+              Name
+            }
+            Recruiting
+          }
+        }
+      }`
+    }).then(res => {
+      console.log(res.data.data.Class)
+      this.setState({ classes: res.data.data.Class});
+    })
+  }
+}
+  
  
 const condition = authUser => !!authUser;
  
