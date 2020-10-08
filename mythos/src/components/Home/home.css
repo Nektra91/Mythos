@@ -1,0 +1,15 @@
+:local(.Background) {
+    background-color: #282828;
+    width: 210px;
+    margin-left: 75px;
+}
+
+:local(.Row) {
+    display: flex;
+    flex-direction: row;
+}
+
+:local(.MaxWidth) {
+    max-width: 340px;;
+}
+

@@ -1,8 +1,21 @@
-import paladin from './paladin.png';
-import paladin1 from './paladin1.png';
-import paladin2 from './paladin2.png';
-import paladin3 from './paladin3.png';
+import paladin from './icon-paladin.png';
+import paladin1 from './spec_paladin_retribution.webp';
+import paladin2 from './spec_paladin_holy.webp';
+import paladin3 from './spec_paladin_protection.webp';
 
-const paladinLogos = [paladin, paladin1, paladin2, paladin3]
+const paladinLogos = [
+    { image: paladin,
+      name: 'Main'
+    },
+    { image: paladin1,
+      name: 'Retribution'
+    },
+    { image: paladin2,
+      name: 'Holy'
+    },
+    { image: paladin3,
+      name: 'Protection'
+    },
+]
 
 export default paladinLogos;

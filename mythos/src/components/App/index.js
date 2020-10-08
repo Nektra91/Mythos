@@ -14,23 +14,21 @@ import AdminPage from '../Admin';
  
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
+import styles from './app.css'
  
 const App = () => (
   <Router>
-    <div>
+    <div className={styles.MainApp}>
       <Navigation />
- 
-      <hr />
- 
-      <Route exact path={ROUTES.HOME} component={HomePage} />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
-      <Route path={ROUTES.ABOUT} component={About} />
-      <Route path={ROUTES.RULES} component={Rules} />
-      <Route path={ROUTES.APPLY} component={Apply} />
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
+        <Route exact path={ROUTES.HOME} component={HomePage} />
+        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
+        <Route path={ROUTES.ABOUT} component={About} />
+        <Route path={ROUTES.RULES} component={Rules} />
+        <Route path={ROUTES.APPLY} component={Apply} />
+        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+        <Route path={ROUTES.ADMIN} component={AdminPage} />
     </div>
   </Router>
 );

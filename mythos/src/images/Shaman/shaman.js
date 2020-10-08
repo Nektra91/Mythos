@@ -1,8 +1,21 @@
-import shaman from './shaman.png';
-import shaman1 from './shaman1.png';
-import shaman2 from './shaman2.png';
-import shaman3 from './shaman3.png';
+import shaman from './icon-shaman.png';
+import shaman1 from './spec_shaman_elemental.webp';
+import shaman2 from './spec_shaman_restoration.webp';
+import shaman3 from './spec_shaman_enhancement.webp';
 
-const shamanLogos = [shaman, shaman1, shaman2, shaman3]
+const shamanLogos = [
+    { image: shaman,
+      name: 'Main'
+    },
+    { image: shaman1,
+      name: 'Elemental'
+    },
+    { image: shaman2,
+      name: 'Restoration'
+    },
+    { image: shaman3,
+      name: 'Enhancement'
+    },
+]
 
 export default shamanLogos;

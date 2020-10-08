@@ -1,9 +1,25 @@
-import druid from './druid.png';
-import druid1 from './druid1.png';
-import druid2 from './druid2.png';
-import druid3 from './druid3.png';
-import druid4 from './druid4.png';
+import druid from './icon-druid.png';
+import druid1 from './spec_druid_feral.webp';
+import druid2 from './spec_druid_restoration.webp';
+import druid3 from './spec_druid_balance.webp';
+import druid4 from './spec_druid_guardian.webp';
 
-const druidLogos = [druid, druid1, druid2, druid3, druid4]
+const druidLogos = [
+    { image: druid,
+      name: 'Main'
+    },
+    { image: druid1,
+      name: 'Feral'
+    },
+    { image: druid2,
+      name: 'Restoration'
+    },
+    { image: druid3,
+      name: 'Balance'
+    },
+    { image: druid4,
+      name: 'Guardian'
+    },
+]
 
 export default druidLogos;

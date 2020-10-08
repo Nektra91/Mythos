@@ -3,6 +3,8 @@ import axios from 'axios';
  
 import { withAuthorization } from '../Session';
 import Recruitment from './Recruitment';
+
+import styles from './home.css';
  
 class HomePage extends Component {
   state = {
@@ -12,9 +14,10 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Recruitment classes={this.state.classes}>
-          
-        </Recruitment>
+        <div className={styles.Background}>
+          <Recruitment classes={this.state.classes}>
+          </Recruitment>
+        </div>
       </div>
     )
   }
@@ -34,7 +37,6 @@ class HomePage extends Component {
         }
       }`
     }).then(res => {
-      console.log(res.data.data.Class)
       this.setState({ classes: res.data.data.Class});
     })
   }
