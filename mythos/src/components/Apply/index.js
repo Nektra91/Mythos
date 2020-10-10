@@ -19,6 +19,7 @@ const INITAL_STATE = {
   user: null,
   avgilvl: '',
   eqilvl: '',
+  hasNotLinked: true,
 }
 
 class Apply extends Component {
@@ -82,11 +83,7 @@ class Apply extends Component {
       console.log(data.data.average_item_level)
       this.setState({ avgilvl: data.data.average_item_level });
       this.setState({ eqilvl: data.data.equipped_item_level });
-    });
-    axios.get(`https://eu.api.blizzard.com/profile/wow/character/${lowerCaseServer}/${lowerCaseName}/character-media?namespace=profile-eu&access_token=USgc2iLpK0Rl4iED63M5cDBl3Hupw0y7Jv`
-    ).then(data => {
-      console.log(data.data.render_url)
-      this.setState({ img: data.data.render_url });
+      this.setState({ hasNotLinked: false });
     });
   }
 
@@ -103,6 +100,7 @@ class Apply extends Component {
            spec, 
            avgilvl,
            eqilvl,
+           hasNotLinked,
            error} = this.state;
 
     return (
@@ -215,7 +213,7 @@ class Apply extends Component {
               <input type="radio" value="true" name="prepared" /> Yes
               <input type="radio" value="false" name="prepared" /> No
             </div>
-              <button type="submit">
+              <button disabled={hasNotLinked} type="submit">
               Apply
               </button>
           </form>
