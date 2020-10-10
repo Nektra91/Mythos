@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
- 
-import { withAuthorization } from '../Session';
+
 import Recruitment from './Recruitment';
 
 import styles from './home.css';
@@ -41,8 +40,5 @@ class HomePage extends Component {
     })
   }
 }
-  
  
-const condition = authUser => !!authUser;
- 
-export default withAuthorization(condition)(HomePage);
+export default HomePage;

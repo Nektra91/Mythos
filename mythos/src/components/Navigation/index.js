@@ -55,9 +55,6 @@ const NavigationAuth = () => (
 const NavigationNonAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.HOME}>Home</Link>
-    </li>
-    <li>
       <Link to={ROUTES.SIGN_IN}>Cog for logout - login - admin - account</Link>
     </li>
   </ul>
