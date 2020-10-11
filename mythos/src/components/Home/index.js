@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Recruitment from './Recruitment';
-
-import styles from './home.css';
  
 class HomePage extends Component {
   state = {
