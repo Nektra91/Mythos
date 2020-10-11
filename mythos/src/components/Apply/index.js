@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './apply.css';
+
 const INITAL_STATE = {
   name: '',
   server: '',
@@ -17,8 +19,7 @@ const INITAL_STATE = {
   prepare: false,
   error: null,
   user: null,
-  avgilvl: '',
-  eqilvl: '',
+  isLoading: false,
   hasNotLinked: true,
 }
 
@@ -41,9 +42,9 @@ class Apply extends Component {
       spec, 
       available, 
       guild, 
-      prepare, 
+      prepare,
       error} = this.state;
-    var data = axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+    axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
       query: `mutation insert_Application {
         insert_Application(objects: {
           About: "${about}", 
@@ -75,15 +76,14 @@ class Apply extends Component {
 
   getPlayerData = event => {
     event.preventDefault();
+    this.setState({isLoading: true});
     const {name, server} = this.state;
     let lowerCaseName = name.toLowerCase();
     let lowerCaseServer = server.toLowerCase();
     axios.get(`https://eu.api.blizzard.com/profile/wow/character/${lowerCaseServer}/${lowerCaseName}?namespace=profile-eu&access_token=USgc2iLpK0Rl4iED63M5cDBl3Hupw0y7Jv`
     ).then(data => {
-      console.log(data.data.average_item_level)
-      this.setState({ avgilvl: data.data.average_item_level });
-      this.setState({ eqilvl: data.data.equipped_item_level });
       this.setState({ hasNotLinked: false });
+      this.setState({ isLoading: false });
     });
   }
 
@@ -98,9 +98,8 @@ class Apply extends Component {
            brag, 
            why, 
            spec, 
-           avgilvl,
-           eqilvl,
            hasNotLinked,
+           isLoading,
            error} = this.state;
 
     return (
@@ -108,26 +107,59 @@ class Apply extends Component {
         <h1>Apply</h1>
         <div>
           <form onSubmit={this.onSubmit}>
-            <div>
-              <input
-                name="name"
-                value={name}
-                onChange={this.onChange}
-                type="text"
-                placeholder="Ingame name"
-              />
-            </div>
-            <div>
-              <input
-                name="server"
-                value={server}
-                onChange={this.onChange}
-                type="text"
-                placeholder="Server name"
-              />
-              <button onClick={this.getPlayerData}>
-              Fetch player data
-              </button>
+            <div className="playerData">
+              <div>
+                <div>
+                  <div>
+                    <label>
+                      Character name
+                    </label>
+                  </div>
+                  <div>
+                  <input
+                    name="name"
+                    value={name}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Ingame name"
+                  />
+                  </div>              
+                </div>
+                <div>
+                <div>
+                    <label>
+                      Server name
+                    </label>
+                  </div>
+                  <div>
+                  <input
+                    name="server"
+                    value={server}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Server name"
+                  />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <div>
+                  A link to WoW account is needed to apply.
+                  </div>
+                  <div>
+                  Type in the character and server name 
+                  </div>
+                  <div>
+                  and click "Fetch player data"
+                  </div>                  
+                </div>
+                <div>
+                  <button onClick={this.getPlayerData}>
+                    Fetch player data
+                  </button>
+                </div>
+              </div>            
             </div>
             <div>
               <input

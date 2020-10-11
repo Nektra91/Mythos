@@ -1,5 +1,10 @@
-:local(.MainApp) {
+.MainApp {
     background-color: #3e3e3e;
     height: 100vh;
+}
+
+.appBody {
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
   
