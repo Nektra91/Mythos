@@ -37,6 +37,9 @@ const NavigationAuth = () => (
   <div className={styles.Tiles}>
     <div className={styles.Tile}>
       <Link to={ROUTES.APPLY}>Apply</Link>
+    </div>
+    <div className={styles.Tile}>
+      <Link to={ROUTES.APPLICATIONS}>Applications</Link>
     </div>       
     <div className={styles.Tile}>
       <Link to={ROUTES.ADMIN}>Admin</Link>
