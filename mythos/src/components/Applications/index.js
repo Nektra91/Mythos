@@ -7,6 +7,10 @@ class Applications extends Component {
   constructor(props) {
     super(props);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.createApplications = this.createApplications.bind(this);
+    this.fetchPlayerProfile = this.fetchPlayerProfile.bind(this);
+    this.fetchPlayerMedia = this.fetchPlayerMedia.bind(this);
+    this.fetchData = this.fetchData.bind(this);
     this.state = {
       loading: true,
       applications: [],
@@ -14,36 +18,93 @@ class Applications extends Component {
   }
 
   componentDidMount() {
-    axios
-      .post(`https://light-jackal-86.hasura.app/v1/graphql`, {
-        query: `query MyQuery {
-                Application(where: {Completed: {_eq: false}}) {
-                  Id
-                  Name
-                  About
-                  Available
-                  BattleTag
-                  Brag
-                  Completed
-                  DiscordTag
-                  InGuild
-                  OnTime
-                  RaidingExperience
-                  Role
-                  Server
-                  WarcraftLogTag
-                  WhyMythos
-                }
-              }`,
-      })
-      .then(res => {
-        this.setState({ applications: res.data.data.Application, loading: false });
-        console.log(this.state.applications);
-      });
+      this.fetchData();
+  }
+
+  async fetchData() {
+    await axios
+    .post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+      query: `query MyQuery {
+              Application(where: {Completed: {_eq: false}}) {
+                Id
+                Name
+                About
+                Available
+                BattleTag
+                Brag
+                Completed
+                DiscordTag
+                InGuild
+                OnTime
+                RaidingExperience
+                Role
+                Server
+                WarcraftLogTag
+                WhyMythos
+              }
+            }`,
+    })
+    .then(res => {
+        this.createApplications(res.data.data.Application).then(applications => {
+            this.setState({applications: applications, loading: false});
+        });
+    });
+  }
+
+  async fetchPlayerProfile(name, server) {
+    let lowerCaseName = name.toLowerCase();
+    let lowerCaseServer = server.toLowerCase();
+    let profile = null;
+        await axios.get(`https://eu.api.blizzard.com/profile/wow/character/${lowerCaseServer}/${lowerCaseName}?namespace=profile-eu&access_token=US3WIqXQvov3iUr0raZAIq37cefhOmn4ja`).then(response => {
+            profile = response;
+          });
+        return profile;
+  }
+
+    async fetchPlayerMedia(name, server) {
+      let lowerCaseName = name.toLowerCase();
+      let lowerCaseServer = server.toLowerCase();
+      let media = null;
+        await axios.get(`https://eu.api.blizzard.com/profile/wow/character/${lowerCaseServer}/${lowerCaseName}/character-media?namespace=profile-eu&access_token=US3WIqXQvov3iUr0raZAIq37cefhOmn4ja`).then(response => {   
+            media = response;
+        });
+        return media;
+    }
+
+  async createApplications(props) {
+      let applications = props.map(prop => prop);
+      let result = [];
+      for(const application of applications) {
+        let name = application.Name;
+        let server = application.Server; 
+        let applicationDto = {
+            playerName: "",
+            server: server,
+            playerClass: "",
+            spec: "",
+            avgItemLvl: 0,
+            avgEquippItemLvl: 0,
+            avatar: "",
+        }
+        await this.fetchPlayerProfile(name, server).then(profile => {
+        applicationDto.playerName = name;
+        applicationDto.server = server;
+        applicationDto.playerClass = profile.data.character_class.name.en_US;
+        applicationDto.spec = profile.data.active_spec.name.en_US;
+        applicationDto.avgItemLvl = profile.data.average_item_level;
+        applicationDto.avgEquippItemLvl = profile.data.equipped_item_level;
+
+        });
+        await this.fetchPlayerMedia(name, server).then(media => {
+            applicationDto.avatar = media.data.avatar_url;
+        });
+        result.push(applicationDto);
+      }
+      return result;
   }
 
   render() {
-    const isLoading = this.state.loading;
+   const isLoading = this.state.loading;
     const applications = this.state.applications;
     let listToReturn;
     if (isLoading || !applications) {
@@ -56,7 +117,8 @@ class Applications extends Component {
       );
     } else {
       {
-        listToReturn = applications.map((application, i) =>
+          debugger;
+       listToReturn = applications.map((application, i) =>
             {
                 return <div className="application">
                     <div className="container">
@@ -83,7 +145,7 @@ class Applications extends Component {
                         <div className="content">{application.Brag}</div>
                     </div>
                     <div className="container">
-                        <div className="label">Compleated:</div>
+                        <div className="label">Completed:</div>
                         {application.Completed 
                                         ? <div className="content">Yes</div>
                                         : <div className="content">No</div>     
