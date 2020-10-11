@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import service from '../../service/database';
+import React from 'react';
+
 
 import Recruitment from './Recruitment';
  

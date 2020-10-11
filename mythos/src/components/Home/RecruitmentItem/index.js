@@ -14,7 +14,7 @@ function RecruitementItem (props) {
         <div key={cl.Id}>
           <div className={styles.Row}>
           {images.filter(image => image.name.includes('Main')).map(filteredImage => (
-                    <div>
+                    <div key={filteredImage.image}>
                       <ClassIcon image={filteredImage.image}></ClassIcon>
                     </div>
                   ))}
