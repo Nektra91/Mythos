@@ -13,7 +13,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <div className={styles.Background}>
+        <div className="Background">
           <Recruitment classes={this.state.classes}>
           </Recruitment>
         </div>

@@ -1,7 +1,6 @@
-:local(.Background) {
+.Background {
     background-color: #282828;
     width: 210px;
-    margin-left: 75px;
 }
 
 :local(.Row) {
