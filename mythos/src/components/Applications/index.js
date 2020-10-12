@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Spinner from '../Spinner/index';
+import service from '../../service/database';
+import blizzardService from '../../service/blizzard'
 import './applications.css';
 
 class Applications extends Component {
@@ -22,57 +24,32 @@ class Applications extends Component {
   }
 
   async fetchData() {
-    await axios
-    .post(`https://light-jackal-86.hasura.app/v1/graphql`, {
-      query: `query MyQuery {
-              Application(where: {Completed: {_eq: false}}) {
-                Id
-                Name
-                About
-                Available
-                BattleTag
-                Brag
-                Completed
-                DiscordTag
-                InGuild
-                OnTime
-                RaidingExperience
-                Role
-                Server
-                WarcraftLogTag
-                WhyMythos
-              }
-            }`,
-    })
+    await service.fetchUnconfirmedApplications()
     .then(res => {
-        this.createApplications(res.data.data.Application).then(applications => {
+        this.createApplications(res)
+        .then(applications => {
             this.setState({applications: applications, loading: false});
         });
     });
   }
 
   async fetchPlayerProfile(name, server) {
-    let lowerCaseName = name.toLowerCase();
-    let lowerCaseServer = server.toLowerCase();
-    let profile = null;
-        await axios.get(`https://eu.api.blizzard.com/profile/wow/character/${lowerCaseServer}/${lowerCaseName}?namespace=profile-eu&access_token=US3WIqXQvov3iUr0raZAIq37cefhOmn4ja`).then(response => {
-            profile = response;
-          });
-        return profile;
+    let result = null;
+    await blizzardService.fetchPlayerProfile(name, server).then(profile => {
+      result = profile;
+    });
+    return result;
   }
 
     async fetchPlayerMedia(name, server) {
-      let lowerCaseName = name.toLowerCase();
-      let lowerCaseServer = server.toLowerCase();
-      let media = null;
-        await axios.get(`https://eu.api.blizzard.com/profile/wow/character/${lowerCaseServer}/${lowerCaseName}/character-media?namespace=profile-eu&access_token=US3WIqXQvov3iUr0raZAIq37cefhOmn4ja`).then(response => {   
-            media = response;
-        });
-        return media;
+      let result = null;
+      await blizzardService.fetchPlayerMedia(name, server).then(media => {
+        result = media;
+      });
+      return result;
     }
 
-  async createApplications(props) {
-      let applications = props.map(prop => prop);
+  async createApplications(applications) {
       let result = [];
       for(const application of applications) {
         let name = application.Name;
@@ -83,7 +60,7 @@ class Applications extends Component {
             playerClass: "",
             spec: "",
             avgItemLvl: 0,
-            avgEquippItemLvl: 0,
+            equippItemLvl: 0,
             avatar: "",
         }
         await this.fetchPlayerProfile(name, server).then(profile => {
@@ -92,7 +69,7 @@ class Applications extends Component {
         applicationDto.playerClass = profile.data.character_class.name.en_US;
         applicationDto.spec = profile.data.active_spec.name.en_US;
         applicationDto.avgItemLvl = profile.data.average_item_level;
-        applicationDto.avgEquippItemLvl = profile.data.equipped_item_level;
+        applicationDto.equippedItemLvl = profile.data.equipped_item_level;
 
         });
         await this.fetchPlayerMedia(name, server).then(media => {
@@ -117,80 +94,47 @@ class Applications extends Component {
       );
     } else {
       {
-          debugger;
        listToReturn = applications.map((application, i) =>
             {
                 return <div className="application">
-                    <div className="container">
+                  <div className="application-container">
+                    <div className="img-container">
+                      <img className="avatar" src={application.avatar} alt=""/>
+                    </div>
+                    <div className="empty-container"></div>
+                    <div className="about-container">
+                      <div className="section">
+                      <div className="container">
                         <div className="label">Name:</div>
-                        <div className="content">{application.Name}</div>
+                        <div className="content">{application.playerName}</div>
                     </div>
                     <div className="container">
-                        <div className="label">About:</div>
-                        <div className="content">{application.About}</div>
+                        <div className="label">Server:</div>
+                        <div className="content">{application.server}</div>
+                    </div>
+                      </div>
+                      <div className="section">
+                      <div className="container">
+                        <div className="label">Player class:</div>
+                        <div className="content">{application.playerClass}</div>
                     </div>
                     <div className="container">
-                        <div className="label">Available:</div>
-                        {application.Available 
-                                        ? <div className="content">Yes</div>
-                                        : <div className="content">No</div>     
-                        }
+                        <div className="label">Specialisation: </div>
+                        <div className="content">{application.spec}</div>
+                    </div>
+                      </div>
+                      <div className="section">
+                      <div className="container">
+                        <div className="label">Average item level: </div>
+                        <div className="content">{application.avgItemLvl}</div>
                     </div>
                     <div className="container">
-                        <div className="label">Battle tag:</div>
-                        <div className="content">{application.BattleTag}</div>
+                        <div className="label">Equipped item level: </div>
+                        <div className="content">{application.equippedItemLvl}</div>
+                    </div> 
+                      </div>
                     </div>
-                    <div className="container">
-                        <div className="label">Brag:</div>
-                        <div className="content">{application.Brag}</div>
-                    </div>
-                    <div className="container">
-                        <div className="label">Completed:</div>
-                        {application.Completed 
-                                        ? <div className="content">Yes</div>
-                                        : <div className="content">No</div>     
-                        }
-                    </div>
-                    <div className="container">
-                        <div className="label">Discord tag: </div>
-                        <div className="content">{application.DiscordTag}</div>
-                    </div>
-                    <div className="container">
-                        <div className="label">In guild: </div>
-                        {application.InGuild   
-                                        ? <div className="content">Yes</div>
-                                        : <div className="content">No</div>     
-                        }
-                    </div>
-                    <div className="container">
-                        <div className="label">On time: </div>
-                        <div className="content">
-                        {application.OnTime  
-                                        ? <div className="content">Yes</div>
-                                        : <div className="content">No</div>     
-                        }
-                        </div>
-                    </div>
-                    <div className="container">
-                        <div className="label">Raiding experience: </div>
-                        <div className="content">{application.RaidingExperience}</div>
-                    </div>
-                    <div className="container">
-                        <div className="label">Role: </div>
-                        <div className="content">{application.Role}</div>
-                    </div>
-                    <div className="container">
-                        <div className="label">Server: </div>
-                        <div className="content">{application.Server}</div>
-                    </div>
-                    <div className="container">
-                        <div className="label">Warcraft log tag: </div>
-                        <div className="content">{application.WarcraftLogTag}</div>
-                    </div>
-                    <div className="container">
-                        <div className="label">Why Mythos: </div>
-                        <div className="content">{application.WhyMythos}</div>
-                    </div>
+                  </div>   
                 </div>;
             },
         );
