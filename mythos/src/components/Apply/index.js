@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import * as ROUTES from '../../constants/routes';
+import blizzard from "../../service/blizzard";
 
 import Spinner from '../Spinner';
 
 import './apply.css';
+import Recruitement from '../Home/Recruitment';
 
 const INITAL_STATE = {
   name: '',
@@ -145,179 +147,184 @@ class Apply extends Component {
     return (
       <div>
         <h1>Apply</h1>
-        <div>
-          <form onSubmit={this.onSubmit}>
-            <div className="row">
-              <div>
+        <div className="row">          
+          <div>
+            <form onSubmit={this.onSubmit}>
+              <div className="row">
                 <div>
                   <div>
-                    <label>
-                      Character name
-                    </label>
-                  </div>
-                  <div>
-                  <input
-                    name="name"
-                    value={name}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Ingame name"
-                  />
-                  </div>              
-                </div>
-                <div>
-                  <div>
-                    <label>
-                      Server name
-                    </label>
-                  </div>
-                  <div>
-                  <input
-                    name="server"
-                    value={server}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Server name"
-                  />
-                  </div>
-                </div>
-              </div>
-              <div className="fetchPlayer">
-                <div>
-                  <div>A link to WoW account is needed to apply.</div>
-                  <div>Type in the character and server name</div>
-                  <div>and click "Fetch player data"</div>                  
-                </div>
-                <div>
-                  <button onClick={this.getPlayerData}>
-                    Fetch player data
-                  </button>
-                </div>
-              </div>            
-            </div>
-            {classRender}
-            <div className="container">
-              <div>
-                <div>
-                  <label>
-                    Battle tag
-                  </label>
-                </div>
-                <div>
-                  <input
-                    name="battletag"
-                    value={battletag}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="BattleTag"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  <label>
-                    Warcraftlogs link
-                  </label>
-                </div>
-                <div>
-                  <input
-                    name="log"
-                    value={log}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Warcarft logs link"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  <label>
-                    Discord tag
-                  </label>
-                </div>
-                <div>
-                  <input
-                    name="discordtag"
-                    value={discordtag}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Discord tag"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="container">
-              <div>
-                <div>
-                 <label>
-                  About you
-                 </label>
-                </div>
-                <div>  
-                  <textarea
-                    name="about"
-                    value={about}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="About you"
-                  />
-                </div>
-              </div> 
-              <div>
-                <div>
-                  <label>
-                    Raiding experience
-                  </label>
-                </div>
-                <div>
-                  <textarea
-                    name="experience"
-                    value={experience}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Raiding experience"
-                  />
-                </div>
-              </div>  
-              <div>
-                <div>
-                  <label>
-                    Something to brag about
-                  </label>
-                </div>
-                <div>
-                  <div>
-                    <textarea
-                      name="brag"
-                      value={brag}
+                    <div>
+                      <label>
+                        Character name
+                      </label>
+                    </div>
+                    <div>
+                    <input
+                      name="name"
+                      value={name}
                       onChange={this.onChange}
                       type="text"
-                      placeholder="Something you want to brag about?"
+                      placeholder="Ingame name"
+                    />
+                    </div>              
+                  </div>
+                  <div>
+                    <div>
+                      <label>
+                        Server name
+                      </label>
+                    </div>
+                    <div>
+                    <input
+                      name="server"
+                      value={server}
+                      onChange={this.onChange}
+                      type="text"
+                      placeholder="Server name"
+                    />
+                    </div>
+                  </div>
+                </div>
+                <div className="fetchPlayer">
+                  <div>
+                    <div>A link to WoW account is needed to apply.</div>
+                    <div>Type in the character and server name</div>
+                    <div>and click "Fetch player data"</div>                  
+                  </div>
+                  <div>
+                    <button onClick={this.getPlayerData}>
+                      Fetch player data
+                    </button>
+                  </div>
+                </div>            
+              </div>
+              {classRender}
+              <div className="container">
+                <div>
+                  <div>
+                    <label>
+                      Battle tag
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      name="battletag"
+                      value={battletag}
+                      onChange={this.onChange}
+                      type="text"
+                      placeholder="BattleTag"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label>
+                      Warcraftlogs link
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      name="log"
+                      value={log}
+                      onChange={this.onChange}
+                      type="text"
+                      placeholder="Warcarft logs link"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label>
+                      Discord tag
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      name="discordtag"
+                      value={discordtag}
+                      onChange={this.onChange}
+                      type="text"
+                      placeholder="Discord tag"
                     />
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="container">
                 <div>
+                  <div>
                   <label>
-                    Why do you want to join Mythos
+                    About you
                   </label>
+                  </div>
+                  <div>  
+                    <textarea
+                      name="about"
+                      value={about}
+                      onChange={this.onChange}
+                      type="text"
+                      placeholder="About you"
+                    />
+                  </div>
+                </div> 
+                <div>
+                  <div>
+                    <label>
+                      Raiding experience
+                    </label>
+                  </div>
+                  <div>
+                    <textarea
+                      name="experience"
+                      value={experience}
+                      onChange={this.onChange}
+                      type="text"
+                      placeholder="Raiding experience"
+                    />
+                  </div>
+                </div>  
+                <div>
+                  <div>
+                    <label>
+                      Something to brag about
+                    </label>
+                  </div>
+                  <div>
+                    <div>
+                      <textarea
+                        name="brag"
+                        value={brag}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Something you want to brag about?"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div>
-                  <textarea
-                    name="why"
-                    value={why}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Why do you want to join Mythos"
-                  />
+                  <div>
+                    <label>
+                      Why do you want to join Mythos
+                    </label>
+                  </div>
+                  <div>
+                    <textarea
+                      name="why"
+                      value={why}
+                      onChange={this.onChange}
+                      type="text"
+                      placeholder="Why do you want to join Mythos"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-              <button disabled={hasNotLinked} type="submit">
-              Apply
-              </button>
-          </form>
+                <button disabled={hasNotLinked} type="submit">
+                Apply
+                </button>
+            </form>
+          </div>
+          <div>
+            <Recruitement />
+          </div>
         </div>
       </div>
     )

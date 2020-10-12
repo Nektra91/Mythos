@@ -3,6 +3,12 @@
     flex-direction: row;
 }
 
+.row-space-between {
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+}
+
 .fetchPlayer {
     margin-left: 20px;
 }

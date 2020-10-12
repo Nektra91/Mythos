@@ -19,7 +19,6 @@ const serviceFunctions = {
           }).then(async (res) => {
             classes = res.data.data.Class;
           });
-          console.log(classes)
         return classes;
     }
 }

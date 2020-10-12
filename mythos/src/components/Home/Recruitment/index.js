@@ -29,7 +29,6 @@ class Recruitement extends Component {
   async fetchData() {
     await service.fetchClassesAndSpec()
      .then(res => {
-       console.log(res)
         this.setState({ classes: res});
      });
   }
@@ -63,8 +62,6 @@ class Recruitement extends Component {
     }
     return (
       <div>
-        <h1>Recruitement      
-        </h1>
         {listToReturn}
       </div>
     )
