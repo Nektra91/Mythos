@@ -85,7 +85,7 @@ class Applications extends Component {
     const applications = this.state.applications;
     let listToReturn;
     if (isLoading || !applications) {
-      listToReturn = listToReturn = <Spinner />;
+      listToReturn = <div className="spinner"><Spinner /></div>;
     } else if (applications.length === 0) {
       listToReturn = (
         <div className="noResult">

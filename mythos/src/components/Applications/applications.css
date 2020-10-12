@@ -25,6 +25,13 @@
 
 }
 
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .application-container:hover {
     background-color: var(--tileBackgroundColorHover);
 }
@@ -32,7 +39,6 @@
 .container {
     width: 50%;
 }
-
 .applications {
     height:90vh;
     overflow-y: scroll;
