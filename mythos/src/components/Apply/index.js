@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import * as ROUTES from '../../constants/routes';
 import blizzard from "../../service/blizzard";
+import service from '../../service/database';
 
 import Spinner from '../Spinner';
 
@@ -37,71 +37,52 @@ class Apply extends Component {
   }
 
   onSubmit = event => {
-    const {name, 
-      server, 
-      battletag, 
-      log, 
-      discordtag, 
-      about,
-      experience, 
-      brag, 
-      why, 
-      spec, 
-      available, 
-      guild, 
-      prepare,
-      error} = this.state;
-    axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
-      query: `mutation insert_Application {
-        insert_Application(objects: {
-          About: "${about}", 
-          Available: "${available}", 
-          BattleTag: "${battletag}", 
-          Brag: "${brag}", 
-          DiscordTag: "${discordtag}", 
-          InGuild: "${guild}", 
-          Name: "${name}", 
-          OnTime: "${prepare}", 
-          RaidingExperience: "${experience}", 
-          Role: "${spec}", 
-          Server: "${server}", 
-          WarcraftLogTag: "${log}", 
-          WhyMythos: "${why}"}) {
-          returning {
-            Id
-            Name
-          }
-        }
-      }`
-    }).then(data => this.props.history.push(ROUTES.HOME))
+    let payload = {
+      name: this.state.name,
+      server: this.state.server,
+      battletag: this.state.battletag,
+      log: this.state.log,
+      discordtag: this.state.discordtag,
+      about: this.state.about,
+      experience: this.state.experience,
+      brag: this.state.brag,
+      why: this.state.why,
+      spec: this.state.spec,
+    }
+    this.saveApplication(payload)
+    .then(response => 
+      this.props.history.push(ROUTES.HOME))
+    .catch(err => {
+      console.log(err)
+    })
     event.preventDefault();
   };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  }  
 
   getPlayerData = event => {
     event.preventDefault();
     this.setState({isLoading: true});
-    let lowerCaseName = this.state.name.toLowerCase();
-    let lowerCaseServer = this.state.server.toLowerCase();
-    axios.get(`https://eu.api.blizzard.com/profile/wow/character/${lowerCaseServer}/${lowerCaseName}?namespace=profile-eu&access_token=USgc2iLpK0Rl4iED63M5cDBl3Hupw0y7Jv`
-    ).then(data => {
-      this.setState({ playerClass: data.data.character_class.name.en_US })
-      this.setState({ hasNotLinked: false });      
-      axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
-        query: `query MyQuery {
-          Specialization(where: {Recruitments: {Class: {Name: {_eq: "${this.state.playerClass}"}}}}) {
-            Name
-          }
-        }`
-      }).then(spec => {
-        this.setState({specs: spec.data.data.Specialization})
-        this.setState({ isLoading: false });
-        console.log(this.state.specs);
-      });
-    });
+    let payload = {
+      name: this.state.name.toLowerCase(),
+      server: this.state.server.toLowerCase()
+    }
+    this.getPlayerDataFromBlizzard(payload)
+    .then(response => {
+      this.setState({playerClass: response})
+      this.setState({isLoading: false})
+      this.getAvailableSpecs(response)
+      .then(response => {
+        this.setState({specs: response})
+        this.setState({hasNotLinked: false})
+      }).catch(err => {
+        console.log(err)
+      })
+    }).catch(err => {
+      console.log(err)
+    });    
   }
 
   render() {
@@ -328,6 +309,31 @@ class Apply extends Component {
         </div>
       </div>
     )
+  }
+
+  async saveApplication(payload) {
+    await service.createApplication(payload)
+    .then(response => {
+      return response;
+    })
+  }
+
+  async getPlayerDataFromBlizzard(payload) {
+    let playerClass = '';
+    await blizzard.getPlayerData(payload)
+    .then(response => {
+      playerClass = response.playerClass;
+    });
+    return playerClass;
+  }
+
+  async getAvailableSpecs(payload) {
+    let specs = [];
+    await service.getSpecsForClass(payload)
+    .then(response => {
+      specs = response;
+    })
+    return specs;
   }
 }
 
