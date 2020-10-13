@@ -10,7 +10,7 @@ function RecruitementItem (props) {
 
   return  (
     <div>
-      {data.map((cl, idx) => 
+      {data.map((cl) => 
         <div key={cl.Id}>
           <div className={styles.Row}>
           {images.filter(image => image.name.includes('Main')).map(filteredImage => (
@@ -19,9 +19,9 @@ function RecruitementItem (props) {
                     </div>
                   ))}
             {cl.Recruitments.map(rec => 
-              <div>
+              <div key={rec.Specialization.Name}>
                 {images.filter(image => image.name.includes(rec.Specialization.Name)).map(filteredImage => (
-                  <div>
+                  <div key={filteredImage.name}>
                     <SpecIcon image={filteredImage.image} recruiting={rec.Recruiting}></SpecIcon>
                   </div>
                 ))}
