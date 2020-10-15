@@ -8,3 +8,4 @@ export const PASSWORD_FORGET = '/pw-forget';
 export const APPLY = '/apply';
 export const RULES = '/rules';
 export const APPLICATIONS = '/applications';
+export const APPLICATION = '/application/:applicationId';

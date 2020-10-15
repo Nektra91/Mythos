@@ -4,6 +4,10 @@
     --emptyContainerWidth: 150px;
     --tileBackgroundColor: rgba(23, 50, 90, 0.2);
     --tileBackgroundColorHover: rgba(23, 50, 90, 0.4);
+    --headerHeight: 32px;
+    --navbarHeight: 79px;
+    --scrollbarBG: #CFD8DC;
+    --thumbBG: #90A4AE;
 }
 .container > .label {
     display: inline-block;
@@ -21,7 +25,7 @@
 
 .application {
     text-align: center;
-    margin: 50px;
+    margin: 25px;
 
 }
 
@@ -40,11 +44,17 @@
     width: 50%;
 }
 .applications {
-    height:90vh;
+    padding: 50px;
+    max-height: calc(100vh - var(--headerHeight) - (var(--navbarHeight) - 30px + 50px));
     overflow-y: scroll;
     color: white;
 }
-
+.application:hover {
+    cursor: pointer;
+}
+.applications > h2 {
+    text-align: center;
+}
 .img-container {
     width: var(--imgWidth);
     height: 100%;
@@ -85,4 +95,23 @@
     justify-content: center;
     align-items: center;
     transform: translateY(-10px);
+}
+
+::-webkit-scrollbar {
+    width: 11px;
+}
+
+::-webkit-scrollbar-track {
+    /* background-color:var(--scrollbarBG); */
+    display: none;
+}
+
+body{
+    /* scrollbar-width: thin; */
+    /* scrollbar-color: var(--thumbBG) var(--scrollbarBG); */
+}
+::-webkit-scrollbar-thumb {
+    /* background-color: var(--thumbBG) ; */
+    /* border-radius: 6px; */
+    /* border: 3px solid var(--scrollbarBG); */
 }

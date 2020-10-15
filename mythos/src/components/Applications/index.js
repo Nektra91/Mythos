@@ -3,6 +3,8 @@ import Spinner from '../Spinner/index';
 import service from '../../service/database';
 import blizzardService from '../../service/blizzard'
 import './applications.css';
+import { Route } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 class Applications extends Component {
   constructor(props) {
@@ -12,9 +14,12 @@ class Applications extends Component {
     this.fetchPlayerProfile = this.fetchPlayerProfile.bind(this);
     this.fetchPlayerMedia = this.fetchPlayerMedia.bind(this);
     this.fetchData = this.fetchData.bind(this);
+    this.loadApplicationForm = this.loadApplicationForm.bind(this);
+    debugger;
     this.state = {
       loading: true,
       applications: [],
+      history: props.history
     };
   }
 
@@ -30,6 +35,15 @@ class Applications extends Component {
             this.setState({applications: applications, loading: false});
         });
     });
+  }
+
+  loadApplicationForm(dto, history) {
+    debugger;
+    let path = ROUTES.APPLICATION;
+    let id = dto.applicationId.toString();
+    let newPath = path.replace(':applicationId', id);
+    history.push(newPath);
+
   }
 
   async fetchPlayerProfile(name, server) {
@@ -61,6 +75,7 @@ class Applications extends Component {
             avgItemLvl: 0,
             equippItemLvl: 0,
             avatar: "",
+            applicationId: application.Id
         }
         await this.fetchPlayerProfile(name, server).then(profile => {
         applicationDto.playerName = name;
@@ -72,7 +87,14 @@ class Applications extends Component {
 
         });
         await this.fetchPlayerMedia(name, server).then(media => {
-            applicationDto.avatar = media.data.avatar_url;
+          const key = 'avatar';
+          let avatar = null;
+          if(media.data.assets) {
+            // some times the api returns a asset array 
+            avatar = media.data.assets.filter(asset => asset.key === key)[0];
+          }
+
+            applicationDto.avatar = avatar && avatar.value ? avatar.value : media.data.avatar_url;
         });
         result.push(applicationDto);
       }
@@ -93,9 +115,9 @@ class Applications extends Component {
       );
     } else {
       {
-       listToReturn = applications.map((application, i) =>
+       listToReturn = applications.map((application) =>
             {
-                return <div className="application">
+                return <div className="application" onClick={() => this.loadApplicationForm(application, this.state.history)}>
                   <div className="application-container">
                     <div className="img-container">
                       <img className="avatar" src={application.avatar} alt=""/>
@@ -139,7 +161,7 @@ class Applications extends Component {
         );
       }
     }
-    return <div className="applications">{listToReturn}</div>;
+    return <div className="applications my-custom-scrollbar my-custom-scrollbar-primary"><h2>Applications</h2>{listToReturn}</div>;
   }
 }
 
