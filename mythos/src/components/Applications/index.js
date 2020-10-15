@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Spinner from '../Spinner/index';
 import service from '../../service/database';
 import blizzardService from '../../service/blizzard'

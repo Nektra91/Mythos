@@ -82,7 +82,29 @@ const serviceFunctions = {
                 }
                 }
             }`
+        }).then(response => {
+          console.log(response);
+        }).catch(err => {
+          console.log(err);
         })
+    },
+
+    async createUser(payload) {
+      console.log(payload)
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `mutation insert_User {
+          insert_User(objects: {FirebaseIdentifier: "${payload.uid}", Username: "${payload.name}"}) {
+            returning {
+              Id
+              FirebaseIdentifier
+            }
+          }
+        }`
+      }).then(response => {
+        console.log(response);
+      }).catch(err => {
+        console.log(err);
+      })
     }
 }
 export default serviceFunctions;

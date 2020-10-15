@@ -1,14 +1,17 @@
-.Background {
-    background-color: #282828;
-    width: 210px;
-}
-
-:local(.Row) {
+.row {
     display: flex;
     flex-direction: row;
 }
 
-:local(.MaxWidth) {
-    max-width: 340px;;
+.homeContainer {
+    padding-top: 20px;
 }
 
+.logo {
+    height: 100px;
+}
+
+.guildName {
+    text-align: center;
+    color: #e88c20
+}

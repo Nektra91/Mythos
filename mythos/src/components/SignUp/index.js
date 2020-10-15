@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import service from '../../service/database';
  
 const SignUpPage = () => (
   <div>
@@ -32,6 +33,11 @@ class SignUpFormBase extends Component {
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
+        let payload = {
+          name: username,
+          uid: authUser.user.uid,
+        }
+        this.createUser(payload);
         // Create a user in your Firebase realtime database
         return this.props.firebase
           .user(authUser.user.uid)
@@ -49,6 +55,10 @@ class SignUpFormBase extends Component {
       });
  
     event.preventDefault();
+  }
+
+  async createUser(payload) {
+    await service.createUser(payload);
   }
  
   onChange = event => {
@@ -107,7 +117,7 @@ class SignUpFormBase extends Component {
         {error && <p>{error.message}</p>}
       </form>
     );
-  }
+  }  
 }
  
 const SignUpLink = () => (
