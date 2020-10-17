@@ -3,12 +3,13 @@ import React from 'react';
 import { AuthUserContext, withAuthorization } from '../Session';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
+import BlizzardLink from './BlizzardLink';
  
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
       <div>
-        <h1>Account: {authUser.email}</h1>
+        <BlizzardLink uid={authUser.uid} />
         <PasswordForgetForm />
         <PasswordChangeForm />
       </div>

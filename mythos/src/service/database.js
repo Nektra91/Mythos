@@ -131,6 +131,60 @@ const serviceFunctions = {
       }).catch(err => {
         console.log(err);
       })
+    },
+
+    async fetchUserData(payload) {
+      let userInfo = null;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `query MyQuery {
+          User(where: {FirebaseIdentifier: {_eq: "${payload.uid}"}}) {
+            Username
+            ServerName
+            FirebaseIdentifier
+            CharacterName
+            Admin
+            Id
+            Linked
+            CharacterClass
+          }
+        }`
+      }).then(response => {
+        userInfo = response.data.data.User[0];
+      }).catch(err => {
+        console.log(err);
+      })
+      return userInfo;
+    },
+
+    async saveCharacterSync(payload) {
+      let userInfo = null;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `mutation MyMutation {
+          update_User(where: {
+            Id: {_eq: "${payload.id}"}}, 
+            _set: {
+              CharacterClass: "${payload.playerClass}", 
+              CharacterName: "${payload.name}", 
+              Linked: true, 
+              ServerName: "${payload.server}"}) {
+            returning {
+              Username
+              ServerName
+              FirebaseIdentifier
+              CharacterName
+              Admin
+              Id
+              Linked
+              CharacterClass
+            }
+          }
+        }`
+      }).then(response => {
+        userInfo = response.data.data.update_User.returning[0]
+      }).catch(err => {
+        console.log(err);
+      })
+      return userInfo;
     }
 }
 export default serviceFunctions;
