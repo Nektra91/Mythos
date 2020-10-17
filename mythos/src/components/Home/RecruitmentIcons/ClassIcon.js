@@ -10,7 +10,7 @@ class ClassIcon extends Component {
     render() {
         return (
             <div>
-                <img src={this.state.image} alt="" style={{height: 45, width: 45}} />
+                <img src={this.state.image} alt="" style={{height: 65, width: 65}} />
             </div>
         )
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import SpecIcon from '../RecruitmentIcons/SpecIcon';
 import ClassIcon from '../RecruitmentIcons/ClassIcon';
 
-import '../home.css';
+import style from '../home.module.css';
 
 function RecruitementItem (props) {
   const {images} = props;
@@ -12,14 +12,14 @@ function RecruitementItem (props) {
     <div>
       {data.map((cl) => 
         <div key={cl.Id}>
-          <div className="row">
+          <div className={style.row}>
           {images.filter(image => image.name.includes('Main')).map(filteredImage => (
-                    <div key={filteredImage.image}>
+                    <div key={filteredImage.image} className={style.class}>
                       <ClassIcon image={filteredImage.image}></ClassIcon>
                     </div>
                   ))}
             {cl.Recruitments.map(rec => 
-              <div key={rec.Specialization.Name}>
+              <div key={rec.Specialization.Name} className={style.spec}>
                 {images.filter(image => image.name.includes(rec.Specialization.Name)).map(filteredImage => (
                   <div key={filteredImage.name}>
                     <SpecIcon image={filteredImage.image} recruiting={rec.Recruiting}></SpecIcon>

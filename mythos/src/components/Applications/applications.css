@@ -2,8 +2,8 @@
     --imgWidth: 100px;
     --labelWidth: 150px;
     --emptyContainerWidth: 150px;
-    --tileBackgroundColor: rgba(23, 50, 90, 0.2);
-    --tileBackgroundColorHover: rgba(23, 50, 90, 0.4);
+    --tileBackgroundColor: #282828;
+    --tileBackgroundColorHover: #383838;
     --headerHeight: 32px;
     --navbarHeight: 79px;
     --scrollbarBG: #CFD8DC;
@@ -26,7 +26,6 @@
 .application {
     text-align: center;
     margin: 25px;
-
 }
 
 .spinner {
@@ -47,7 +46,7 @@
     padding: 50px;
     max-height: calc(100vh - var(--headerHeight) - (var(--navbarHeight) - 30px + 50px));
     overflow-y: scroll;
-    color: white;
+    color: #e88c20;
 }
 .application:hover {
     cursor: pointer;
@@ -68,7 +67,7 @@
 }
 
 .avatar {
-    border: 1px solid #ddd;
+    border: 1px solid #e88c20;
     border-radius: 4px;
     padding: 5px;
 }

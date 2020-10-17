@@ -64,7 +64,7 @@ class BlizzardLink extends Component {
             <div>
                 <div>
                     <p>You are not linked to a World of warcraft character</p>
-                    <div className="row">
+                    <div>
                         <div>
                             <div>
                                 <div>

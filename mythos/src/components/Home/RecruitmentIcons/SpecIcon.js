@@ -11,9 +11,9 @@ class SpecIcon extends Component {
         const recruiting = this.state.recruiting;
         let icon;
         if(recruiting) {
-            icon = <img src={this.state.image} alt="" style={{height: 25, width: 25}} />
+            icon = <img src={this.state.image} alt="" style={{height: 35, width: 35}} />
         } else {
-            icon = <img src={this.state.image} alt="" style={{height: 25, width: 25, opacity: 0.2}} />
+            icon = <img src={this.state.image} alt="" style={{height: 35, width: 35, opacity: 0.2}} />
         }
 
         return (

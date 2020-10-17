@@ -6,6 +6,7 @@ import service from '../../service/database';
 import Spinner from '../Spinner';
 
 import './apply.css';
+import style from './applyExtra.module.css';
 import Recruitement from '../Home/Recruitment';
 
 const INITAL_STATE = {
@@ -126,10 +127,16 @@ class Apply extends Component {
       }
 
     return (
-      <div>
-        <h1>Apply</h1>
-        <div className="row">          
+      <div>        
+        <div className={style.baseContainer}>
+        <div className="row">
           <div>
+            <div>
+              <div className= {style.applyHeaderContainer}>
+                <h2 className={style.applyHeader}>Apply</h2>
+              </div>  
+            </div>
+            <div className={style.formContainer}>                                 
             <form onSubmit={this.onSubmit}>
               <div className="row">
                 <div>
@@ -168,12 +175,12 @@ class Apply extends Component {
                 </div>
                 <div className="fetchPlayer">
                   <div>
-                    <div>A link to WoW account is needed to apply.</div>
-                    <div>Type in the character and server name</div>
-                    <div>and click "Fetch player data"</div>                  
+                    <div><p>A link to WoW account is needed to apply.</p></div>
+                    <div><p>Type in the character and server name</p></div>
+                    <div><p>and click "Fetch player data"</p></div>                  
                   </div>
                   <div>
-                    <button onClick={this.getPlayerData}>
+                    <button className={style.fetchButton} onClick={this.getPlayerData}>
                       Fetch player data
                     </button>
                   </div>
@@ -298,16 +305,19 @@ class Apply extends Component {
                   </div>
                 </div>
               </div>
-                <button disabled={hasNotLinked} type="submit">
+                <button disabled={hasNotLinked} type="submit" className={style.applyButton}>
                 Apply
                 </button>
             </form>
-          </div>
-          <div>
+          </div> 
+          </div>           
+          <div className={style.recruitment}>
             <Recruitement />
           </div>
         </div>
       </div>
+      </div>
+      
     )
   }
 

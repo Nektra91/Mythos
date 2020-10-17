@@ -1,0 +1,70 @@
+.baseContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.applyHeader {
+    text-align: center;
+    color: #e88c20;
+}
+
+.recruitment {
+    background-color: #282828;
+    padding: 25px 10px 0px 25px;
+    border-radius: 15px;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.fetchButton, .applyButton {
+    border-radius: 4px;
+    padding: 6px;
+}
+
+.applyButton {
+    margin-top: 10px;
+}
+
+input, textarea {
+    padding: 6px;
+    border-radius: 5px;
+    background-color: #585858;
+    color: #e88c20;
+}
+
+button {
+    color: #e88c20;
+    background-color: #282828;
+}
+button:hover {
+    background-color: #383838;
+    cursor: pointer;
+}
+
+label {
+    color: #e88c20;
+}
+
+.formContainer {
+    padding-right: 100px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.applyHeaderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+p {
+    color: #e88c20;
+}
+

@@ -15,3 +15,11 @@
     text-align: center;
     color: #e88c20
 }
+
+.spec {
+    padding: 0px 8px
+}
+
+.class {
+    transform: translateY(-10px);
+}

@@ -1,34 +1,34 @@
 import React from 'react';
-import './home.css';
+import style from './home.module.css';
 import logo from '../../images/logo.png';
 
 import Recruitment from './Recruitment';
  
 const HomePage = () => (
   <div>
-    <div className="row">
-      <div className="homeContainer">
+    <div className={style.row}>
+      <div className={style.homeContainer}>
         <Recruitment />
       </div>
-      <div className="homeContainer">
-        <div className="row">
+      <div className={style.homeContainer}>
+        <div className={style.row}>
           <div>
-            <img src={logo} alt="" className="logo"/>
+            <img src={logo} alt="" className={style.logo}/>
           </div>
-          <div className="guildName">
+          <div className={style.guildName}>
             <h1>Mythos</h1>
           </div>
         </div>
-        <div className="row">
+        <div className={style.row}>
           <div>
             <h1>A lot of texty text</h1>
           </div>
           <div>
             <div>
               <h1>Latest kill pic?</h1>
-              <img src={logo} alt="" className="logo"/>
+              <img src={logo} alt="" className={style.logo}/>
             </div>
-            <div className="row">
+            <div className={style.row}>
               <div>
                 <div>
                   <h1>
