@@ -1,0 +1,25 @@
+:root {
+    --navbarHeight: 79px;
+    --mainPadding: 50px;
+    --heightOffset: calc(var(--navbarHeight) + var(--mainPadding));
+}
+.mainContainer {
+    padding: var(--mainPadding);
+    max-height: calc(100vh - var(--heightOffset));
+    
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailContainer {
+    max-height: calc(25vh - var(--heightOffset));
+}
+
+.infoContainer {
+    max-height: calc(25vh - var(--heightOffset));
+}
+

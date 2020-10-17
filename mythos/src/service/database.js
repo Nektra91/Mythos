@@ -85,7 +85,6 @@ const serviceFunctions = {
       }).catch(err => {
         console.log(err);
       });
-      debugger
       return application;
     },
 

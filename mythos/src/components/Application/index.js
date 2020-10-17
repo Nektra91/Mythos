@@ -4,7 +4,7 @@ import blizzardService from '../../service/blizzard';
 import ApplicationDetail from './ApplicationDetail';
 import Spinner from '../Spinner';
 import ApplicationInfo from './ApplicationInfo';
-import './application.css'
+import style from './application.module.css'
 
 export default class Application extends Component {
     constructor(props) {
@@ -84,17 +84,19 @@ export default class Application extends Component {
         const moreInfo = this.state.moreInfo;
         if(this.state.loading) {
             return (
-                <div className="main-container">
-                    <Spinner/>
+                <div className={style.mainContainer}>
+                    <div className={style.spinner}>
+                        <Spinner/>
+                    </div>
                 </div>
             )
         } else {
             return (
-                <div className="main-container">
-                    <div className="detail-container">
+                <div className={style.mainContainer}>
+                    <div className={style.detailContainer}>
                         <ApplicationDetail {...detail}/>
                     </div>
-                    <div className="info-container">
+                    <div className={style.infoContainer}>
                         <ApplicationInfo {...moreInfo}/>
                     </div>
                 </div>

@@ -1,48 +1,50 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import style from './applicationDetail.module.css'
 
 const ApplicationDetail = (props) => {
     return (
-    <div className="detail">
-        <div className="detail-header">
+    <div className={style.detail}>
+        <div className={style.detailHeader}>
             <h2>Details</h2>
         </div>
-        <div className="detail-container">
-            <div className="section">
-                <div className="name-and-server">
-                    <span className="label">Name:</span>
-                    <span className="value">{props.name}</span>
-                    <span className="label">-</span>
-                    <span className="value">{props.server}</span>
+        <div className={style.detailContainer}>
+            <div className={style.section}>
+                <div className={style.fieldLeft}>
+                    <span className={style.label}>Name:</span>
+                    <span className={style.value}>{props.name}</span>
                 </div>
-                <div className="role">
-                    <span className="label">Role:</span>
-                    <span className="value">{props.role}</span>
+                <div className={style.fieldLeft}>
+                    <span className={style.label}>Server:</span>
+                    <span className={style.value}>{props.server}</span>
                 </div>
-                <div className="avg-item-level">
-                    <span className="label">Average item level:</span>
-                    <span className="value">{props.avgItemLevel}</span>
+                <div className={style.fieldLeft}>
+                    <span className={style.label}>Role:</span>
+                    <span className={style.value}>{props.role}</span>
                 </div>
-                <div className="eqpt-item-level">
-                    <span className="label">Equipped item level:</span>
-                    <span className="value">{props.eqptItemLevel}</span>
+                <div className={style.fieldLeft}>
+                    <span className={style.label}>Average item level:</span>
+                    <span className={style.value}>{props.avgItemLevel}</span>
                 </div>
             </div>
-            <div className="section">
-                <div className="empty-section"></div>
+            <div className={style.emptySection}>
             </div>
-            <div className="section">
-                <div className="battle-tag">
-                    <span className="label">Battle Tag:</span>
-                    <span className="value">{props.battleTag}</span>
+            <div className={style.section}>
+                <div className={style.fieldRight}>
+                    <span className={style.label}>Battle Tag:</span>
+                    <span className={style.value}>{props.battleTag}</span>
                 </div>
-                <div className="warcraft-log-tag">
-                    <span className="label">Warcraft Log Tag:</span>
-                    <span className="value">{props.warcraftLogTag}</span>
+                <div className={style.fieldRight}>
+                    <span className={style.label}>Warcraft Log Tag:</span>
+                    <span className={style.value}>{props.warcraftLogTag}</span>
                 </div>
-                <div className="discord-tag">
-                    <span className="label">Discord Tag:</span>
-                    <span className="value">{props.discordTag}</span>
+                <div className={style.fieldRight}>
+                    <span className={style.label}>Discord Tag:</span>
+                    <span className={style.value}>{props.discordTag}</span>
+                </div>
+                <div className={style.fieldRight}>
+                    <span className={style.label}>Equipped item level:</span>
+                    <span className={style.value}>{props.eqptItemLevel}</span>
                 </div>
             </div>
         </div>

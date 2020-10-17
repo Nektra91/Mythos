@@ -1,7 +1,0 @@
-:root {
-    --navbarHeight: 79px;
-}
-.main-container {
-    max-height: calc(100vh - var(--navbarHeight));
-}
-

@@ -1,0 +1,64 @@
+:root {
+    --navbarHeight: 79px;
+    --emptySectionWidth: 200px;
+}
+.detail {
+    /* background-color: #e88c20; */
+    background-color:  #282828;
+    border-radius: 15px;
+    color: #FFFF;
+    -webkit-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
+    box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
+    padding: 25px;
+}
+
+.detailHeader {
+    text-align: center;
+    
+}
+
+.detailContainer {
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.label {
+    text-align: right;
+    margin-right: 5px;
+    width: 150px;
+}
+.sepperator {
+    text-align: left;
+}
+
+.value {
+    text-align: left;
+    width: 200px;
+}
+.fieldLeft {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fieldRight {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.fieldNameServer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+.emptySection {
+    width: var(--emptySectionWidth);
+}
+
+.section {
+    width: calc((100% - var(--emptySectionWidth / 2) ) /  2);
+}
+
