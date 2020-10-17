@@ -62,6 +62,33 @@ const serviceFunctions = {
         return specs;
     },
 
+    async fetchApplication(id) {
+      let application = null;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `query MyQuery {
+        Application(where: {Id: {_eq:${id}}}) {
+          About
+          BattleTag
+          Brag
+          Completed
+          DiscordTag
+          Id
+          Name
+          RaidingExperience
+          Role
+          Server
+          WarcraftLogTag
+          WhyMythos
+        }
+      }`}).then(response => {
+        application = response.data.data.Application[0];
+      }).catch(err => {
+        console.log(err);
+      });
+      debugger
+      return application;
+    },
+
     async createApplication(payload) {
         await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
             query: `mutation insert_Application {

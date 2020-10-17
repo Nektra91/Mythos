@@ -3,7 +3,6 @@ import Spinner from '../Spinner/index';
 import service from '../../service/database';
 import blizzardService from '../../service/blizzard'
 import './applications.css';
-import { Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 class Applications extends Component {
@@ -15,7 +14,6 @@ class Applications extends Component {
     this.fetchPlayerMedia = this.fetchPlayerMedia.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.loadApplicationForm = this.loadApplicationForm.bind(this);
-    debugger;
     this.state = {
       loading: true,
       applications: [],
@@ -38,7 +36,6 @@ class Applications extends Component {
   }
 
   loadApplicationForm(dto, history) {
-    debugger;
     let path = ROUTES.APPLICATION;
     let id = dto.applicationId.toString();
     let newPath = path.replace(':applicationId', id);

@@ -106,12 +106,12 @@
     display: none;
 }
 
-body{
-    /* scrollbar-width: thin; */
-    /* scrollbar-color: var(--thumbBG) var(--scrollbarBG); */
+/*body{
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
 ::-webkit-scrollbar-thumb {
-    /* background-color: var(--thumbBG) ; */
-    /* border-radius: 6px; */
-    /* border: 3px solid var(--scrollbarBG); */
-}
+    background-color: var(--thumbBG) ;
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+}*/
