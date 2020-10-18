@@ -2,6 +2,7 @@
     --imgWidth: 100px;
     --labelWidth: 150px;
     --emptyContainerWidth: 150px;
+    --emptyContentWidth: 20px;
     --tileBackgroundColor: #282828;
     --tileBackgroundColorHover: #383838;
     --headerHeight: 32px;
@@ -19,12 +20,13 @@
 
 .container > .content {
     display: inline-block;
-    width: calc(100% - var(--labelWidth) - 15px);
+    width: calc(100% - var(--labelWidth) - var(--emptyContentWidth) - 15px);
     text-align: left;
 }
 
 .application {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin: 25px;
 }
 
@@ -41,6 +43,8 @@
 
 .container {
     width: 50%;
+    display: flex;
+    align-items: center;
 }
 .applications {
     padding: 50px;
@@ -56,9 +60,11 @@
 }
 .img-container {
     width: var(--imgWidth);
-    height: 100%;
+    height: var(--imgWidth);
     display: inline-block;
 }
+
+
 
 .empty-container {
     width: var(--emptyContainerWidth);
@@ -77,6 +83,12 @@
     display: inline-block;
 }
 
+.emptyContent {
+    width: var(--emptyContentWidth);
+    height: 100%;
+    display: inline-block;
+}
+
 .application-container {
     display: flex;
     justify-content: center;
@@ -87,6 +99,7 @@
     -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
     box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
     padding: 15px;
+    width: 85%;
 }
 
 .section {
@@ -94,6 +107,7 @@
     justify-content: center;
     align-items: center;
     transform: translateY(-10px);
+    overflow-wrap: break-word;
 }
 
 ::-webkit-scrollbar {
