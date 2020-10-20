@@ -1,11 +1,13 @@
 :root {
-    --navbarHeight: 79px;
     --mainPadding: 50px;
     --heightOffset: calc(var(--navbarHeight) + var(--mainPadding));
+    --detailAndInfoHeight: 300px;
 }
 .mainContainer {
     padding: var(--mainPadding);
-    max-height: calc(100vh - var(--heightOffset));
+    height: calc(100vh - var(--heightOffset));
+    display: flex;
+    flex-flow: column;
     
 }
 
@@ -16,10 +18,11 @@
 }
 
 .detailContainer {
-    max-height: calc(25vh - var(--heightOffset));
+    height: var(--detailAndInfoHeight);
+    margin-bottom: 20px;
 }
 
 .infoContainer {
-    max-height: calc(25vh - var(--heightOffset));
+    height: var(--detailAndInfoHeight);
 }
 

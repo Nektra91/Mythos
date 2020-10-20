@@ -1,16 +1,15 @@
 :root {
-    --navbarHeight: 79px;
     --emptySectionWidth: 200px;
 }
 .detail {
-    /* background-color: #e88c20; */
-    background-color:  #282828;
+    background-color: var(--secondaryBodyColor);
     border-radius: 15px;
-    color: #FFFF;
+    color: var(--mainSyntaxColor);
     -webkit-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
     -moz-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
     box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
     padding: 25px;
+    margin-bottom: 25px;
 }
 
 .detailHeader {
@@ -26,8 +25,11 @@
 
 .label {
     text-align: right;
-    margin-right: 5px;
+    margin: 5px 20px 0px 0px;
+    font-size: 18px;
+    font-weight: 600;
     width: 150px;
+    overflow-wrap: break-word;
 }
 .sepperator {
     text-align: left;
@@ -36,6 +38,11 @@
 .value {
     text-align: left;
     width: 200px;
+    font-size: 18px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    overflow-wrap: break-word;
 }
 .fieldLeft {
     margin-top: 5px;

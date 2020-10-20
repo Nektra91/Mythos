@@ -6,7 +6,7 @@ const ApplicationDetail = (props) => {
     return (
     <div className={style.detail}>
         <div className={style.detailHeader}>
-            <h2>Details</h2>
+            <h1>Details</h1>
         </div>
         <div className={style.detailContainer}>
             <div className={style.section}>

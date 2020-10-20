@@ -192,7 +192,7 @@ class Applications extends Component {
         );
       }
     }
-    return <div className="applications my-custom-scrollbar my-custom-scrollbar-primary"><h2>Applications</h2>{listToReturn}</div>;
+    return <div className="applications"><h2>Applications</h2>{listToReturn}</div>;
   }
 }
 
