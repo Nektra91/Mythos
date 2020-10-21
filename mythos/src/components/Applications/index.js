@@ -115,50 +115,84 @@ class Applications extends Component {
        listToReturn = applications.map((application) =>
             {
                 return <div className="application" onClick={() => this.loadApplicationForm(application, this.state.history)}>
-                  <div className="application-container">
-                    <div className="img-container">
-                      <img className="avatar" src={application.avatar} alt=""/>
-                    </div>
-                    <div className="empty-container"></div>
-                    <div className="about-container">
-                      <div className="section">
-                      <div className="container">
-                        <div className="label">Name:</div>
-                        <div className="content">{application.playerName}</div>
-                    </div>
-                    <div className="container">
-                        <div className="label">Server:</div>
-                        <div className="content">{application.server}</div>
-                    </div>
+                    <div className="application-container">
+                      <div className="img-container">
+                        <img className="avatar" src={application.avatar} alt="" />
                       </div>
-                      <div className="section">
-                      <div className="container">
-                        <div className="label">Player class:</div>
-                        <div className="content">{application.playerClass}</div>
-                    </div>
-                    <div className="container">
-                        <div className="label">Specialisation: </div>
-                        <div className="content">{application.spec}</div>
-                    </div>
+                      <div className="empty-container" />
+                      <div className="about-container">
+                        <div className="section">
+                          <div className="container">
+                            <div className="label">
+                              Name:
+                            </div>
+                            <div className="content">
+                              {application.playerName}
+                            </div>
+                            <div className="emptyContent"></div>
+                          </div>
+                          <div className="container">
+                            <div className="label">
+                              Server:
+                            </div>
+                            <div className="content">
+                              {application.server}
+                            </div>
+                            <div className="emptyContent"></div>
+                          </div>
+                        </div>
+                        <div className="section">
+                          <div className="container">
+                            <div className="label">
+                              Player class:
+                            </div>
+                            <div className="content">
+                              {
+                                application.playerClass
+                              }
+                            </div>
+                            <div className="emptyContent"></div>
+                          </div>
+                          <div className="container">
+                            <div className="label">
+                              Specialisation:{' '}
+                            </div>
+                            <div className="content">
+                              {application.spec}
+                            </div>
+                            <div className="emptyContent"></div>
+                          </div>
+                        </div>
+                        <div className="section">
+                          <div className="container">
+                            <div className="label">
+                              Average item level:{' '}
+                            </div>
+                            <div className="content">
+                              {application.avgItemLvl}
+                            </div>
+                            <div className="emptyContent"></div>
+                          </div>
+                          <div className="container">
+                            <div className="label">
+                              Equipped item level:{' '}
+                            </div>
+                            <div className="content">
+                              {
+                                application.equippedItemLvl
+                              }
+                            </div>
+                            <div className="emptyContent"></div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="section">
-                      <div className="container">
-                        <div className="label">Average item level: </div>
-                        <div className="content">{application.avgItemLvl}</div>
                     </div>
-                    <div className="container">
-                        <div className="label">Equipped item level: </div>
-                        <div className="content">{application.equippedItemLvl}</div>
-                    </div> 
-                      </div>
-                    </div>
-                  </div>   
-                </div>;
+                  </div>;
             },
         );
       }
     }
-    return <div className="applications my-custom-scrollbar my-custom-scrollbar-primary"><h2>Applications</h2>{listToReturn}</div>;
+    return <div className="applications"><h2>Applications</h2>{listToReturn}</div>;
   }
 }
 

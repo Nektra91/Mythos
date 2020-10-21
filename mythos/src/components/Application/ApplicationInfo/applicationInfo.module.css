@@ -1,0 +1,28 @@
+.moreInfo {
+    background-color: var(--secondaryBodyColor);
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    color: var(--mainSyntaxColor);
+}
+
+.moreInfoHeader {
+    text-align: center;
+}
+
+.infoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.emptySection {
+    width: 25%
+}
+
+.infoSection {
+    width: 75%;
+}
+

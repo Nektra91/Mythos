@@ -1,24 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Styles from './applicationInfo.module.css';
 
 const ApplicationInfo = (props) => {
     return (
-        <div className="more-info">
-            <div className="about">
-                <span className="label">About:</span>
-                <span className="value">{props.about}</span>
+        <div className={Styles.moreInfo}>
+            <div className={Styles.moreInfoHeader}>
+                <h1>More info</h1>
             </div>
-            <div className="brag">
-                <span className="label">Brag:</span>
-                <span className="value">{props.brag}</span>
-            </div>
-            <div className="raiding-experience">
-                <span className="label">RaidingExperience:</span>
-                <span className="value">{props.raidingExperience}</span>
-            </div>
-            <div className="why-mythos">
-                <span className="label">Why Mythos:</span>
-                <span className="value">{props.whyMythos}</span>
+            <div className={Styles.infoContainer}>
+                <div className={Styles.emptySection}>
+                </div>
+                <div className={Styles.infoSection}>
+                    <div className={Styles.about}>
+                        <span className={Styles.label}>About:</span>
+                        <span className={Styles.value}>{props.about}</span>
+                    </div>
+                    <div className={Styles.brag}>
+                        <span className={Styles.label}>Brag:</span>
+                        <span className={Styles.value}>{props.brag}</span>
+                    </div>
+                    <div className={Styles.raidingExperience}>
+                        <span className={Styles.label}>RaidingExperience:</span>
+                        <span className={Styles.value}>{props.raidingExperience}</span>
+                    </div>
+                    <div className={Styles.whyMythos}>
+                        <span className={Styles.label}>Why Mythos:</span>
+                        <span className={Styles.value}>{props.whyMythos}</span>
+                    </div>
+                </div>
             </div>
         </div>
     )
