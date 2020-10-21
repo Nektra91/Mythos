@@ -21,7 +21,7 @@ const HomePage = () => (
         </div>
         <div className={style.row}>
           <div>
-            <h1>A lot of texty text</h1>
+            <h1>A lot of texty text plus more texty text</h1>
           </div>
           <div>
             <div>

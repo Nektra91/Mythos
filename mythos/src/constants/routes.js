@@ -7,5 +7,6 @@ export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
 export const APPLY = '/apply';
 export const RULES = '/rules';
+export const TWITCH = '/twitch'
 export const APPLICATIONS = '/applications';
 export const APPLICATION = '/application/:applicationId';

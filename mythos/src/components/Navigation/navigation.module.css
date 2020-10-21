@@ -1,0 +1,44 @@
+.baseContainer {
+    background-color: #282828;
+}
+
+.NavigationBackground {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
+
+.Tile {
+    height: 100%;
+    width: 100px;
+    border-left: 1px solid #e88c20;
+    color: #e88c20;
+}
+.Tile > a {
+    color: #e88c20;
+}
+
+.Tiles {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar {
+    width: 100vw;
+    text-align: center;
+}
+
+.HighlightedTile {
+    display: flex;
+    border-left: 1px solid #e88c20;
+    background-color: #e88c20;
+    color: #282828;
+}
+
+.HighlightedTile > a {
+    color: #282828;
+    height: 75px;
+    width: 100px;    
+}
+

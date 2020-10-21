@@ -6,31 +6,35 @@ import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
 
 import logo from '../../images/logo.png';
-import styles from './navigation.css';
+import styles from './navigation.module.css';
 import '../../images/images.css';
 
 const Navigation = () => (
-  <div className={styles.NavigationBackground}>
-    <div>
-      <Link to={ROUTES.HOME}>
-        <img src={logo} alt="Logo" style={{height: 75, width: 100}} />      
-      </Link>
+  <div className={styles.baseContainer}>
+    <div className={styles.navbar}>
+      <div className={styles.NavigationBackground}>
+      <div>
+        <Link to={ROUTES.HOME}>
+          <img src={logo} alt="Logo" style={{height: 75, width: 100}} />      
+        </Link>
+      </div>
+      <div className={styles.Tile}>
+        <Link to={ROUTES.HOME}>Home</Link>
+      </div>
+      <div className={styles.Tile}>
+        <Link to={ROUTES.ABOUT}>About us</Link>
+      </div>
+      <div className={styles.Tile}>
+        <Link to={ROUTES.RULES}>Guild rules</Link>
+      </div> 
+        <AuthUserContext.Consumer>
+          {authUser =>
+            authUser ? <NavigationAuth /> : <NavigationNonAuth />
+          }
+        </AuthUserContext.Consumer>
+      </div>
     </div>
-    <div className={styles.Tile}>
-      <Link to={ROUTES.HOME}>Home</Link>
-    </div>
-    <div className={styles.Tile}>
-      <Link to={ROUTES.ABOUT}>About us</Link>
-    </div>
-    <div className={styles.Tile}>
-      <Link to={ROUTES.RULES}>Guild rules</Link>
-    </div> 
-    <AuthUserContext.Consumer>
-      {authUser =>
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
-      }
-    </AuthUserContext.Consumer>
-  </div>
+  </div>  
 );
  
 const NavigationAuth = () => (
@@ -48,7 +52,7 @@ const NavigationAuth = () => (
       <Link to={ROUTES.ACCOUNT}>Account</Link>
     </div>
     <div className={styles.Tile}>
-      Cog for logout - login - admin - account
+      <Link to={ROUTES.TWITCH}></Link>
       <SignOutButton />
     </div>
   </div>
