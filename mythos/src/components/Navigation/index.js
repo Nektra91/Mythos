@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import SignOutButton from '../SignOut'
 import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
 
@@ -52,8 +51,7 @@ const NavigationAuth = () => (
       <Link to={ROUTES.ACCOUNT}>Account</Link>
     </div>
     <div className={styles.Tile}>
-      <Link to={ROUTES.TWITCH}></Link>
-      <SignOutButton />
+      <Link to={ROUTES.TWITCH}>Twitch</Link>
     </div>
   </div>
   
