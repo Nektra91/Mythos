@@ -1,0 +1,18 @@
+.baseContainer {
+    color: #e88c20;
+
+}
+
+.container {
+    background-color: #282828;
+    padding: 25px 10px 25px 25px;
+    border-radius: 15px;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    margin-top: 40px;
+}
+
+.alignCenter {
+    text-align: center;
+}
