@@ -1,7 +1,7 @@
 import deathknight from './icon-deathknight.png';
-import deathknight1 from './spec_death-knight_blood.webp';
-import deathknight2 from './spec_death-knight_frost.webp';
-import deathknight3 from './spec_death-knight_unholy.webp';
+import deathknight1 from './spec_death-knight_blood.png';
+import deathknight2 from './spec_death-knight_frost.png';
+import deathknight3 from './spec_death-knight_unholy.png';
 
 const deathknightLogos = [
     { image: deathknight,
