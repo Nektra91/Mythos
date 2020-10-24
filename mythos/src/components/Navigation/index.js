@@ -12,9 +12,9 @@ const Navigation = () => (
   <div className={styles.baseContainer}>
     <div className={styles.navbar}>
       <div className={styles.NavigationBackground}>
-      <div>
+      <div className={styles.Logo}>
         <Link to={ROUTES.HOME}>
-          <img src={logo} alt="Logo" style={{height: 75, width: 100}} />      
+          <img src={logo} alt="Logo" style={{height: 75, width: 75}} />      
         </Link>
       </div>
       <div className={styles.Tile}>
@@ -58,11 +58,11 @@ const NavigationAuth = () => (
 );
  
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Cog for logout - login - admin - account</Link>
-    </li>
-  </ul>
+  <div className={styles.Tiles}>
+    <div className={styles.Tile}>
+      <Link to={ROUTES.SIGN_IN}>Sign in</Link>
+    </div>
+  </div>
 );
 
 export default Navigation;
