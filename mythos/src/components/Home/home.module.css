@@ -16,6 +16,8 @@
     color: #e88c20;
     background-color: #282828;
     width: 100%;
+    font-size: 135px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .spec {
@@ -27,7 +29,7 @@
 }
 
 .recruitment {
-    width: 29vw;
+    width: 300px;
     margin-right: 1vw;
     background-color: #282828;
     padding: 15px 5px 0px 5px;
@@ -52,8 +54,4 @@
 .killpics {
     margin-top: 10px;
     width: 100%;
-}
-
-.guildName {
-    font-size: 100px;
 }
