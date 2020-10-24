@@ -8,12 +8,14 @@
 }
 
 .logo {
-    height: 100px;
+    height: 150px;
 }
 
 .guildName {
     text-align: center;
-    color: #e88c20
+    color: #e88c20;
+    background-color: #282828;
+    width: 100%;
 }
 
 .spec {
@@ -22,4 +24,36 @@
 
 .class {
     transform: translateY(-10px);
+}
+
+.recruitment {
+    width: 29vw;
+    margin-right: 1vw;
+    background-color: #282828;
+    padding: 15px 5px 0px 5px;
+    border-radius: 15px;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+}
+
+.detail {
+    width: 70vw;
+}
+
+.fiftyperc {
+    width: 50%;
+}
+
+.background {
+    background-color: #282828;;
+}
+
+.killpics {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.guildName {
+    font-size: 100px;
 }

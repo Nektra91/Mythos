@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
 .applyHeader {
     text-align: center;
     color: #e88c20;
@@ -66,5 +71,22 @@ label {
 
 p {
     color: #e88c20;
+}
+
+.classData {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.marginLeft10 {
+    margin-left: 10px;
+}
+
+.fetchPlayer {
+    margin-left: 20px;
+}
+
+.container {
+    margin-top: 20px;
 }
 

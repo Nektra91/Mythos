@@ -5,7 +5,6 @@ import service from '../../service/database';
 
 import Spinner from '../Spinner';
 
-import './apply.css';
 import style from './applyExtra.module.css';
 import Recruitement from '../Home/Recruitment';
 
@@ -106,14 +105,14 @@ class Apply extends Component {
         classRender = <Spinner />
       } else if(!isLoading && specs.length > 0) {
         classRender = 
-        <div className="classData">
-          <div className="row">
+        <div className={style.classData}>
+          <div className={style.row}>
             <div>Class</div>
-            <div className="margin-left-10">{playerClass}</div>
+            <div className={style.marginLeft10}>{playerClass}</div>
           </div>
-          <div className="row">
+          <div className={style.row}>
           <div>Specialization</div>
-          <div onChange={this.onChange} className="row">
+          <div onChange={this.onChange} className={style.row}>
             {specs.map(sp => (
               <div key={sp.Name}>
                 <input key={sp.Name} type="radio" value={sp.Name} name="spec"/>{sp.Name}
@@ -129,7 +128,7 @@ class Apply extends Component {
     return (
       <div>        
         <div className={style.baseContainer}>
-        <div className="row">
+        <div className={style.row}>
           <div>
             <div>
               <div className= {style.applyHeaderContainer}>
@@ -138,7 +137,7 @@ class Apply extends Component {
             </div>
             <div className={style.formContainer}>                                 
             <form onSubmit={this.onSubmit}>
-              <div className="row">
+              <div className={style.row}>
                 <div>
                   <div>
                     <div>
@@ -173,7 +172,7 @@ class Apply extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="fetchPlayer">
+                <div className={style.fetchPlayer}>
                   <div>
                     <div><p>A link to WoW account is needed to apply.</p></div>
                     <div><p>Type in the character and server name</p></div>
@@ -187,7 +186,7 @@ class Apply extends Component {
                 </div>            
               </div>
               {classRender}
-              <div className="container">
+              <div className={style.container}>
                 <div>
                   <div>
                     <label>
@@ -237,7 +236,7 @@ class Apply extends Component {
                   </div>
                 </div>
               </div>
-              <div className="container">
+              <div className={style.container}>
                 <div>
                   <div>
                   <label>

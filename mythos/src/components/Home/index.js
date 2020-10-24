@@ -1,40 +1,44 @@
 import React from 'react';
 import style from './home.module.css';
 import logo from '../../images/logo.png';
+import killpic from '../../images/killpics/Ghuun.png'
 
 import Recruitment from './Recruitment';
  
 const HomePage = () => (
-  <div>
+  <div className={style.homeContainer}>
     <div className={style.row}>
-      <div className={style.homeContainer}>
+      <div className={style.recruitment}>
         <Recruitment />
       </div>
-      <div className={style.homeContainer}>
+      <div className={style.detail}>
         <div className={style.row}>
-          <div>
+          <div className={style.background}>
             <img src={logo} alt="" className={style.logo}/>
           </div>
           <div className={style.guildName}>
-            <h1>Mythos</h1>
+            <span>MYTHOS</span>
           </div>
         </div>
         <div className={style.row}>
-          <div>
-            <h1>A lot of texty text plus more texty text</h1>
+          <div className={style.fiftyperc}>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
+            <p>Our aim is to gain the Cutting Edge and progress consistantly in Mythic content in Shadowlands.</p>
           </div>
-          <div>
+          <div className={style.fiftyperc}>
             <div>
-              <h1>Latest kill pic?</h1>
-              <img src={logo} alt="" className={style.logo}/>
+              <img src={killpic} alt="" className={style.killpics}/>
             </div>
             <div className={style.row}>
               <div>
-                <div>
-                  <h1>
-                    links
-                  </h1>
-                </div>
                 <div>
                   <h1>
                     Wowprogess
