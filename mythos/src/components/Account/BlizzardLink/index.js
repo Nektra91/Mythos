@@ -16,6 +16,7 @@ class BlizzardLink extends Component {
             server: '',
             name: '',
             playerClass: '',
+            avatarUrl: "",
         }
     }    
 
@@ -40,6 +41,7 @@ class BlizzardLink extends Component {
                     server: this.state.server,
                     playerClass: this.state.playerClass,
                     id: this.state.userInfo.Id,
+                    avatar: this.state.avatarUrl,
                 }
                 this.saveCharacterSync(payload);
             }
@@ -119,16 +121,10 @@ class BlizzardLink extends Component {
             toRender = (
                 <div>
                     <div>
-                        {userInfo.FirebaseIdentifier}
+                        <p>You are linked to</p>
                     </div>
                     <div>
-                        {userInfo.Username}
-                    </div>
-                    <div>
-                        {userInfo.CharacterName}
-                    </div>
-                    <div>
-                        {userInfo.ServerName}
+                        <p>{userInfo.CharacterName} - {userInfo.ServerName}</p>
                     </div>
                 </div>
             )
@@ -153,6 +149,17 @@ class BlizzardLink extends Component {
 
     async getPlayerDataFromBlizzard(payload) {
         let success = false;
+        await this.getPlayerAvatar(payload)
+        .then(response => {
+            console.log(response.data)
+            const key = 'avatar';
+            let avatar = null;
+            if(response.data.assets) {
+                // some times the api returns a asset array 
+                avatar = response.data.assets.filter(asset => asset.key === key)[0];
+            }
+            this.setState({avatarUrl: avatar && avatar.value ? avatar.value : response.data.avatar_url})
+        });        
         await blizzard.getPlayerData(payload)
         .then(response => {
             this.setState({playerClass: response.playerClass})
@@ -170,6 +177,15 @@ class BlizzardLink extends Component {
         .then(response => {
             this.setState({userInfo: response})
         })
+    }
+
+    async getPlayerAvatar(payload) {  
+        let data;      
+        await blizzard.fetchPlayerMedia(payload.name, payload.server)
+        .then(response => {
+            data = response
+        });
+        return data;
     }
 }
 

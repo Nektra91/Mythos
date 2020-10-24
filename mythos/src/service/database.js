@@ -166,7 +166,8 @@ const serviceFunctions = {
               CharacterClass: "${payload.playerClass}", 
               CharacterName: "${payload.name}", 
               Linked: true, 
-              ServerName: "${payload.server}"}) {
+              ServerName: "${payload.server}",
+              CharacterUrl: "${payload.avatar}"}) {
             returning {
               Username
               ServerName
@@ -176,6 +177,7 @@ const serviceFunctions = {
               Id
               Linked
               CharacterClass
+              CharacterUrl
             }
           }
         }`
