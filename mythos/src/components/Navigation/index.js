@@ -54,7 +54,6 @@ class NavigationAuth extends Component {
   render() {
 
     let adminTile;
-    console.log(this.state.authUser)
     if(this.state.user && this.state.user.Admin) {
       adminTile = 
       <div className={styles.Tile}>
