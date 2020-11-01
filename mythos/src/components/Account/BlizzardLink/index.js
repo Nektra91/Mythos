@@ -151,7 +151,6 @@ class BlizzardLink extends Component {
         let success = false;
         await this.getPlayerAvatar(payload)
         .then(response => {
-            console.log(response.data)
             const key = 'avatar';
             let avatar = null;
             if(response.data.assets) {

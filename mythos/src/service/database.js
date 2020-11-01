@@ -230,6 +230,23 @@ const serviceFunctions = {
         console.log(err);
       })
       return userInfo;
-    }
+    },
+
+    async fetchHomeTexts() {
+      let homeTexts = null;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `query MyQuery {
+          HomeTexts {
+            Id
+            Text
+          }
+        }`
+      }).then(response => {
+        homeTexts = response.data.data.HomeTexts
+      }).catch(err => {
+        console.log(err);
+      })
+      return homeTexts;
+    },
 }
 export default serviceFunctions;

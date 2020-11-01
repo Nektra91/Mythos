@@ -23,7 +23,7 @@ const Rules = () => (
             <div>
               <ul>
                 <li>
-                  <p>Show up on time. Showing up late will lsoe you the spot for the raid.</p>
+                  <p>Show up on time. Showing up late will lose your the spot for the raid.</p>
                 </li>
                 <li>
                   <p>Be prepared. Have flasks, potions and food ready.</p>
