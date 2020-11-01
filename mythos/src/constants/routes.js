@@ -10,3 +10,7 @@ export const RULES = '/rules';
 export const TWITCH = '/twitch'
 export const APPLICATIONS = '/applications';
 export const APPLICATION = '/application/:applicationId';
+export const ADMINUSERS = '/adminusers';
+export const ADMINRECRUITMENT = '/adminrecruitment';
+export const ADMINPROGRESS = '/adminprogress';
+export const ADMINHOME = '/adminhome';

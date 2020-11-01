@@ -248,5 +248,53 @@ const serviceFunctions = {
       })
       return homeTexts;
     },
+    
+    async fetchAllUsers() {
+      let users = null;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `query MyQuery {
+          User(where: {Linked: {_eq: true}}) {
+            Admin
+            CharacterClass
+            CharacterName
+            CharacterUrl
+            Id
+            Linked
+            ServerName
+            Username
+          }
+        }`
+      }).then(response => {
+        users = response.data.data.User
+      }).catch(err => {
+        console.log(err);
+      })
+      return users;
+    },
+
+    async makeUserAdmin(payload) {
+      let user = null;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `mutation update_User {
+          update_User(where: {Id: {_eq: "${payload.userId}"}}, _set: {Admin: true}) {
+            returning {
+              Admin
+              CharacterClass
+              CharacterName
+              CharacterUrl
+              Id
+              Linked
+              ServerName
+              Username
+            }
+          }
+        }`
+      }).then(response => {
+        user = response.data.data.User
+      }).catch(err => {
+        console.log(err);
+      })
+      return user;
+    }
 }
 export default serviceFunctions;

@@ -13,10 +13,12 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import Applications from '../Applications';
 import Application from '../Application';
+import AdminUsers from '../Admin/AdminUsers';
  
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import './app.css'
+
  
 const App = () => (
   <Router>
@@ -34,6 +36,7 @@ const App = () => (
         <Route path={ROUTES.APPLICATION} component={Application}/>
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
+        <Route path={ROUTES.ADMINUSERS} component={AdminUsers} />
       </div>
     </div>
   </Router>
