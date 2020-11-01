@@ -1,0 +1,29 @@
+.inputContainer {
+    display: flex;
+    width: 100%;
+    padding: 25px;
+}
+
+.inputArea {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.inputArea input {
+    height: 50px;
+    width: 65%;
+    overflow-y: scroll;
+}
+
+.submitButton button {
+    border: 1px solid #e88c20;
+    border-radius: 5px;
+    padding: 15px;
+
+}
+.submitButton {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}

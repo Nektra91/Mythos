@@ -5,6 +5,7 @@ import ApplicationDetail from './ApplicationDetail';
 import Spinner from '../Spinner';
 import ApplicationInfo from './ApplicationInfo';
 import style from './application.module.css'
+import CommentSection from '../CommentSection';
 
 export default class Application extends Component {
     constructor(props) {
@@ -81,6 +82,7 @@ export default class Application extends Component {
     }
     render() {
         const detail = this.state.detail;
+        const applicationId = detail.id; 
         const moreInfo = this.state.moreInfo;
         if(this.state.loading) {
             return (
@@ -98,6 +100,9 @@ export default class Application extends Component {
                     </div>
                     <div className={style.infoContainer}>
                         <ApplicationInfo {...moreInfo}/>
+                    </div>
+                    <div className={style.commentContainer}>
+                        <CommentSection applicationId={applicationId}/>
                     </div>
                 </div>
             )

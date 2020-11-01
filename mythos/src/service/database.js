@@ -88,6 +88,48 @@ const serviceFunctions = {
       return application;
     },
 
+    async fetchCommentsForApplication(id) {
+      let comments = [];
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `query MyQuery {
+          ApplicationComment(where: {ApplicationId: {_eq:${id}}}, order_by: {Id: asc}) {
+            Comment
+            CreatedByUserId
+            ApplicationId
+            User {
+              Username
+              CharacterName
+              CharacterUrl
+            }
+          }
+        }`
+      }).then(response => {
+        comments = response.data.data.ApplicationComment;
+      }).catch(err => {
+        console.log(err);
+      });
+      return comments;
+    },
+
+    async createApplicationComment(payload) {
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+          query: `mutation MyMutation {
+            insert_ApplicationComment(objects: {ApplicationId: "${payload.applicationId}", Comment: "${payload.comment}", CreatedByUserId: "${payload.createdById}"}) {
+              returning {
+                ApplicationId
+                Comment
+                CreatedByUserId
+                Id
+              }
+            }
+          }`
+      }).then(response => {
+        console.log(response);
+      }).catch(err => {
+        console.log(err);
+      })
+  },
+
     async createApplication(payload) {
         await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
             query: `mutation insert_Application {
@@ -142,6 +184,7 @@ const serviceFunctions = {
             ServerName
             FirebaseIdentifier
             CharacterName
+            CharacterUrl
             Admin
             Id
             Linked

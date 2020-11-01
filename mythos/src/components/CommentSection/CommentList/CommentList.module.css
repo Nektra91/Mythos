@@ -1,0 +1,26 @@
+.commentContainer {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.comment {
+    display: flex;
+    padding: 25px;
+}
+
+.imgContainer{
+    margin-right: 50px;
+}
+
+.user {
+    margin-bottom: 25px;
+}
+
+.avatar {
+    border: 1px solid #e88c20;
+    height: 64px;
+    width: 64px;
+}

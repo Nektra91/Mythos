@@ -1,0 +1,10 @@
+.mainContainer {
+    display: flex;
+    flex-flow: column-reverse;   
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

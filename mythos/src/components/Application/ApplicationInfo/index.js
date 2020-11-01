@@ -1,16 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import Styles from './applicationInfo.module.css';
 
 const ApplicationInfo = (props) => {
     return (
         <div className={Styles.moreInfo}>
             <div className={Styles.moreInfoHeader}>
-                <h1>More info</h1>
+                <span>More info</span>
             </div>
             <div className={Styles.infoContainer}>
-                <div className={Styles.emptySection}>
-                </div>
                 <div className={Styles.infoSection}>
                     <div className={Styles.about}>
                         <span className={Styles.label}>About:</span>

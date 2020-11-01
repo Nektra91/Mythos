@@ -1,7 +1,5 @@
 .moreInfo {
-    background-color: var(--secondaryBodyColor);
-    border-radius: 15px;
-    padding: 25px;
+    padding: 0px;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -12,17 +10,32 @@
     text-align: center;
 }
 
+.moreInfoHeader > span {
+    font-size: 24px;
+    font-weight: 700;
+}
+
 .infoContainer {
     width: 100%;
     display: flex;
     justify-content: flex-start;
 }
 
-.emptySection {
-    width: 25%
+.infoSection {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.infoSection {
-    width: 75%;
+.label {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.value {
+    font-size: 18px;
 }
 

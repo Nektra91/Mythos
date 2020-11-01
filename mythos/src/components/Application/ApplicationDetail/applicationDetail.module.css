@@ -2,19 +2,20 @@
     --emptySectionWidth: 200px;
 }
 .detail {
-    background-color: var(--secondaryBodyColor);
-    border-radius: 15px;
     color: var(--mainSyntaxColor);
-    -webkit-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
-    -moz-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
-    box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
     padding: 25px;
-    margin-bottom: 25px;
+    overflow-y: scroll;
+    height: var(--detailContainerHeight);
 }
 
 .detailHeader {
     text-align: center;
     
+}
+
+.detailHeader > span {
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .detailContainer {
