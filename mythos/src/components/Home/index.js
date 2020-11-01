@@ -31,7 +31,7 @@ class HomePage extends Component {
       <div className={style.homeContainer}>
         <div className={style.row}>
           <div className={style.recruitment}>
-            <Recruitment />
+            <Recruitment adminMode={false}/>
           </div>
           <div className={style.detail}>
             <div className={style.row}>

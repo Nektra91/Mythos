@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import Recruitement from '../../Home/Recruitment';
+
+import style from './adminrecruitment.module.css';
 
 class AdminRecruitment extends Component {
   render() {
     return (
-      <div>
-        <h1>Admin rec</h1>
+      <div className={style.Container}>
+        <div className={style.Recruitment}>
+          <Recruitement adminMode={true}/>
+        </div>
       </div>
     )
   }

@@ -18,6 +18,7 @@ import AdminUsers from '../Admin/AdminUsers';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import './app.css'
+import AdminRecruitment from '../Admin/AdminRecruitment';
 
  
 const App = () => (
@@ -37,6 +38,7 @@ const App = () => (
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.ADMINUSERS} component={AdminUsers} />
+        <Route path={ROUTES.ADMINRECRUITMENT} component={AdminRecruitment} />
       </div>
     </div>
   </Router>

@@ -1,0 +1,14 @@
+.Clickable {
+    cursor: pointer;
+}
+
+.Recruiting {
+    height: 35px;
+    width: 35px;
+}
+
+.NotRecruiting {
+    height: 35px;
+    width: 35px;
+    opacity: 0.2;
+}

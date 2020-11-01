@@ -13,6 +13,7 @@ const serviceFunctions = {
                     Name
                   }
                   Recruiting
+                  Id
                 }
               }
             }`
@@ -295,6 +296,25 @@ const serviceFunctions = {
         console.log(err);
       })
       return user;
-    }
+    },
+
+    async toggleRecruitment(payload) {
+      let success = false;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `mutation update_Recruitment {
+          update_Recruitment(where: {Id: {_eq: "${payload.id}"}}, _set: {Recruiting: "${payload.recruiting}"}) {
+            returning {
+              Recruiting
+              Id
+            }
+          }
+        }`
+      }).then(response => {
+        success = true;
+      }).catch(err => {
+        console.log(err);
+      })
+      return success;
+    },
 }
 export default serviceFunctions;

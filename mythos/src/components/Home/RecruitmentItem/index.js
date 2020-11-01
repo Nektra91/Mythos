@@ -7,6 +7,7 @@ import style from '../home.module.css';
 function RecruitementItem (props) {
   const {images} = props;
   const {data} = props;
+  const {adminMode} = props;
 
   return  (
     <div>
@@ -22,7 +23,7 @@ function RecruitementItem (props) {
               <div key={rec.Specialization.Name} className={style.spec}>
                 {images.filter(image => image.name.includes(rec.Specialization.Name)).map(filteredImage => (
                   <div key={filteredImage.name}>
-                    <SpecIcon image={filteredImage.image} recruiting={rec.Recruiting}></SpecIcon>
+                    <SpecIcon adminMode={adminMode} image={filteredImage.image} recruiting={rec.Recruiting} id={rec.Id}></SpecIcon>
                   </div>
                 ))}
               </div>
