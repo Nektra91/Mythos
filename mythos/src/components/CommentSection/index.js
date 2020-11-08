@@ -13,15 +13,25 @@ export default class CommentSection extends Component {
         this.componentDidMount = this.componentDidMount.bind(this);
         this.fetchComments = this.fetchComments.bind(this);
         this.onCommentAdd = this.onCommentAdd.bind(this);
+        this.onApprove = this.onApprove.bind(this);
         this.state = {
             commentList: null,
             user:null,
-            loading: true
+            loading: true,
         }
     }
 
     componentDidMount() {
         this.fetchComments();
+    }
+
+    async onApprove() {
+        if(this.props.applicationId) {
+            this.setState({loading: true});
+            dbService.approveApplication(this.props.applicationId).then(response => {
+                this.props.historyChange();
+            });
+        }
     }
 
     async onCommentAdd(userComment) {
@@ -86,7 +96,7 @@ export default class CommentSection extends Component {
                 <AuthUserContext.Consumer>
                     {authUser => (
                         <div className={style.mainContainer}>
-                            <CommentInput fireBaseUser={authUser} addComment={this.onCommentAdd}/>
+                            <CommentInput fireBaseUser={authUser} approveApplicant={this.onApprove} addComment={this.onCommentAdd}/>
                             <CommentList props={comments.map(comment => comment.comment)}/> 
                         </div>    
                     )}            

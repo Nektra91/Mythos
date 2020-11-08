@@ -11,11 +11,20 @@ export class CommentInput extends Component {
         this.fetchUserData = this.fetchUserData.bind(this);
         this.commentIsValid = this.commentIsValid.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
+        this.approve = this.approve.bind(this);
         this.state = {
             comment:'',
             user: null,
             dataFetched: false
         };
+    }
+
+    handleKeyUp(event) {
+        const shouldResolve = event.key === 'Enter' && this.commentIsValid();
+        if (shouldResolve) {
+            this.onAddComment();
+        }
     }
 
     componentDidMount() {
@@ -38,6 +47,10 @@ export class CommentInput extends Component {
         }).catch(err => {
             console.log(err);
         })
+    }
+
+    approve() {
+        this.props.approveApplicant();
     }
 
     createUserData(data) {
@@ -67,9 +80,14 @@ export class CommentInput extends Component {
         return (
             <div className={styles.inputContainer}>
                 <div className={styles.inputArea}>
-                    <input onChange={(event) => this.handleInputChange(event)} value={this.state.comment} type="text" name="comment" placeholder="have something to say?"></input>
+                    <input onChange={(event) => this.handleInputChange(event)}
+                            value={this.state.comment}
+                            onKeyUp={(event) => this.handleKeyUp(event)}
+                            type="text" name="comment"
+                            placeholder="have something to say?"></input>
                     <div className={styles.submitButton}>
-                        <button disabled={!this.commentIsValid()} onClick={() => this.onAddComment()}>Add comment</button>
+                        <button className={styles.commentBtn}disabled={!this.commentIsValid()} onClick={() => this.onAddComment()}>Add comment</button>
+                        <button className={styles.approveBtn} onClick={() => this.approve()}>Approve</button>
                     </div>
                 </div>
             </div>
