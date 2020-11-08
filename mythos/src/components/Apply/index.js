@@ -311,7 +311,7 @@ class Apply extends Component {
           </div> 
           </div>           
           <div className={style.recruitment}>
-            <Recruitement />
+            <Recruitement adminMode={false}/>
           </div>
         </div>
       </div>

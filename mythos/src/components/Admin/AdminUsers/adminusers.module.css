@@ -1,0 +1,48 @@
+.Users {
+    max-height: calc(100vh - 32px - (var(--navbarHeight) - 30px + 50px));
+    overflow-y: scroll;
+    color: #e88c20;
+}
+
+.Tile {
+    display: flex;
+    flex-direction: row;
+    background-color: #282828;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    width: 500px;
+    height: 135px;
+}
+
+.Avatar {
+    border: 1px solid #e88c20;
+    border-radius: 4px;
+    padding: 5px;
+    height: 100px;
+    width: 100px;
+}
+
+.ImgContainer {
+    padding: 10px;
+}
+
+.Text {
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+}
+
+.Title {
+    color: #e88c20;
+    text-align: center;
+}
+
+.Users {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

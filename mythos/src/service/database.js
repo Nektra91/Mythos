@@ -13,6 +13,7 @@ const serviceFunctions = {
                     Name
                   }
                   Recruiting
+                  Id
                 }
               }
             }`
@@ -265,6 +266,73 @@ const serviceFunctions = {
         console.log(err);
       })
       return homeTexts;
+    },
+    
+    async fetchAllUsers() {
+      let users = null;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `query MyQuery {
+          User(where: {Linked: {_eq: true}}) {
+            Admin
+            CharacterClass
+            CharacterName
+            CharacterUrl
+            Id
+            Linked
+            ServerName
+            Username
+          }
+        }`
+      }).then(response => {
+        users = response.data.data.User
+      }).catch(err => {
+        console.log(err);
+      })
+      return users;
+    },
+
+    async makeUserAdmin(payload) {
+      let user = null;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `mutation update_User {
+          update_User(where: {Id: {_eq: "${payload.userId}"}}, _set: {Admin: true}) {
+            returning {
+              Admin
+              CharacterClass
+              CharacterName
+              CharacterUrl
+              Id
+              Linked
+              ServerName
+              Username
+            }
+          }
+        }`
+      }).then(response => {
+        user = response.data.data.User
+      }).catch(err => {
+        console.log(err);
+      })
+      return user;
+    },
+
+    async toggleRecruitment(payload) {
+      let success = false;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `mutation update_Recruitment {
+          update_Recruitment(where: {Id: {_eq: "${payload.id}"}}, _set: {Recruiting: "${payload.recruiting}"}) {
+            returning {
+              Recruiting
+              Id
+            }
+          }
+        }`
+      }).then(response => {
+        success = true;
+      }).catch(err => {
+        console.log(err);
+      })
+      return success;
     },
 }
 export default serviceFunctions;
