@@ -316,5 +316,25 @@ const serviceFunctions = {
       })
       return success;
     },
+
+    async saveHomeText(payload) {
+      let success = false;
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+        query: `mutation update_HomeTexts {
+          update_HomeTexts(where: {Id: {_eq: "${payload.id}"}}, _set: {Text: "${payload.text}"}) {
+            returning {
+              Id
+              Text
+            }
+          }
+        }`
+      }).then(response => {
+        console.log(response)
+        success = true;
+      }).catch(err => {
+        console.log(err);
+      })
+      return success;
+    }
 }
 export default serviceFunctions;

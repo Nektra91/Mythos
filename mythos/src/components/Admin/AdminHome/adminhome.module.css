@@ -1,0 +1,31 @@
+.Texts {
+    max-height: calc(100vh - 32px - (var(--navbarHeight) - 30px + 50px));
+    overflow-y: scroll;
+    color: #e88c20;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.Tile {
+    background-color: #282828;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    width: 500px;
+    height: 145px;
+}
+
+.TextArea {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 465px;
+    height: 80px;
+    resize: none;
+}
+
+.Button {
+    margin-left: 10px;
+}
