@@ -131,31 +131,49 @@ const serviceFunctions = {
       })
   },
 
-    async createApplication(payload) {
-        await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
-            query: `mutation insert_Application {
-                insert_Application(objects: {
-                About: "${payload.about}", 
-                BattleTag: "${payload.battletag}", 
-                Brag: "${payload.brag}", 
-                DiscordTag: "${payload.discordtag}", 
-                Name: "${payload.name}", 
-                RaidingExperience: "${payload.experience}", 
-                Role: "${payload.spec}", 
-                Server: "${payload.server}", 
-                WarcraftLogTag: "${payload.log}", 
-                WhyMythos: "${payload.why}"}) {
-                returning {
-                    Id
-                    Name
-                }
-                }
-            }`
-        }).then(response => {
-          console.log(response);
-        }).catch(err => {
-          console.log(err);
-        })
+  async approveApplication(id) {
+    await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+      query: `mutation MyMutation {
+        update_Application(where: {Id: {_eq: ${id}}}, _set: {Completed: true}) {
+          affected_rows
+          returning {
+            Id
+            Completed
+          }
+        }
+      }`
+    }).then(response => {
+      console.log(response);
+    }).catch(err => {
+      console.log(err);
+    });  
+  },
+
+  async createApplication(payload) {
+      await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+          query: `mutation insert_Application {
+              insert_Application(objects: {
+              About: "${payload.about}", 
+              BattleTag: "${payload.battletag}", 
+              Brag: "${payload.brag}", 
+              DiscordTag: "${payload.discordtag}", 
+              Name: "${payload.name}", 
+              RaidingExperience: "${payload.experience}", 
+              Role: "${payload.spec}", 
+              Server: "${payload.server}", 
+              WarcraftLogTag: "${payload.log}", 
+              WhyMythos: "${payload.why}"}) {
+              returning {
+                  Id
+                  Name
+              }
+              }
+          }`
+      }).then(response => {
+        console.log(response);
+      }).catch(err => {
+        console.log(err);
+      })
     },
 
     async createUser(payload) {

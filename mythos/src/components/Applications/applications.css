@@ -24,7 +24,8 @@
 .application {
     display: flex;
     justify-content: center;
-    margin: 25px;
+    margin: 25px auto;
+    max-width: 69rem; /*Nice!*/
 }
 
 .spinner {

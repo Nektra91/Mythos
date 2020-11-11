@@ -6,6 +6,7 @@ import Spinner from '../Spinner';
 import ApplicationInfo from './ApplicationInfo';
 import style from './application.module.css'
 import CommentSection from '../CommentSection';
+import * as ROUTES from '../../constants/routes';
 
 export default class Application extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ export default class Application extends Component {
         this.componentDidMount = this.componentDidMount.bind(this);
         this.fetchData = this.fetchData.bind(this);
         this.initApplication = this.initApplication.bind(this);
+        this.approve = this.approve.bind(this);
         this.state = {
             detail: {
                 id: 0,
@@ -32,6 +34,8 @@ export default class Application extends Component {
                 raidingExperience: '',
                 whyMythos: '',
             },
+            history: props.history,
+            approved: false,
             loading: true
         };
     }
@@ -39,6 +43,11 @@ export default class Application extends Component {
     componentDidMount() {
         const id = this.props.match.params.applicationId;
         this.fetchData(id);
+    }
+
+    approve() {
+        let newPath = ROUTES.APPLICATIONS;
+        this.state.history.push(newPath);
     }
 
     async fetchData(id) {
@@ -102,7 +111,7 @@ export default class Application extends Component {
                         <ApplicationInfo {...moreInfo}/>
                     </div>
                     <div className={style.commentContainer}>
-                        <CommentSection applicationId={applicationId}/>
+                        <CommentSection historyChange={this.approve} applicationId={applicationId}/>
                     </div>
                 </div>
             )
