@@ -4,7 +4,7 @@ import styles from './rules.module.css'
 
 const Rules = () => (
   <div className={styles.baseContainer}>
-    <div>
+    <div className={styles.rules}>
       <div className= {styles.container}>
         <h1 className={styles.alignCenter}>Guild rules</h1>
         <div className={styles.ruleContainer}>

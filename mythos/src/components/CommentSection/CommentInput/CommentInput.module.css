@@ -1,7 +1,8 @@
 .inputContainer {
     display: flex;
-    width: 100%;
+    width: 95%;
     padding: 25px;
+    margin: 0 auto;
 }
 
 .inputArea {
