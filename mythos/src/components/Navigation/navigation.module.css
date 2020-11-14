@@ -4,7 +4,9 @@
 
 .NavigationBackground {
     display: flex;
-    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+
 }
 
 .Tile {
@@ -13,12 +15,21 @@
     border-left: 1px solid #e88c20;
     border-right: 1px solid #e88c20;
     color: #e88c20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0 0.5rem;
+}
+
+.Tile:hover, .Tile::selection {
+    background-color: var(--tileBackgroundColorHover);
 }
 .Tile > a {
     color: #e88c20;
     text-decoration: none;
-    vertical-align: middle;
-    line-height: 72.5px;
+    /* line-height: 72.5px; */
 }
 
 .Tiles {

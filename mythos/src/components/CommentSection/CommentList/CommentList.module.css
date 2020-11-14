@@ -1,14 +1,19 @@
 .commentContainer {
     display: flex;
     flex-flow: column;
-    width: 100%;
+    width: 95%;
     max-height: 300px;
     overflow-y: scroll;
+    border: 1px solid #e88c20;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin: 1rem auto;
 }
 
 .comment {
     display: flex;
     padding: 25px;
+    
 }
 
 .imgContainer{
