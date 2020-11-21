@@ -17,6 +17,7 @@ class BlizzardLink extends Component {
             name: '',
             playerClass: '',
             avatarUrl: "",
+            swapping: false,
         }
     }    
 
@@ -45,8 +46,14 @@ class BlizzardLink extends Component {
                 }
                 this.saveCharacterSync(payload);
             }
-            
+            if(this.state.swapping) {
+                this.setState({swapping: false})
+            }
         })
+    }
+
+    swapLinkedChar = event => {
+        this.setState({swapping: true})
     }
 
     render() {
@@ -55,12 +62,63 @@ class BlizzardLink extends Component {
             server,
             userInfo,
             isLoading,
+            swapping,
         } = this.state;
 
         let toRender
 
         if(isLoading || !userInfo) {
             toRender = <Spinner />
+        } else if(swapping) {
+            toRender = (
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <label>
+                                            Character name
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            name="name"
+                                            value={name}
+                                            onChange={this.onChange}
+                                            type="text"
+                                            placeholder="Ingame name"
+                                        />
+                                    </div>              
+                                </div>
+                                <div>
+                                    <div>
+                                        <label>
+                                            Server name
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            name="server"
+                                            value={server}
+                                            onChange={this.onChange}
+                                            type="text"
+                                            placeholder="Server name"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="fetchPlayer">
+                                <div>
+                                    <button onClick={this.getPlayerData}>
+                                    Link
+                                    </button>
+                                </div>
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+                )
         } else if(userInfo && !userInfo.Linked) {
             toRender = (
             <div>
@@ -103,13 +161,8 @@ class BlizzardLink extends Component {
                         </div>
                         <div className="fetchPlayer">
                             <div>
-                                <div>A link to WoW account is needed to apply.</div>
-                                <div>Type in the character and server name</div>
-                                <div>and click "Fetch player data"</div>                  
-                            </div>
-                            <div>
                                 <button onClick={this.getPlayerData}>
-                                Fetch player data
+                                Link
                                 </button>
                             </div>
                         </div>            
@@ -125,6 +178,13 @@ class BlizzardLink extends Component {
                     </div>
                     <div>
                         <p>{userInfo.CharacterName} - {userInfo.ServerName}</p>
+                    </div>
+                    <div>
+                        <div>
+                            <button onClick={this.swapLinkedChar}>
+                                Changed linked character
+                            </button>
+                        </div>
                     </div>
                 </div>
             )

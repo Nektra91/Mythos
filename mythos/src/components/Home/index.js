@@ -34,7 +34,7 @@ class HomePage extends Component {
             <Recruitment adminMode={false}/>
           </div>
           <div className={style.detail}>
-            <div className={style.row}>
+            <div className={style.headerRow}>
               <div className={style.background}>
                 <img src={logo} alt="" className={style.logo}/>
               </div>

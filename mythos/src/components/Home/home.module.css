@@ -1,3 +1,4 @@
+
 .row {
     display: flex;
     flex-direction: row;
@@ -8,13 +9,17 @@
 }
 
 .logo {
+    margin-left: 15px;
     height: 150px;
+    border-top-left-radius: 15px;
 }
 
 .guildName {
     text-align: center;
     color: #e88c20;
     background-color: #282828;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     width: 100%;
     font-size: 135px;
     font-family: 'Courier New', Courier, monospace;
@@ -48,10 +53,22 @@
 }
 
 .background {
-    background-color: #282828;;
+    background-color: #282828;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .killpics {
     margin-top: 10px;
     width: 100%;
+    border-radius: 15px;
+}
+
+.headerRow {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    border-radius: 15px;
 }
