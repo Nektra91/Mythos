@@ -5,7 +5,7 @@ import service from '../../service/database';
 
 import Spinner from '../Spinner';
 
-import style from './applyExtra.module.css';
+import style from './apply.module.css';
 import Recruitement from '../Home/Recruitment';
 
 const INITAL_STATE = {
@@ -107,11 +107,19 @@ class Apply extends Component {
         classRender = 
         <div className={style.classData}>
           <div className={style.row}>
+            <div>Name</div>
+            <div className={style.marginLeft10}>{name}</div>
+          </div>
+          <div className={style.row}>
+            <div>Server</div>
+            <div className={style.marginLeft10}>{server}</div>
+          </div>
+          <div className={style.row}>
             <div>Class</div>
             <div className={style.marginLeft10}>{playerClass}</div>
           </div>
           <div className={style.row}>
-          <div>Specialization</div>
+          <div>Preferred spec</div>
           <div onChange={this.onChange} className={style.row}>
             {specs.map(sp => (
               <div key={sp.Name}>
@@ -122,22 +130,8 @@ class Apply extends Component {
         </div>
       </div>
       } else {
-        classRender = <div></div>
-      }
-
-    return (
-      <div>        
-        <div className={style.baseContainer}>
-        <div className={style.row}>
-          <div>
-            <div>
-              <div className= {style.applyHeaderContainer}>
-                <h2 className={style.applyHeader}>Apply</h2>
-              </div>  
-            </div>
-            <div className={style.formContainer}>                                 
-            <form onSubmit={this.onSubmit}>
-              <div className={style.row}>
+        classRender = <div>
+          <div className={style.row}>
                 <div>
                   <div>
                     <div>
@@ -185,6 +179,28 @@ class Apply extends Component {
                   </div>
                 </div>            
               </div>
+        </div>
+      }
+
+      let button;
+
+      if(!hasNotLinked) {
+        button = <div>
+          <button type="submit" className={style.applyButton}>
+            Apply
+          </button>
+        </div>
+      } else {
+        button = <div></div>
+      }
+
+    return (
+      <div>        
+        <div className={style.baseContainer}>
+        <div className={style.row}>
+          <div className={style.form}>
+            <div className={style.formContainer}>                                 
+            <form onSubmit={this.onSubmit}>
               {classRender}
               <div className={style.container}>
                 <div>
@@ -304,9 +320,7 @@ class Apply extends Component {
                   </div>
                 </div>
               </div>
-                <button disabled={hasNotLinked} type="submit" className={style.applyButton}>
-                Apply
-                </button>
+                {button}
             </form>
           </div> 
           </div>           

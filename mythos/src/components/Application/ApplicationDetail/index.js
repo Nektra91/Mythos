@@ -19,7 +19,7 @@ const ApplicationDetail = (props) => {
                     <span className={style.value}>{props.server}</span>
                 </div>
                 <div className={style.fieldLeft}>
-                    <span className={style.label}>Role:</span>
+                    <span className={style.label}>Preferred spec:</span>
                     <span className={style.value}>{props.role}</span>
                 </div>
                 <div className={style.fieldLeft}>

@@ -58,7 +58,7 @@ class AdminUsers extends Component {
         <div className={style.Title}>
           <h1>Admin users</h1>
         </div>
-        <div className={style.Users}>
+        <div className={style.User}>
           {allUsers}
         </div>
       </div>

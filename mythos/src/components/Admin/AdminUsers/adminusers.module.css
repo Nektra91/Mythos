@@ -1,7 +1,6 @@
-.Users {
-    max-height: calc(100vh - 32px - (var(--navbarHeight) - 30px + 50px));
-    overflow-y: scroll;
-    color: #e88c20;
+.User {
+    max-height: calc(100vh - 80px - 85px);
+    overflow-y: scroll;    
 }
 
 .Tile {
@@ -45,4 +44,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #e88c20;
 }

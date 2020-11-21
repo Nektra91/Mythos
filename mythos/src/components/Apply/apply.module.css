@@ -24,16 +24,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .fetchButton, .applyButton {
     border-radius: 4px;
     padding: 6px;
+    width: 150px;
 }
 
 .applyButton {
-    margin-top: 10px;
+    margin-top: 10px;    
 }
 
 input, textarea {
@@ -41,6 +42,12 @@ input, textarea {
     border-radius: 5px;
     background-color: #585858;
     color: #e88c20;
+}
+
+textarea {
+    resize: none;
+    width: 300px;
+    height: 60px;
 }
 
 button {
@@ -90,3 +97,6 @@ p {
     margin-top: 20px;
 }
 
+.form {
+    padding-top: 30px;
+}

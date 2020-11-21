@@ -155,7 +155,7 @@ class Applications extends Component {
                           </div>
                           <div className="container">
                             <div className="label">
-                              Specialisation:{' '}
+                              Preferred spec:{' '}
                             </div>
                             <div className="content">
                               {application.spec}
