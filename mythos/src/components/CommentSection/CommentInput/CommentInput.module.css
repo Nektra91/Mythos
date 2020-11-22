@@ -6,7 +6,7 @@
 }
 
 .inputArea {
-    width: 100%;
+    width: 75%;
     display: flex;
     justify-content: flex-start;
 }
@@ -24,7 +24,7 @@
 
 }
 .submitButton {
-    width: 45%;
+    width: 25%;
     display: flex;
     justify-content: center;
 }
@@ -33,7 +33,6 @@
     margin-left: 2rem;
     font-weight: bold;
     font-size: 0.9rem;
-    width: 30%;
 }
 
 .approveBtn {
@@ -44,11 +43,6 @@
     margin-left: 4rem;
     padding: 0 2rem !important;
     border: 1px solid rgb(100, 98, 98);
-    width: 30%;
-}
-
-.deleteBtn {
-    width: 30%;
 }
 
 .approveBtn:hover,

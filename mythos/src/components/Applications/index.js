@@ -4,6 +4,7 @@ import service from '../../service/database';
 import blizzardService from '../../service/blizzard'
 import './applications.css';
 import * as ROUTES from '../../constants/routes';
+import styles from './applications.module.css';
 
 class Applications extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Applications extends Component {
     this.state = {
       loading: true,
       applications: [],
+      viewAll: false,
       history: props.history
     };
   }
@@ -26,7 +28,7 @@ class Applications extends Component {
   }
 
   async fetchData() {
-    await service.fetchUnconfirmedApplications()
+    await service.fetchAllApplications()
     .then(res => {
         this.createApplications(res)
         .then(applications => {
@@ -41,6 +43,10 @@ class Applications extends Component {
     let newPath = path.replace(':applicationId', id);
     history.push(newPath);
 
+  }
+
+  viewAll = event => {
+    this.setState({viewAll: !this.state.viewAll})
   }
 
   async fetchPlayerProfile(name, server) {
@@ -72,7 +78,8 @@ class Applications extends Component {
             avgItemLvl: 0,
             equippItemLvl: 0,
             avatar: "",
-            applicationId: application.Id
+            applicationId: application.Id,
+            completed: application.Completed,
         }
         await this.fetchPlayerProfile(name, server).then(profile => {
         applicationDto.playerName = name;
@@ -99,8 +106,26 @@ class Applications extends Component {
   }
 
   render() {
-   const isLoading = this.state.loading;
-    const applications = this.state.applications;
+    const isLoading = this.state.loading;
+    let applications;
+    let button;
+    
+    if(this.state.viewAll === false) {
+      button = (
+        <div>
+          <button className={styles.allBtn} onClick={this.viewAll}>View all applications</button>
+        </div>
+      );
+      applications = this.state.applications.filter(application => application.completed === false)
+    } else {
+      button = (
+        <div>
+          <button className={styles.allBtn} onClick={this.viewAll}>Hide confirmed applications</button>
+        </div>
+      );
+      applications = this.state.applications;
+    }
+
     let listToReturn;
     if (isLoading || !applications) {
       listToReturn = <div className="spinner"><Spinner /></div>;
@@ -192,7 +217,11 @@ class Applications extends Component {
         );
       }
     }
-    return <div className="applications"><h2>Applications</h2>{listToReturn}</div>;
+    return <div className="applications">
+      <h2>Applications</h2>
+      {listToReturn}
+      {button}
+      </div>;
   }
 }
 

@@ -23,12 +23,12 @@ const serviceFunctions = {
         return classes;
     },
 
-    async fetchUnconfirmedApplications() {
+    async fetchAllApplications() {
       let application = null;
       await axios
       .post(`https://light-jackal-86.hasura.app/v1/graphql`, {
         query: `query MyQuery {
-                Application(where: {Completed: {_eq: false}}) {
+                Application(where: {Deleted: {_eq: false}}) {
                   Id
                   Name
                   About
