@@ -13,7 +13,7 @@ function CommentList(props) {
                 <div className={styles.comment}>
                     <div className={styles.imgContainer}>
                         <div>
-                            <img className={styles.avatar} src={userIcon}></img>
+                            <img className={styles.avatar} src={userIcon} alt=""></img>
                         </div>
                     </div>
                     <div className={styles.commentBody}>
