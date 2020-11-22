@@ -23,9 +23,6 @@ const Navigation = () => (
         <Link to={ROUTES.HOME}>Home</Link>
       </div>
       <div className={styles.Tile}>
-        <Link to={ROUTES.ABOUT}>About us</Link>
-      </div>
-      <div className={styles.Tile}>
         <Link to={ROUTES.RULES}>Guild rules</Link>
       </div> 
         <AuthUserContext.Consumer>
