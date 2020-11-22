@@ -6,35 +6,35 @@
 }
 
 .inputArea {
-    width: 75%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
 }
 
 .inputArea input {
     height: 50px;
-    width: 65%;
+    width: calc(100% - var(--btnWidth));
     overflow-y: scroll;
 }
 
 .submitButton button {
     border: 1px solid #e88c20;
     border-radius: 5px;
-    padding: 15px;
+    padding: 1rem;
+    width: 9.375rem;
+    height: 3.125rem;
+    font-weight: 600;
 
 }
 .submitButton {
-    width: 25%;
+    width: var(--btnWidth);
     display: flex;
     justify-content: center;
 }
 
 .submitButton .deleteBtn {
-    margin-left: 2rem;
-    font-weight: bold;
-    font-size: 0.9rem;
-    width: 30%;
     background-color: #ff0040ad;
+    margin-left: 1rem;
 }
 
 .commentBtn {
