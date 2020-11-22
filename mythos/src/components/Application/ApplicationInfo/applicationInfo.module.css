@@ -21,6 +21,14 @@
     justify-content: flex-start;
 }
 
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    
+}
+
 .infoSection {
     width: 100%;
     display: flex;
@@ -32,10 +40,20 @@
 .label {
     font-size: 18px;
     font-weight: 600;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .value {
     font-size: 18px;
+}
+
+.tile {
+    height: 100px;
+    width: 49%;
+    background-color: #282828;
+    border-radius: 10px;
+    -webkit-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
+    box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
 }
 

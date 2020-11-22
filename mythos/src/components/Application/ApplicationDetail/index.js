@@ -35,7 +35,7 @@ const ApplicationDetail = (props) => {
                     <span className={style.value}>{props.battleTag}</span>
                 </div>
                 <div className={style.fieldRight}>
-                    <span className={style.label}>Warcraft Log Tag:</span>
+                    <span className={style.label}>WarcraftLog Link:</span>
                     <span className={style.value}>{props.warcraftLogTag}</span>
                 </div>
                 <div className={style.fieldRight}>

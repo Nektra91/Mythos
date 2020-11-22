@@ -5,26 +5,27 @@ import Styles from './applicationInfo.module.css';
 const ApplicationInfo = (props) => {
     return (
         <div className={Styles.moreInfo}>
-            <div className={Styles.moreInfoHeader}>
-                <span>More info</span>
-            </div>
             <div className={Styles.infoContainer}>
                 <div className={Styles.infoSection}>
-                    <div className={Styles.about}>
-                        <span className={Styles.label}>About:</span>
-                        <span className={Styles.value}>{props.about}</span>
+                    <div className={Styles.container}>
+                        <div className={Styles.tile}>
+                            <span className={Styles.label}>About:</span>
+                            <span className={Styles.value}>{props.about}</span>
+                        </div>
+                        <div className={Styles.tile}>
+                            <span className={Styles.label}>Brag:</span>
+                            <span className={Styles.value}>{props.brag}</span>
+                        </div>
                     </div>
-                    <div className={Styles.brag}>
-                        <span className={Styles.label}>Brag:</span>
-                        <span className={Styles.value}>{props.brag}</span>
-                    </div>
-                    <div className={Styles.raidingExperience}>
-                        <span className={Styles.label}>RaidingExperience:</span>
-                        <span className={Styles.value}>{props.raidingExperience}</span>
-                    </div>
-                    <div className={Styles.whyMythos}>
-                        <span className={Styles.label}>Why Mythos:</span>
-                        <span className={Styles.value}>{props.whyMythos}</span>
+                    <div className={Styles.container}>
+                        <div className={Styles.tile}>
+                            <span className={Styles.label}>RaidingExperience:</span>
+                            <span className={Styles.value}>{props.raidingExperience}</span>
+                        </div>
+                        <div className={Styles.tile}>
+                            <span className={Styles.label}>Why Mythos:</span>
+                            <span className={Styles.value}>{props.whyMythos}</span>
+                        </div>
                     </div>
                 </div>
             </div>

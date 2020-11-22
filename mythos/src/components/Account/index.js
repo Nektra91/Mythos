@@ -11,7 +11,6 @@ const AccountPage = () => (
     {authUser => (
       <div>
         <BlizzardLink uid={authUser.uid} />
-        <PasswordForgetForm />
         <PasswordChangeForm />
         <SignOutButton />
       </div>

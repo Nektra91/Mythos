@@ -1,7 +1,8 @@
 :root {
     --mainPadding: 50px;
     --heightOffset: calc(var(--navbarHeight) + var(--mainPadding));
-    --detailContainerHeight: 250px;
+    --detailContainerHeight: 210px;
+    --detailContainerHeight: 210px;
     --infoContinerHeight: 160px;
 }
 .mainContainer {
@@ -10,11 +11,6 @@
     display: flex;
     flex-flow: column;
     overflow-y: scroll;   
-}
-
-.infoContainer {
-    height: 185px;
-    overflow: scroll;
 }
 
 .spinner {

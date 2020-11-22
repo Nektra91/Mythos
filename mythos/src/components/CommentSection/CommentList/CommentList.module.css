@@ -12,16 +12,12 @@
 
 .comment {
     display: flex;
-    padding: 25px;
+    padding: 10px;
     
 }
 
 .imgContainer{
-    margin-right: 50px;
-}
-
-.user {
-    margin-bottom: 25px;
+    margin-right: 25px;
 }
 
 .avatar {

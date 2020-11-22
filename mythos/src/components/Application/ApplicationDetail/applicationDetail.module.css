@@ -10,7 +10,6 @@
 
 .detailHeader {
     text-align: center;
-    
 }
 
 .detailHeader > span {
@@ -29,7 +28,7 @@
     margin: 5px 20px 0px 0px;
     font-size: 18px;
     font-weight: 600;
-    width: 150px;
+    width: 50%;
     overflow-wrap: break-word;
 }
 .sepperator {
@@ -38,7 +37,7 @@
 
 .value {
     text-align: left;
-    width: 200px;
+    width: 50%;
     font-size: 18px;
     display: flex;
     justify-content: flex-start;
