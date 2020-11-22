@@ -53,6 +53,10 @@ export class CommentInput extends Component {
         this.props.approveApplicant();
     }
 
+    delete() {
+        this.props.deleteApplication();
+    }
+
     createUserData(data) {
         const result = {
             id: data.Id,
@@ -88,6 +92,7 @@ export class CommentInput extends Component {
                     <div className={styles.submitButton}>
                         <button className={styles.commentBtn}disabled={!this.commentIsValid()} onClick={() => this.onAddComment()}>Add comment</button>
                         <button className={styles.approveBtn} onClick={() => this.approve()}>Approve</button>
+                        <button className={styles.deleteBtn} onClick={() => this.delete()}>Delete</button>
                     </div>
                 </div>
             </div>

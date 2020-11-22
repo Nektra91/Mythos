@@ -149,6 +149,24 @@ const serviceFunctions = {
     });  
   },
 
+  async markAsDeleted(id) {
+    await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
+      query: `mutation MyMutation {
+        update_Application(where: {Id: {_eq: ${id}}}, _set: {Deleted: true}) {
+          affected_rows
+          returning {
+            Id
+            Completed
+          }
+        }
+      }`
+    }).then(response => {
+      console.log(response);
+    }).catch(err => {
+      console.log(err);
+    });  
+  },
+
   async createApplication(payload) {
       await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
           query: `mutation insert_Application {

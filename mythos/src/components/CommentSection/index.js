@@ -14,6 +14,7 @@ export default class CommentSection extends Component {
         this.fetchComments = this.fetchComments.bind(this);
         this.onCommentAdd = this.onCommentAdd.bind(this);
         this.onApprove = this.onApprove.bind(this);
+        this.onDelete = this.onDelete.bind(this);
         this.state = {
             commentList: null,
             user:null,
@@ -26,9 +27,19 @@ export default class CommentSection extends Component {
     }
 
     async onApprove() {
-        if(this.props.applicationId) {
+        if (this.props.applicationId) {
             this.setState({loading: true});
             dbService.approveApplication(this.props.applicationId).then(response => {
+                this.props.historyChange();
+            });
+        }
+    }
+
+    async onDelete() {
+        if (this.props.applicationId) {
+            this.setState({loading: true});
+            const id = Number(this.props.applicationId);
+            await dbService.markAsDeleted(id).then(resonse => {
                 this.props.historyChange();
             });
         }
@@ -96,7 +107,10 @@ export default class CommentSection extends Component {
                 <AuthUserContext.Consumer>
                     {authUser => (
                         <div className={style.mainContainer}>
-                            <CommentInput fireBaseUser={authUser} approveApplicant={this.onApprove} addComment={this.onCommentAdd}/>
+                            <CommentInput fireBaseUser={authUser}
+                                           approveApplicant={this.onApprove}
+                                           addComment={this.onCommentAdd}
+                                           deleteApplication={this.onDelete}/>
                             <CommentList props={comments.map(comment => comment.comment)}/> 
                         </div>    
                     )}            
