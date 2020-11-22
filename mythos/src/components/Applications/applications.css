@@ -55,7 +55,8 @@
     overflow-y: scroll;
     color: #e88c20;
 }
-.application:hover {
+.application:hover,
+.application:active {
     cursor: pointer;
 }
 .applications > h2 {
@@ -104,7 +105,9 @@
     padding: 15px;
     width: 85%;
 }
-
+.application-container:hover {
+    animation: push-up 1s ease-out;
+}
 .section {
     display: flex;
     justify-content: center;
@@ -119,4 +122,23 @@
 
 ::-webkit-scrollbar-track {
     display: none;
+}
+
+.applications:last-child{
+    text-align: center;
+}
+
+
+@keyframes push-up {
+    0% {
+        transform: translateY(0);
+    }
+
+    33% {
+        transform: translateY(-0.5rem);
+    }
+
+    100% {
+        transform: translateY(0rem);
+    }
 }
