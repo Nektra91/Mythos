@@ -2,21 +2,22 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 10px;
 }
 .baseContainer {
     color: #e88c20;
-
+    max-height: calc(100vh - 81px);
+    overflow-y: scroll;
 }
 
 .container {
-
     background-color: #282828;
-    padding: 3rem;
     border-radius: 15px;
     -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
     -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
     box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
     margin-top: 40px;
+    overflow-y: scroll;
 }
 
 .alignCenter {
@@ -24,5 +25,10 @@
 }
 
 .ruleContainer {
-    padding-left: 10%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+h3 {
+    text-align: center;
 }
