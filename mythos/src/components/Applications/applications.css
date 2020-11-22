@@ -28,6 +28,11 @@
     max-width: 69rem; /*Nice!*/
 }
 
+.allBtn {
+    height: 30px;
+    margin-left: 35px;
+}
+
 .spinner {
     display: flex;
     justify-content: center;

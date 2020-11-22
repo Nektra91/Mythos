@@ -4,6 +4,7 @@ import Spinner from '../../Spinner';
 
 import service from '../../../service/database';
 import blizzard from '../../../service/blizzard';
+import styles from './account.module.css';
 
 class BlizzardLink extends Component {
     constructor(props) {
