@@ -13,12 +13,14 @@ import AdminPage from '../Admin';
 import Applications from '../Applications';
 import Application from '../Application';
 import AdminUsers from '../Admin/AdminUsers';
+import AdminRecruitment from '../Admin/AdminRecruitment';
+import AdminHome from '../Admin/AdminHome';
+import Twitch from '../Twitch';
  
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import './app.css'
-import AdminRecruitment from '../Admin/AdminRecruitment';
-import AdminHome from '../Admin/AdminHome';
+
 
  
 const App = () => (
@@ -39,6 +41,7 @@ const App = () => (
         <Route path={ROUTES.ADMINUSERS} component={AdminUsers} />
         <Route path={ROUTES.ADMINRECRUITMENT} component={AdminRecruitment} />
         <Route path={ROUTES.ADMINHOME} component={AdminHome} />
+        <Route path={ROUTES.TWITCH} component={Twitch} />
       </div>
     </div>
   </Router>
