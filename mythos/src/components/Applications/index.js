@@ -74,7 +74,7 @@ class Applications extends Component {
             playerName: "",
             server: server,
             playerClass: "",
-            spec: "",
+            spec: application.Role,
             avgItemLvl: 0,
             equippItemLvl: 0,
             avatar: "",
@@ -85,7 +85,6 @@ class Applications extends Component {
         applicationDto.playerName = name;
         applicationDto.server = server;
         applicationDto.playerClass = profile.data.character_class.name.en_US;
-        applicationDto.spec = profile.data.active_spec.name.en_US;
         applicationDto.avgItemLvl = profile.data.average_item_level;
         applicationDto.equippedItemLvl = profile.data.equipped_item_level;
 

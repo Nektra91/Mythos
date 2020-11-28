@@ -7,7 +7,7 @@
 }
 .mainContainer {
     padding: var(--mainPadding);
-    height: calc(100vh - var(--heightOffset));
+    height: calc(80vh);
     display: flex;
     flex-flow: column;
     overflow-y: scroll;   
@@ -22,19 +22,15 @@
 .detailContainer {
     display: flex;
     flex-flow: column;
-    height: var(--detailContainerHeight);
     background-color: var(--secondaryBodyColor);
     -webkit-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
     -moz-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
     box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);
-    overflow-y: scroll;
     border-radius: 15px;
     margin-bottom: 25px;
 }
 
 .commentContainer {
-    max-height: calc(100% - var(--detailContainerHeight) - var(--infoContinerHeight) - 30px);
-    overflow-y: scroll;
     background-color: var(--secondaryBodyColor);
     color: var(--mainSyntaxColor);
     -webkit-box-shadow: 6px 2px 22px 1px rgba(0,0,0,1);

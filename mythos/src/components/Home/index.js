@@ -42,7 +42,7 @@ class HomePage extends Component {
                   We've ensured that the guild is based around a strong core of people who know each other and have raided together for a long time.
                 </p>
                 <p>
-                  We have always pushed ourselves to our limits in order to achieve the highest possible standard while still having a good time all whilst on a 2 day raiding schedule. We aim to push Mythic content to achieve Cutting Edge in Shadowlands while still retaining our 2 day raiding schedule.
+                  We have always pushed ourselves to our limits in order to achieve the highest possible standard while still having a good time all whilst on a 2 day raiding schedule. Guild raids are Thursday: 21:00-24:00 - Sunday: 21:00-24:00 ST. Extra alt/fun raid similar time wednesday. We aim to push Mythic content to achieve Cutting Edge in Shadowlands while still retaining our 2 day raiding schedule.
                 </p>
                 <p>
                   To apply to Mythos please register to our webpage. We allow users to link their account to their World of Warcraft character in the account tab.
