@@ -172,6 +172,7 @@ const serviceFunctions = {
           query: `mutation insert_Application {
               insert_Application(objects: {
               About: "${payload.about}", 
+              UserId: "${payload.id}",
               BattleTag: "${payload.battletag}", 
               Brag: "${payload.brag}", 
               DiscordTag: "${payload.discordtag}", 
@@ -226,6 +227,9 @@ const serviceFunctions = {
             Id
             Linked
             CharacterClass
+            Applications(where: {Deleted: {_eq: false}, Completed: {_eq: false}}) {
+              Id
+            }
           }
         }`
       }).then(response => {

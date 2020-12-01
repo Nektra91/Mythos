@@ -19,6 +19,7 @@ import Twitch from '../Twitch';
  
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
+import { AuthUserContext } from '../Session';
 import './app.css'
 
 
@@ -33,7 +34,11 @@ const App = () => (
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
         <Route path={ROUTES.RULES} component={Rules} />
-        <Route path={ROUTES.APPLY} component={Apply} />
+        <AuthUserContext.Consumer>
+          {authUser => 
+            <Route path={ROUTES.APPLY} component={() => <Apply auth={authUser}/>} />
+          }
+        </AuthUserContext.Consumer>
         <Route path={ROUTES.APPLICATIONS} component={Applications} />
         <Route path={ROUTES.APPLICATION} component={Application}/>
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />

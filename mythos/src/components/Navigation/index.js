@@ -25,6 +25,9 @@ const Navigation = () => (
       <div className={styles.Tile}>
         <Link to={ROUTES.RULES}>Guild rules</Link>
       </div> 
+      <div className={styles.Tile}>
+        <Link to={ROUTES.TWITCH}>Twitch</Link>
+      </div>
         <AuthUserContext.Consumer>
           {authUser =>
             authUser ? <NavigationAuth auth={authUser} /> : <NavigationNonAuth />
@@ -46,18 +49,36 @@ class NavigationAuth extends Component {
   
   componentDidMount() {
     this.fetchUserData(this.state.authUser.uid);
-  }  
+  }
+  
+  componentWillReceiveProps(newProps) {
+    this.fetchUserData(this.state.authUser.uid);
+  }
 
   render() {
 
     let adminTile;
+    let applications;
     if(this.state.user && this.state.user.Admin) {
       adminTile = 
       <div className={styles.Tile}>
         <Link to={ROUTES.ADMIN}>Admin</Link>
       </div>
-    } else {
+      applications = 
+      <div className={styles.Tile}>
+          <Link to={ROUTES.APPLICATIONS}>Applications</Link>
+      </div>  
+    } else if(this.state.user) {
       adminTile = <div></div>
+      if(this.state.user.Applications.length > 0) {
+        var path = ROUTES.APPLICATION;
+        let id = this.state.user.Applications[0].Id;
+        let newPath = path.replace(':applicationId', id);
+        applications = 
+        <div className={styles.Tile}>
+          <Link to={newPath}>Application</Link>
+        </div>
+      }
     }
 
     return (
@@ -65,15 +86,10 @@ class NavigationAuth extends Component {
         <div className={styles.Tile}>
           <Link to={ROUTES.APPLY}>Apply</Link>
         </div>
-        <div className={styles.Tile}>
-          <Link to={ROUTES.APPLICATIONS}>Applications</Link>
-        </div>       
+        {applications}    
         {adminTile}
         <div className={styles.Tile}>
           <Link to={ROUTES.ACCOUNT}>Account</Link>
-        </div>
-        <div className={styles.Tile}>
-          <Link to={ROUTES.TWITCH}>Twitch</Link>
         </div>
       </div>
     )

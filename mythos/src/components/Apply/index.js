@@ -2,41 +2,50 @@ import React, { Component } from 'react';
 import * as ROUTES from '../../constants/routes';
 import blizzard from "../../service/blizzard";
 import service from '../../service/database';
+import { AuthUserContext } from '../Session';
+import { withRouter } from 'react-router-dom';
 
 import Spinner from '../Spinner';
 
 import style from './apply.module.css';
 import Recruitement from '../Home/Recruitment';
 
-const INITAL_STATE = {
-  name: '',
-  server: '',
-  battletag: '',
-  log: '',
-  discordtag: '',
-  about: '',
-  experience: '',
-  brag: '',
-  why: '',
-  spec: '',
-  available: false,
-  guild: false,
-  prepare: false,
-  error: null,
-  user: null,
-  isLoading: false,
-  hasNotLinked: true,
-  playerClass: '',
-  specs: [],
-}
-
 class Apply extends Component {
   constructor(props) {
     super(props);
-    this.state = { ...INITAL_STATE };
+    
+    this.state = { 
+      name: '',
+      server: '',
+      battletag: '',
+      log: '',
+      discordtag: '',
+      about: '',
+      experience: '',
+      brag: '',
+      why: '',
+      spec: '',
+      available: false,
+      guild: false,
+      prepare: false,
+      error: null,
+      user: null,
+      isLoading: false,
+      hasNotLinked: true,
+      playerClass: '',
+      specs: [],
+      uid: this.props.auth.uid,
+      loggedUser: null,
+     };
   }
 
+  componentDidMount() {
+    this.fetchUserData(this.state.uid);
+  } 
+
   onSubmit = event => {
+    var that = this;
+    event.preventDefault();
     let payload = {
       name: this.state.name,
       server: this.state.server,
@@ -48,14 +57,15 @@ class Apply extends Component {
       brag: this.state.brag,
       why: this.state.why,
       spec: this.state.spec,
+      id: this.state.loggedUser.Id
     }
     this.saveApplication(payload)
-    .then(response => 
-      this.props.history.push(ROUTES.HOME))
+    .then(response => {
+      that.props.history.push(ROUTES.HOME)
+    })
     .catch(err => {
       console.log(err)
     })
-    event.preventDefault();
   };
 
   onChange = event => {
@@ -71,12 +81,12 @@ class Apply extends Component {
     }
     this.getPlayerDataFromBlizzard(payload)
     .then(response => {
-      this.setState({playerClass: response})
-      this.setState({isLoading: false})
+      this.setState({playerClass: response})      
       this.getAvailableSpecs(response)
       .then(response => {
         this.setState({specs: response})
         this.setState({hasNotLinked: false})
+        this.setState({isLoading: false})
       }).catch(err => {
         console.log(err)
       })
@@ -358,6 +368,16 @@ class Apply extends Component {
     })
     return specs;
   }
+
+  async fetchUserData(uid) {
+    let payload = {
+        uid: uid,
+    }
+    await service.fetchUserData(payload)
+    .then(response => {
+        this.setState({loggedUser: response})
+    });
+  }
 }
 
-export default Apply;
+export default withRouter(Apply);

@@ -81,6 +81,19 @@ export class CommentInput extends Component {
 
     }
     render() {
+        let buttons;
+        console.log(this.state.user)
+        if(this.state.user && this.state.user.isAdmin) {
+            buttons = <div className={styles.submitButton}>
+                <button className={styles.commentBtn}disabled={!this.commentIsValid()} onClick={() => this.onAddComment()}>Add comment</button>
+                <button className={styles.approveBtn} onClick={() => this.approve()}>Approve</button>
+                <button className={styles.deleteBtn} onClick={() => this.delete()}>Delete</button>
+            </div>
+        } else {
+            buttons = <div className={styles.submitButton}>
+                <button className={styles.commentBtn}disabled={!this.commentIsValid()} onClick={() => this.onAddComment()}>Add comment</button>
+            </div>
+        }
         return (
             <div className={styles.inputContainer}>
                 <div className={styles.inputArea}>
@@ -89,11 +102,7 @@ export class CommentInput extends Component {
                             onKeyUp={(event) => this.handleKeyUp(event)}
                             type="text" name="comment"
                             placeholder="have something to say?"></input>
-                    <div className={styles.submitButton}>
-                        <button className={styles.commentBtn}disabled={!this.commentIsValid()} onClick={() => this.onAddComment()}>Add comment</button>
-                        <button className={styles.approveBtn} onClick={() => this.approve()}>Approve</button>
-                        <button className={styles.deleteBtn} onClick={() => this.delete()}>Delete</button>
-                    </div>
+                    {buttons}
                 </div>
             </div>
         )

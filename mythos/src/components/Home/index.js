@@ -5,20 +5,32 @@ import killpic from '../../images/killpics/Ghuun.png'
 
 import Recruitment from './Recruitment';
 import service from '../../service/database';
+import raider from '../../service/raider';
  
 class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      texts: null
+      raidProgression: null
     }
   }
 
   componentDidMount() {
-    this.fetchHomeTexts();
+    this.fetchRaidProgress();
   }  
 
   render() {
+    let raid;
+    
+    if(this.state.raidProgression) {
+    raid = Object.keys(this.state.raidProgression).map(key => {
+        return <div>
+          {key}
+          {this.state.raidProgression[key].summary}
+        </div>
+      })
+    }
+
     return(
       <div className={style.homeContainer}>
         <div className={style.row}>
@@ -55,9 +67,9 @@ class HomePage extends Component {
                 <div className={style.row}>
                   <div>
                     <div>
-                      <h1>
-                        Wowprogess
-                      </h1>
+                      <h3>
+                        Raid progress
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -74,6 +86,13 @@ class HomePage extends Component {
       .then(response => {
         this.setState({texts: response})
       })
+  }
+
+  async fetchRaidProgress() {
+    await raider.getRaiderProgress()
+    .then(response => {
+      this.setState({raidProgression: response})
+    })
   }
 
 }

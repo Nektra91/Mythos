@@ -41,7 +41,7 @@ class AdminUsers extends Component {
                 </div>
                 :
                 <div>
-                  <button type="button" className={style.Button} onClick={() => this.makeAdmin(user.Id)}>
+                  <button type="button" className={style.btnMakeAdmin} onClick={() => this.makeAdmin(user.Id)}>
                     Make admin 
                   </button>
                 </div>
