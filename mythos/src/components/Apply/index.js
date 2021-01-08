@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as ROUTES from '../../constants/routes';
 import blizzard from "../../service/blizzard";
 import service from '../../service/database';
-import { AuthUserContext } from '../Session';
 import { withRouter } from 'react-router-dom';
 
 import Spinner from '../Spinner';
@@ -84,6 +83,7 @@ class Apply extends Component {
       this.setState({playerClass: response})      
       this.getAvailableSpecs(response)
       .then(response => {
+        console.log(response)
         this.setState({specs: response})
         this.setState({hasNotLinked: false})
         this.setState({isLoading: false})

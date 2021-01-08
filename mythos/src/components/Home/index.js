@@ -23,12 +23,15 @@ class HomePage extends Component {
     let raid;
     
     if(this.state.raidProgression) {
-    raid = Object.keys(this.state.raidProgression).map(key => {
-        return <div>
-          {key}
-          {this.state.raidProgression[key].summary}
-        </div>
-      })
+      console.log(this.state.raidProgression)
+      raid = Object.keys(this.state.raidProgression).map(key => {
+          return <div>
+            <p>Castle Nathria</p>
+            <p>Normal {this.state.raidProgression[key].normal_bosses_killed} / {this.state.raidProgression[key].total_bosses}</p>
+            <p>Heroic {this.state.raidProgression[key].heroic_bosses_killed} / {this.state.raidProgression[key].total_bosses}</p>
+            <p>Mythic {this.state.raidProgression[key].mythic_bosses_killed} / {this.state.raidProgression[key].total_bosses}</p>
+          </div>
+        })
     }
 
     return(
@@ -68,7 +71,7 @@ class HomePage extends Component {
                   <div>
                     <div>
                       <h3>
-                        Raid progress
+                        {raid}
                       </h3>
                     </div>
                   </div>
@@ -92,6 +95,7 @@ class HomePage extends Component {
     await raider.getRaiderProgress()
     .then(response => {
       this.setState({raidProgression: response})
+      console.log(response)
     })
   }
 
