@@ -4,8 +4,8 @@ import logo from '../../images/logo.png';
 import killpic from '../../images/killpics/Ghuun.png'
 
 import Recruitment from './Recruitment';
+import Progress from '../Progress';
 import service from '../../service/database';
-import raider from '../../service/raider';
  
 class HomePage extends Component {
   constructor(props) {
@@ -15,24 +15,7 @@ class HomePage extends Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchRaidProgress();
-  }  
-
   render() {
-    let raid;
-    
-    if(this.state.raidProgression) {
-      console.log(this.state.raidProgression)
-      raid = Object.keys(this.state.raidProgression).map(key => {
-          return <div>
-            <p>Castle Nathria</p>
-            <p>Normal {this.state.raidProgression[key].normal_bosses_killed} / {this.state.raidProgression[key].total_bosses}</p>
-            <p>Heroic {this.state.raidProgression[key].heroic_bosses_killed} / {this.state.raidProgression[key].total_bosses}</p>
-            <p>Mythic {this.state.raidProgression[key].mythic_bosses_killed} / {this.state.raidProgression[key].total_bosses}</p>
-          </div>
-        })
-    }
 
     return(
       <div className={style.homeContainer}>
@@ -67,16 +50,10 @@ class HomePage extends Component {
                 <div>
                   <img src={killpic} alt="" className={style.killpics}/>
                 </div>
-                <div className={style.row}>
-                  <div>
-                    <div>
-                      <h3>
-                        {raid}
-                      </h3>
-                    </div>
-                  </div>
-                </div>
               </div> 
+            </div>
+            <div>
+            <Progress/>
             </div>
           </div>
         </div>    
@@ -90,15 +67,6 @@ class HomePage extends Component {
         this.setState({texts: response})
       })
   }
-
-  async fetchRaidProgress() {
-    await raider.getRaiderProgress()
-    .then(response => {
-      this.setState({raidProgression: response})
-      console.log(response)
-    })
-  }
-
 }
  
 export default HomePage;
