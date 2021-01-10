@@ -19,15 +19,15 @@ const Navigation = () => (
           <img src={logo} alt="Logo" style={{height: 75, width: 75}} />      
         </Link>
       </div>
-      <div className={styles.Tile}>
-        <Link to={ROUTES.HOME}>Home</Link>
-      </div>
-      <div className={styles.Tile}>
-        <Link to={ROUTES.RULES}>Guild rules</Link>
-      </div> 
-      <div className={styles.Tile}>
-        <Link to={ROUTES.TWITCH}>Twitch</Link>
-      </div>
+      <Link to={ROUTES.HOME} className={styles.Tile}>
+        Home
+      </Link >
+      <Link to={ROUTES.RULES} className={styles.Tile}>
+        Guild rules
+      </Link> 
+      <Link to={ROUTES.TWITCH} className={styles.Tile}>
+        Twitch
+      </Link>
         <AuthUserContext.Consumer>
           {authUser =>
             authUser ? <NavigationAuth auth={authUser} /> : <NavigationNonAuth />
@@ -61,13 +61,13 @@ class NavigationAuth extends Component {
     let applications;
     if(this.state.user && this.state.user.Admin) {
       adminTile = 
-      <div className={styles.Tile}>
-        <Link to={ROUTES.ADMIN}>Admin</Link>
-      </div>
+      <Link  to={ROUTES.ADMIN} className={styles.Tile}>
+        Admin
+      </Link>
       applications = 
-      <div className={styles.Tile}>
-          <Link to={ROUTES.APPLICATIONS}>Applications</Link>
-      </div>  
+      <Link to={ROUTES.APPLICATIONS} className={styles.Tile}>
+          Applications
+      </Link>  
     } else if(this.state.user) {
       adminTile = <div></div>
       if(this.state.user.Applications.length > 0) {
@@ -75,22 +75,22 @@ class NavigationAuth extends Component {
         let id = this.state.user.Applications[0].Id;
         let newPath = path.replace(':applicationId', id);
         applications = 
-        <div className={styles.Tile}>
-          <Link to={newPath}>Application</Link>
-        </div>
+        <Link to={newPath} className={styles.Tile}>
+          Application
+        </Link>
       }
     }
 
     return (
       <div className={styles.Tiles}>
-        <div className={styles.Tile}>
-          <Link to={ROUTES.APPLY}>Apply</Link>
-        </div>
+        <Link to={ROUTES.APPLY} className={styles.Tile}>
+          Apply
+        </Link>
         {applications}    
         {adminTile}
-        <div className={styles.Tile}>
-          <Link to={ROUTES.ACCOUNT}>Account</Link>
-        </div>
+        <Link to={ROUTES.ACCOUNT} className={styles.Tile}>
+          Account
+        </Link>
       </div>
     )
   }
@@ -109,9 +109,9 @@ class NavigationAuth extends Component {
 
 const NavigationNonAuth = () => (
   <div className={styles.Tiles}>
-    <div className={styles.Tile}>
-      <Link to={ROUTES.SIGN_IN}>Sign in</Link>
-    </div>
+    <Link to={ROUTES.SIGN_IN} className={styles.Tile}>
+      Sign in
+    </Link>
   </div>
 );
 
