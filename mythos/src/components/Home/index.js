@@ -16,7 +16,7 @@ class HomePage extends Component {
   }
 
   render() {
-
+    let guildinfo = `${style.row} ${style.guildinfo}`;
     return(
       <div className={style.homeContainer}>
         <div className={style.row}>
@@ -32,7 +32,7 @@ class HomePage extends Component {
                 <span>MYTHOS</span>
               </div>
             </div>
-            <div className={style.row}>
+            <div className={guildinfo}>
               <div className={style.fiftyperc}>
                 <p>Mythos traces its roots back on Sunstrider. 
                   The guild was formed in 2012 as Old by 3 good friends which are all a part of the guild today.
@@ -52,7 +52,7 @@ class HomePage extends Component {
                 </div>
               </div> 
             </div>
-            <div>
+            <div className={style.progress}>
             <Progress/>
             </div>
           </div>
