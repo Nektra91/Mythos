@@ -23,6 +23,10 @@
     padding: 0 0.5rem;
 }
 
+a {
+    text-decoration: none;
+}
+
 .Tile:hover, .Tile::selection {
     background-color: var(--tileBackgroundColorHover);
 }

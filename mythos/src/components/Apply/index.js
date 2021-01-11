@@ -116,15 +116,15 @@ class Apply extends Component {
       } else if(!isLoading && specs.length > 0) {
         classRender = 
         <div className={style.classData}>
-          <div className={style.row}>
+          <div className={style.alwaysRow}>
             <div>Name</div>
             <div className={style.marginLeft10}>{name}</div>
           </div>
-          <div className={style.row}>
+          <div className={style.alwaysRow}>
             <div>Server</div>
             <div className={style.marginLeft10}>{server}</div>
           </div>
-          <div className={style.row}>
+          <div className={style.alwaysRow}>
             <div>Class</div>
             <div className={style.marginLeft10}>{playerClass}</div>
           </div>
@@ -195,7 +195,7 @@ class Apply extends Component {
       let button;
 
       if(!hasNotLinked) {
-        button = <div>
+        button = <div className={style.paddingBot}>
           <button type="submit" className={style.applyButton}>
             Apply
           </button>

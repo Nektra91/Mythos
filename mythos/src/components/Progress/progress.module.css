@@ -1,0 +1,33 @@
+.bossicon {
+    width: 60px;
+    height: 60px;
+    margin-left: 8px;
+    opacity: 0.2;
+}
+
+.bossicondefeated {
+    width: 60px;
+    height: 60px;
+    margin-left: 8px;    
+}
+
+.well {
+    background-color: #282828;
+    border-radius: 5px;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,1);
+    width: 690px;
+}
+
+.mythic {
+    padding-top: 0.5px;
+    margin-left: 10px;
+    color: #e88c20;
+    padding-bottom: 5px;
+}
+
+.bosses {
+    display: flex;
+    flex-direction: row;
+}

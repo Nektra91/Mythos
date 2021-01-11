@@ -17,4 +17,11 @@
     padding-right: 10vw;
     background-color: var(--mainBodyColor);
 }
+
+@media (max-width: 969px) {
+    .appBody {
+        padding-left: 0vw;
+        padding-right: 0vw;
+    }
+}
   

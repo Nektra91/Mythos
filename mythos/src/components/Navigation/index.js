@@ -54,15 +54,9 @@ export default class Navigation extends Component {
         <div className={styles.mobileGuildName}>
           <h2>Mythos</h2>
         </div>
-        <div className={styles.Tile}>
-          <Link to={ROUTES.HOME}>Home</Link>
-        </div>
-        <div className={styles.Tile}>
-          <Link to={ROUTES.RULES}>Guild rules</Link>
-        </div> 
-        <div className={styles.Tile}>
-          <Link to={ROUTES.TWITCH}>Twitch</Link>
-        </div>
+        <Link to={ROUTES.HOME} className={styles.Tile}>Home</Link>
+        <Link to={ROUTES.RULES} className={styles.Tile}>Guild rules</Link> 
+        <Link to={ROUTES.TWITCH} className={styles.Tile}>Twitch</Link>
           <AuthUserContext.Consumer>
             {authUser =>
               authUser ? <NavigationAuth auth={authUser} /> : <NavigationNonAuth />
@@ -76,8 +70,8 @@ export default class Navigation extends Component {
 }
 const NavigationNonAuth = () => (
   <div className={styles.Tiles}>
-    <div className={styles.Tile}>
-      <Link to={ROUTES.SIGN_IN}>Sign in</Link>
-    </div>
+    <Link to={ROUTES.SIGN_IN} className={styles.Tile}>
+      Sign in
+    </Link>
   </div>
 );
