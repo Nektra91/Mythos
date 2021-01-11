@@ -36,8 +36,16 @@
     flex-direction: row;
 }
 
-.Logo {
+.logo {
     margin-right: 10px;
+}
+
+.deskLogo {
+    margin-right: 10px;
+}
+
+.mobileLogo {
+    display: none;
 }
 
 .navbar {
@@ -45,6 +53,10 @@
     text-align: center;
     display: flex;
     justify-content: center;
+}
+
+.mobileGuildName {
+    display: none;
 }
 
 .HighlightedTile {
@@ -58,5 +70,53 @@
     color: #282828;
     height: 75px;
     width: 100px;    
+}
+
+.mobileMenu {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+@media (max-width: 40rem) {
+    .Tile {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: inline-block;
+        padding: 1.5rem;
+    }
+
+    .deskLogo {
+        display: none;
+    }
+
+    .mobileLogo {
+        display: flex;
+    }
+
+    .backdrop {
+        position: fixed;
+        display: none;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+    }
+
+    .mobileGuildName {
+        display: flex;
+        margin: 0 2rem;
+        color: #e88c20;
+    }
+
+    .NavigationBackground {
+        align-items: center;
+    }
 }
 

@@ -1,0 +1,30 @@
+.modal {
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    background:  #282828;
+    width: 35%;
+    height: 100vh;
+}
+
+/*.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+}*/
+
+.close {
+    stroke: #e88c20;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-width: 5;
+}
+
+.logo {
+    z-index: 101;
+}

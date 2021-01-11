@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
@@ -8,105 +8,72 @@ import logo from '../../images/logo.png';
 import styles from './navigation.module.css';
 import '../../images/images.css';
 
-import service from '../../service/database';
+import NavigationAuth from './NavigationAuth/navigation-auth';
+import ModalSideNavBar from './ModalSideNavBar/modal-side-nav-bar';
 
-const Navigation = () => (
-  <div className={styles.baseContainer}>
-    <div className={styles.navbar}>
-      <div className={styles.NavigationBackground}>
-      <div className={styles.Logo}>
-        <Link to={ROUTES.HOME}>
-          <img src={logo} alt="Logo" style={{height: 75, width: 75}} />      
-        </Link>
-      </div>
-      <div className={styles.Tile}>
-        <Link to={ROUTES.HOME}>Home</Link>
-      </div>
-      <div className={styles.Tile}>
-        <Link to={ROUTES.RULES}>Guild rules</Link>
-      </div> 
-      <div className={styles.Tile}>
-        <Link to={ROUTES.TWITCH}>Twitch</Link>
-      </div>
-        <AuthUserContext.Consumer>
-          {authUser =>
-            authUser ? <NavigationAuth auth={authUser} /> : <NavigationNonAuth />
-          }
-        </AuthUserContext.Consumer>
-      </div>
-    </div>
-  </div>  
-);
- 
-class NavigationAuth extends Component {
+
+export default class Navigation extends Component {
+
   constructor(props) {
     super(props);
+    this.setShow = this.setShow.bind(this);
     this.state = {
-      authUser: this.props.auth,
-      user: null
+      showMobileNav: false
     };
   }
-  
-  componentDidMount() {
-    this.fetchUserData(this.state.authUser.uid);
-  }
-  
-  componentWillReceiveProps(newProps) {
-    this.fetchUserData(this.state.authUser.uid);
+
+  setShow(show) {
+    this.setState({showMobileNav: show});
   }
 
   render() {
-
-    let adminTile;
-    let applications;
-    if(this.state.user && this.state.user.Admin) {
-      adminTile = 
-      <div className={styles.Tile}>
-        <Link to={ROUTES.ADMIN}>Admin</Link>
-      </div>
-      applications = 
-      <div className={styles.Tile}>
-          <Link to={ROUTES.APPLICATIONS}>Applications</Link>
-      </div>  
-    } else if(this.state.user) {
-      adminTile = <div></div>
-      if(this.state.user.Applications.length > 0) {
-        var path = ROUTES.APPLICATION;
-        let id = this.state.user.Applications[0].Id;
-        let newPath = path.replace(':applicationId', id);
-        applications = 
-        <div className={styles.Tile}>
-          <Link to={newPath}>Application</Link>
-        </div>
-      }
-    }
-
     return (
-      <div className={styles.Tiles}>
-        <div className={styles.Tile}>
-          <Link to={ROUTES.APPLY}>Apply</Link>
+      <div className={styles.baseContainer}>
+      <div className={styles.navbar}>
+      <ModalSideNavBar show={this.state.showMobileNav} close={(e) => this.setShow(false)}/>
+        <div className={styles.mobileMenu}>
+          <div className={styles.logo} onClick={() => this.setShow(true)}>
+          <svg viewBox="0 0 100 80" width="40" height="40">
+            <rect style={{fill:"#e88c20"}} width="100" height="10" rx="8"></rect>
+            <rect style={{fill:"#e88c20"}} y="30" width="100" height="10" rx="8"></rect>
+            <rect style={{fill:"#e88c20"}} y="60" width="100" height="10" rx="8"></rect>
+          </svg>
+          </div>
         </div>
-        {applications}    
-        {adminTile}
+        <div className={styles.NavigationBackground}>
+        <div className={styles.deskLogo}>
+          <Link to={ROUTES.HOME}>
+            <img src={logo} alt="Logo" style={{height: 75, width: 75}} />      
+          </Link>
+        </div>
+        <div className={styles.mobileLogo}>
+          <Link to={ROUTES.HOME}>
+            <img src={logo} alt="Logo" style={{height: 75, width: 75}} />      
+          </Link>
+        </div>
+        <div className={styles.mobileGuildName}>
+          <h2>Mythos</h2>
+        </div>
         <div className={styles.Tile}>
-          <Link to={ROUTES.ACCOUNT}>Account</Link>
+          <Link to={ROUTES.HOME}>Home</Link>
+        </div>
+        <div className={styles.Tile}>
+          <Link to={ROUTES.RULES}>Guild rules</Link>
+        </div> 
+        <div className={styles.Tile}>
+          <Link to={ROUTES.TWITCH}>Twitch</Link>
+        </div>
+          <AuthUserContext.Consumer>
+            {authUser =>
+              authUser ? <NavigationAuth auth={authUser} /> : <NavigationNonAuth />
+            }
+          </AuthUserContext.Consumer>
         </div>
       </div>
-    )
-  }
-
-  async fetchUserData(uid) {
-    let payload = {
-        uid: uid,
-    }
-    await service.fetchUserData(payload)
-    .then(response => {
-        this.setState({user: response})
-    });
+    </div>  
+    );
   }
 }
-  
-
 const NavigationNonAuth = () => (
   <div className={styles.Tiles}>
     <div className={styles.Tile}>
@@ -114,5 +81,3 @@ const NavigationNonAuth = () => (
     </div>
   </div>
 );
-
-export default Navigation;
