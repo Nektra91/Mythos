@@ -17,7 +17,6 @@ class AdminHome extends Component {
   }
 
   onChange = event => {
-    console.log(event.target.name)
     this.setState({text: event.target.value})
   }
 
@@ -60,7 +59,6 @@ class AdminHome extends Component {
   async fetchAllHomeTexts() {
     service.fetchHomeTexts()
     .then(response => {
-      console.log(response)
       this.setState({id: response[0].Id});
       this.setState({text: response[0].Text})
     })

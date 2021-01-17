@@ -36,7 +36,6 @@ class Twitch extends Component {
           height="80vh"
           withChat="false"
           muted
-          onVideoPause={() => console.log(':(')}
         />
       </div>
     } else if(this.state.guarr) {
@@ -47,7 +46,6 @@ class Twitch extends Component {
           width="80vw"
           height="80vh"
           muted
-          onVideoPause={() => console.log(':(')}
         />
     } else {
       stream =<div></div>

@@ -25,7 +25,6 @@ class AdminProgress extends Component {
   async fetchAllUsers() {
     service.fetchAllUsers()
     .then(response => {
-        console.log(response);
     })
   }
 

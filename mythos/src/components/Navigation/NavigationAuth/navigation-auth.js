@@ -21,7 +21,6 @@ export default class NavigationAuth extends Component {
   }
 
   render() {
-
     let adminTile;
     let applications;
     if(this.state.user && this.state.user.Admin) {

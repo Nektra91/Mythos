@@ -46,16 +46,16 @@ class Apply extends Component {
     var that = this;
     event.preventDefault();
     let payload = {
-      name: this.state.name,
-      server: this.state.server,
-      battletag: this.state.battletag,
-      log: this.state.log,
-      discordtag: this.state.discordtag,
-      about: this.state.about,
-      experience: this.state.experience,
-      brag: this.state.brag,
-      why: this.state.why,
-      spec: this.state.spec,
+      name: this.state.name.replace(/"/g, "'"),
+      server: this.state.server.replace(/"/g, "'"),
+      battletag: this.state.battletag.replace(/"/g, "'"),
+      log: this.state.log.replace(/"/g, "'"),
+      discordtag: this.state.discordtag.replace(/"/g, "'"),
+      about: this.state.about.replace(/"/g, "'"),
+      experience: this.state.experience.replace(/"/g, "'"),
+      brag: this.state.brag.replace(/"/g, "'"),
+      why: this.state.why.replace(/"/g, "'"),
+      spec: this.state.spec.replace(/"/g, "'"),
       id: this.state.loggedUser.Id
     }
     this.saveApplication(payload)
@@ -63,7 +63,6 @@ class Apply extends Component {
       that.props.history.push(ROUTES.HOME)
     })
     .catch(err => {
-      console.log(err)
     })
   };
 
@@ -83,15 +82,12 @@ class Apply extends Component {
       this.setState({playerClass: response})      
       this.getAvailableSpecs(response)
       .then(response => {
-        console.log(response)
         this.setState({specs: response})
         this.setState({hasNotLinked: false})
         this.setState({isLoading: false})
       }).catch(err => {
-        console.log(err)
       })
     }).catch(err => {
-      console.log(err)
     });    
   }
 
@@ -333,7 +329,7 @@ class Apply extends Component {
                 {button}
             </form>
           </div> 
-          </div>           
+          </div>   
           <div className={style.recruitment}>
             <Recruitement adminMode={false}/>
           </div>

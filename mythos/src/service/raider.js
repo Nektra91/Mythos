@@ -125,7 +125,6 @@ const raiderFunctions = {
         }
         await axios.get(`https://raider.io/api/v1/guilds/boss-kill?region=eu&realm=Kazzak&guild=Mythos&raid=castle-nathria&boss=${payload}&difficulty=mythic`
         ).then(bossData => {
-            console.log(bossData.data)
             if(Object.entries(bossData.data).length === 0) {
                 returnObject.defeated = false;
             }

@@ -45,7 +45,6 @@ export class CommentInput extends Component {
             const dto = this.createUserData(response);
             this.setState({user: dto, dataFetched: true});
         }).catch(err => {
-            console.log(err);
         })
     }
 
@@ -82,7 +81,6 @@ export class CommentInput extends Component {
     }
     render() {
         let buttons;
-        console.log(this.state.user)
         if(this.state.user && this.state.user.isAdmin) {
             buttons = <div className={styles.submitButton}>
                 <button className={styles.commentBtn}disabled={!this.commentIsValid()} onClick={() => this.onAddComment()}>Add comment</button>

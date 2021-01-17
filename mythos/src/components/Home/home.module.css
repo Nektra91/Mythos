@@ -6,6 +6,8 @@
 
 .homeContainer {
     padding-top: 1.25rem;
+    overflow-y: scroll;
+    height: calc(100vh - 4.5rem);
 }
 
 .logo {

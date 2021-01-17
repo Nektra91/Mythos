@@ -56,7 +56,6 @@ export default class Application extends Component {
                 this.setState({detail: {...res.detail}, moreInfo: {...res.info}, loading: false});
             });
         }).catch(err => {
-            console.log(err);
         });
     }
 
@@ -85,7 +84,6 @@ export default class Application extends Component {
             dto.detail.avgItemLevel = profile.data.average_item_level;
             dto.detail.eqptItemLevel = profile.data.equipped_item_level;
         }).catch(err =>{
-            console.log(err);
         });
         return dto;
     }

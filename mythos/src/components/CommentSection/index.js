@@ -75,7 +75,6 @@ export default class CommentSection extends Component {
         await dbService.fetchCommentsForApplication(id).then(comments => {
             this.setState({commentList: comments, loading: false});
         }).catch(err => {
-            console.log(err);
         });
     }
 

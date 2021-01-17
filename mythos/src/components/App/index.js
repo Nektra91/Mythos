@@ -21,6 +21,7 @@ import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import { AuthUserContext } from '../Session';
 import './app.css'
+import RecruitmentMobile from '../Mobile/Recruitment';
 
 
  
@@ -47,6 +48,7 @@ const App = () => (
         <Route path={ROUTES.ADMINRECRUITMENT} component={AdminRecruitment} />
         <Route path={ROUTES.ADMINHOME} component={AdminHome} />
         <Route path={ROUTES.TWITCH} component={Twitch} />
+        <Route path={ROUTES.RECRUITMENT} component={RecruitmentMobile} />
       </div>
     </div>
   </Router>

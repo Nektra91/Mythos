@@ -226,7 +226,6 @@ class BlizzardLink extends Component {
             success = true;
         })
         .catch(err => {
-            console.log(err)
             success = false;
         })
         return success;

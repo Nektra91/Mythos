@@ -68,7 +68,6 @@ class AdminUsers extends Component {
   async fetchAllUsers() {
     service.fetchAllUsers()
     .then(response => {
-        console.log(response)
         this.setState({users: response})
     })
   }
@@ -79,7 +78,6 @@ class AdminUsers extends Component {
     }
     service.makeUserAdmin(payload)
     .then(response => {
-      console.log(response)
       const newList = this.state.users.map(user => {
         if(user.Id === userId) {
           const updatedUser = {

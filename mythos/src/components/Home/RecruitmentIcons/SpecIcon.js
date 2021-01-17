@@ -55,7 +55,6 @@ class SpecIcon extends Component {
         }
         await service.toggleRecruitment(payload)
         .then(response => {
-            console.log(response)
             this.setState({recruiting: recruiting})
         })
     }

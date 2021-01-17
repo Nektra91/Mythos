@@ -16,7 +16,11 @@ const serviceFunctions = {
                   Id
                 }
               }
-            }`
+            }`            
+          }, {
+            headers: {
+              'x-hasura-admin-secret': 'Mythos123'
+            }
           }).then(res => {
             classes = res.data.data.Class;
           });
@@ -43,6 +47,10 @@ const serviceFunctions = {
                   WhyMythos
                 }
               }`,
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
         application = response.data.data.Application;
       });
@@ -57,6 +65,10 @@ const serviceFunctions = {
                 Name
             }
             }`
+        }, {
+          headers: {
+            'x-hasura-admin-secret': 'Mythos123'
+          }
         }).then(response => {
             specs = response.data.data.Specialization
         });
@@ -81,10 +93,13 @@ const serviceFunctions = {
           WarcraftLogTag
           WhyMythos
         }
-      }`}).then(response => {
+      }`}, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
+      }).then(response => {
         application = response.data.data.Application[0];
       }).catch(err => {
-        console.log(err);
       });
       return application;
     },
@@ -104,10 +119,13 @@ const serviceFunctions = {
             }
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
         comments = response.data.data.ApplicationComment;
       }).catch(err => {
-        console.log(err);
       });
       return comments;
     },
@@ -124,10 +142,12 @@ const serviceFunctions = {
               }
             }
           }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
-        console.log(response);
       }).catch(err => {
-        console.log(err);
       })
   },
 
@@ -142,10 +162,12 @@ const serviceFunctions = {
           }
         }
       }`
+    }, {
+      headers: {
+        'x-hasura-admin-secret': 'Mythos123'
+      }
     }).then(response => {
-      console.log(response);
     }).catch(err => {
-      console.log(err);
     });  
   },
 
@@ -160,10 +182,12 @@ const serviceFunctions = {
           }
         }
       }`
+    }, {
+      headers: {
+        'x-hasura-admin-secret': 'Mythos123'
+      }
     }).then(response => {
-      console.log(response);
     }).catch(err => {
-      console.log(err);
     });  
   },
 
@@ -188,15 +212,16 @@ const serviceFunctions = {
               }
               }
           }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
-        console.log(response);
       }).catch(err => {
-        console.log(err);
       })
     },
 
     async createUser(payload) {
-      console.log(payload)
       await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
         query: `mutation insert_User {
           insert_User(objects: {FirebaseIdentifier: "${payload.uid}", Username: "${payload.name}"}) {
@@ -206,14 +231,20 @@ const serviceFunctions = {
             }
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
-        console.log(response);
       }).catch(err => {
-        console.log(err);
       })
     },
 
     async fetchUserData(payload) {
+      /*var user = JSON.parse(localStorage.getItem("loggedInUser"));
+      if(user !== null) {
+        return user;
+      }*/
       let userInfo = null;
       await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
         query: `query MyQuery {
@@ -232,10 +263,14 @@ const serviceFunctions = {
             }
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
         userInfo = response.data.data.User[0];
+        //localStorage.setItem("loggedInUser", JSON.stringify(response.data.data.User[0]));
       }).catch(err => {
-        console.log(err);
       })
       return userInfo;
     },
@@ -265,10 +300,13 @@ const serviceFunctions = {
             }
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
         userInfo = response.data.data.update_User.returning[0]
       }).catch(err => {
-        console.log(err);
       })
       return userInfo;
     },
@@ -282,10 +320,13 @@ const serviceFunctions = {
             Text
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
         homeTexts = response.data.data.HomeTexts
       }).catch(err => {
-        console.log(err);
       })
       return homeTexts;
     },
@@ -305,10 +346,13 @@ const serviceFunctions = {
             Username
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
         users = response.data.data.User
       }).catch(err => {
-        console.log(err);
       })
       return users;
     },
@@ -330,10 +374,13 @@ const serviceFunctions = {
             }
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
         user = response.data.data.User
       }).catch(err => {
-        console.log(err);
       })
       return user;
     },
@@ -349,10 +396,13 @@ const serviceFunctions = {
             }
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
         success = true;
       }).catch(err => {
-        console.log(err);
       })
       return success;
     },
@@ -368,11 +418,13 @@ const serviceFunctions = {
             }
           }
         }`
+      }, {
+        headers: {
+          'x-hasura-admin-secret': 'Mythos123'
+        }
       }).then(response => {
-        console.log(response)
         success = true;
       }).catch(err => {
-        console.log(err);
       })
       return success;
     }

@@ -1,0 +1,6 @@
+.container {
+    padding-top: 10px;
+    overflow-y: scroll;
+    max-height: calc(100vh - 80px);
+    padding-left: 10px;
+}

@@ -19,7 +19,6 @@ class Progress extends Component {
     
     render() {
         let bossKills = this.state.raidProgression.bossKill;
-        console.log(bossKills)
         let render;
         if(bossKills) {
             render = <div className={styles.bosses}>
@@ -51,7 +50,6 @@ class Progress extends Component {
         await raider.getRaiderProgress()
         .then(response => {
           this.setState({raidProgression: response})
-          console.log(response)
         })
       }
 }

@@ -31,3 +31,16 @@
     display: flex;
     flex-direction: row;
 }
+
+@media (max-width: 48rem) {
+    .bossicon {
+        width: 8vw;
+        height: 8vw;
+        margin-left: 1.8vw
+    }
+
+    .well {
+        background-color: #282828;
+        width: 100vw;
+    }
+}

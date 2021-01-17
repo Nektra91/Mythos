@@ -14,3 +14,4 @@ export const ADMINUSERS = '/adminusers';
 export const ADMINRECRUITMENT = '/adminrecruitment';
 export const ADMINPROGRESS = '/adminprogress';
 export const ADMINHOME = '/adminhome';
+export const RECRUITMENT = '/recruitment';

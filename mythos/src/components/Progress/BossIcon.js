@@ -8,7 +8,6 @@ class BossIcon extends Component {
             image: this.props.image,
             defeated: this.props.defeated.length !== 0
         };
-        console.log(this.state.defeated)
     }
 
     render() {
