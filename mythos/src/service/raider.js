@@ -133,7 +133,35 @@ const raiderFunctions = {
             }
         })
         return returnObject;
-    }
+    },
+
+    async getPlayerData(payload) {
+        console.log('HERE')
+        let returnData = {
+            playerClass: '',            
+        }
+        await axios.get(`https://raider.io/api/v1/characters/profile?region=eu&realm=${payload.server}&name=${payload.name}`
+        ).then(data => {
+            returnData.playerClass = data.data.class;
+        });
+        return returnData;
+    },
+
+    async getPlayerDataWithGearInfo(payload) {
+        console.log('HERE')
+        let returnData = {
+            itemLvl: 0,
+            playerClass: '',
+            avatarImg: '',           
+        }
+        await axios.get(`https://raider.io/api/v1/characters/profile?region=eu&realm=${payload.server}&name=${payload.name}&fields=gear`
+        ).then(data => {
+            returnData.avatarImg = data.data.thumbnail_url;
+            returnData.playerClass = data.data.class;
+            returnData.itemLvl = data.data.gear.item_level_equipped;
+        });
+        return returnData;
+    },
 }
 
 export default raiderFunctions

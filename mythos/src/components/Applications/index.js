@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Spinner from '../Spinner/index';
 import service from '../../service/database';
-import blizzardService from '../../service/blizzard'
+import raider from '../../service/raider'
 import './applications.css';
 import * as ROUTES from '../../constants/routes';
 import styles from './applications.module.css';
@@ -12,7 +12,6 @@ class Applications extends Component {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.createApplications = this.createApplications.bind(this);
     this.fetchPlayerProfile = this.fetchPlayerProfile.bind(this);
-    this.fetchPlayerMedia = this.fetchPlayerMedia.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.loadApplicationForm = this.loadApplicationForm.bind(this);
     this.state = {
@@ -50,20 +49,16 @@ class Applications extends Component {
   }
 
   async fetchPlayerProfile(name, server) {
+    let payload = {
+      name: name,
+      server: server
+    } 
     let result = null;
-    await blizzardService.fetchPlayerProfile(name, server).then(profile => {
+    await raider.getPlayerDataWithGearInfo(payload).then(profile => {
       result = profile;
     });
     return result;
   }
-
-    async fetchPlayerMedia(name, server) {
-      let result = null;
-      await blizzardService.fetchPlayerMedia(name, server).then(media => {
-        result = media;
-      });
-      return result;
-    }
 
   async createApplications(applications) {
       let result = [];
@@ -84,20 +79,9 @@ class Applications extends Component {
         await this.fetchPlayerProfile(name, server).then(profile => {
         applicationDto.playerName = name;
         applicationDto.server = server;
-        applicationDto.playerClass = profile.data.character_class.name.en_US;
-        applicationDto.avgItemLvl = profile.data.average_item_level;
-        applicationDto.equippedItemLvl = profile.data.equipped_item_level;
-
-        });
-        await this.fetchPlayerMedia(name, server).then(media => {
-          const key = 'avatar';
-          let avatar = null;
-          if(media.data.assets) {
-            // some times the api returns a asset array 
-            avatar = media.data.assets.filter(asset => asset.key === key)[0];
-          }
-
-            applicationDto.avatar = avatar && avatar.value ? avatar.value : media.data.avatar_url;
+        applicationDto.playerClass = profile.playerClass;
+        applicationDto.avgItemLvl = profile.itemLvl;
+        applicationDto.avatar = profile.avatarImg;
         });
         result.push(applicationDto);
       }

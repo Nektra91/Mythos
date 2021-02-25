@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as ROUTES from '../../constants/routes';
-import blizzard from "../../service/blizzard";
+import raider from "../../service/raider";
 import service from '../../service/database';
 import { withRouter } from 'react-router-dom';
 
@@ -176,7 +176,9 @@ class Apply extends Component {
                   <div>
                     <div><p>A link to WoW account is needed to apply.</p></div>
                     <div><p>Type in the character and server name</p></div>
-                    <div><p>and click "Fetch player data"</p></div>                  
+                    <div><p>and click "Fetch player data"</p></div>  
+                    <div><p>Note! Two name server need to include '-'</p></div>  
+                    <div><p>Scarshield-Legion</p></div>              
                   </div>
                   <div>
                     <button className={style.fetchButton} onClick={this.getPlayerData}>
@@ -349,7 +351,7 @@ class Apply extends Component {
 
   async getPlayerDataFromBlizzard(payload) {
     let playerClass = '';
-    await blizzard.getPlayerData(payload)
+    await raider.getPlayerData(payload)
     .then(response => {
       playerClass = response.playerClass;
     });
