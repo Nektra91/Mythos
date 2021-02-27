@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import service from '../../service/database';
-import blizzardService from '../../service/blizzard';
+import raider from '../../service/raider';
 import ApplicationDetail from './ApplicationDetail';
 import Spinner from '../Spinner';
 import ApplicationInfo from './ApplicationInfo';
@@ -59,30 +59,34 @@ export default class Application extends Component {
         });
     }
 
-    async initApplication(appliaction) {
+    async initApplication(application) {
         let dto = {
             detail: {
-                id: appliaction.Id,
-                name: appliaction.Name,
-                server: appliaction.Server,
-                role: appliaction.Role,
-                discordTag: appliaction.DiscordTag,
-                warcraftLogTag: appliaction.WarcraftLogTag,
-                battleTag: appliaction.BattleTag,
+                id: application.Id,
+                name: application.Name,
+                server: application.Server,
+                role: application.Role,
+                discordTag: application.DiscordTag,
+                warcraftLogTag: application.WarcraftLogTag,
+                battleTag: application.BattleTag,
                 avgItemLevel: 0,
-                eqptItemLevel: 0,
-                completed: appliaction.Completed
+                completed: application.Completed,
+                raiderLink: '',
             },
             info: {
-                about: appliaction.About,
-                brag: appliaction.Brag,
-                raidingExperience: appliaction.RaidingExperience,
-                whyMythos: appliaction.WhyMythos,
+                about: application.About,
+                brag: application.Brag,
+                raidingExperience: application.RaidingExperience,
+                whyMythos: application.WhyMythos,
             }
         };
-        await blizzardService.fetchPlayerProfile(appliaction.Name, appliaction.Server).then(profile => {
-            dto.detail.avgItemLevel = profile.data.average_item_level;
-            dto.detail.eqptItemLevel = profile.data.equipped_item_level;
+        let payload = {
+            name: application.Name.toLowerCase(),
+            server: application.Server.toLowerCase()
+          }
+        await raider.getPlayerDataWithGearInfo(payload).then(profile => {
+            dto.detail.avgItemLevel = profile.itemLvl;
+            dto.detail.raiderLink = profile.raiderLink;
         }).catch(err =>{
         });
         return dto;

@@ -31,6 +31,14 @@
     width: 50%;
     overflow-wrap: break-word;
 }
+
+.botLabel {
+    margin: 5px 20px 0px 0px;
+    font-size: 18px;
+    font-weight: 600;
+    overflow-wrap: break-word;
+}
+
 .sepperator {
     text-align: left;
 }
@@ -56,6 +64,11 @@
     justify-content: flex-start;
 }
 
+.fieldBottom {
+    margin-top: 5px;
+    display: flex;
+}
+
 .fieldNameServer {
     margin-top: 5px;
     display: flex;
@@ -67,5 +80,9 @@
 
 .section {
     width: calc((100% - var(--emptySectionWidth / 2) ) /  2);
+}
+
+.botSection {
+    margin-top: 30px;
 }
 

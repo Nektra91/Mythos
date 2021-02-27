@@ -22,10 +22,6 @@ const ApplicationDetail = (props) => {
                     <span className={style.label}>Preferred spec:</span>
                     <span className={style.value}>{props.role}</span>
                 </div>
-                <div className={style.fieldLeft}>
-                    <span className={style.label}>Average item level:</span>
-                    <span className={style.value}>{props.avgItemLevel}</span>
-                </div>
             </div>
             <div className={style.emptySection}>
             </div>
@@ -35,17 +31,24 @@ const ApplicationDetail = (props) => {
                     <span className={style.value}>{props.battleTag}</span>
                 </div>
                 <div className={style.fieldRight}>
-                    <span className={style.label}>WarcraftLog Link:</span>
-                    <span className={style.value}>{props.warcraftLogTag}</span>
-                </div>
-                <div className={style.fieldRight}>
                     <span className={style.label}>Discord Tag:</span>
                     <span className={style.value}>{props.discordTag}</span>
                 </div>
+                
                 <div className={style.fieldRight}>
-                    <span className={style.label}>Equipped item level:</span>
-                    <span className={style.value}>{props.eqptItemLevel}</span>
+                    <span className={style.label}>Item level:</span>
+                    <span className={style.value}>{props.avgItemLevel}</span>
                 </div>
+            </div>
+        </div>
+        <div className={style.botSection}>
+            <div className={style.fieldBottom}>
+                <span className={style.botLabel}>Raider link:</span>
+                <span className={style.value}>{props.raiderLink}</span>
+            </div>
+            <div className={style.fieldBottom}>
+                <span className={style.botLabel}>WarcraftLog Link:</span>
+                <span className={style.value}>{props.warcraftLogTag}</span>
             </div>
         </div>
     </div>)

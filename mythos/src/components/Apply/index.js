@@ -51,10 +51,10 @@ class Apply extends Component {
       battletag: this.state.battletag.replace(/"/g, "'"),
       log: this.state.log.replace(/"/g, "'"),
       discordtag: this.state.discordtag.replace(/"/g, "'"),
-      about: this.state.about.replace(/"/g, "'"),
-      experience: this.state.experience.replace(/"/g, "'"),
-      brag: this.state.brag.replace(/"/g, "'"),
-      why: this.state.why.replace(/"/g, "'"),
+      about: this.state.about.replace(/"/g, "'").replace(/\n/g, ' '),
+      experience: this.state.experience.replace(/"/g, "'").replace(/\n/g, ' '),
+      brag: this.state.brag.replace(/"/g, "'").replace(/\n/g, ' '),
+      why: this.state.why.replace(/"/g, "'").replace(/\n/g, ' '),
       spec: this.state.spec.replace(/"/g, "'"),
       id: this.state.loggedUser.Id
     }
@@ -343,6 +343,7 @@ class Apply extends Component {
   }
 
   async saveApplication(payload) {
+    console.log(payload);
     await service.createApplication(payload)
     .then(response => {
       return response;

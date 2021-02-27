@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: 'mythos-font';
+    src: url('../../fonts/RunyTunesRevisitedNF.otf');
+}
 .row {
     display: flex;
     flex-direction: row;
@@ -24,7 +27,7 @@
     border-bottom-right-radius: 15px;
     width: 100%;
     font-size: 135px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'mythos-font', 'Courier New', Courier, monospace;
 }
 
 .spec {
@@ -68,6 +71,10 @@ h3 {
     margin-top: 10px;
     width: 100%;
     border-radius: 15px;
+}
+
+.killpics:hover {
+    transform: scale(2) translateX(-30%);
 }
 
 .guildinfo {

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import style from './home.module.css';
 import logo from '../../images/logo.png';
-import killpic from '../../images/killpics/Ghuun.png'
+import killpic from '../../images/killpics/sun.jpg'
+import killpic1 from '../../images/killpics/huntsman.jpg'
+import killpic2 from '../../images/killpics/hung.png'
 
 import Recruitment from './Recruitment';
 import Progress from '../Progress';
@@ -11,8 +13,40 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      raidProgression: null
+      raidProgression: null,
+      seconds: 0,
+      currentKillPic: killpic,
     }
+  }
+
+  tick() {
+    console.log(this.state.seconds)
+    if(this.state.seconds >= 60) {
+      if(this.state.currentKillPic === killpic) {
+        this.state.currentKillPic = killpic1;
+      }
+      else if(this.state.currentKillPic === killpic1) {
+        this.state.currentKillPic = killpic2;
+      }
+      else if(this.state.currentKillPic === killpic2) {
+        this.state.currentKillPic = killpic;
+      }
+      this.setState(state => ({
+        seconds: 0
+      }));
+    } else {
+      this.setState(state => ({
+        seconds: state.seconds + 1
+      }));
+    }
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
@@ -48,7 +82,7 @@ class HomePage extends Component {
               </div>
               <div className={style.fiftyperc}>
                 <div>
-                  <img src={killpic} alt="" className={style.killpics}/>
+                  <img src={this.state.currentKillPic} alt="" className={style.killpics}/>
                 </div>
               </div> 
             </div>

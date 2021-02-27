@@ -136,7 +136,6 @@ const raiderFunctions = {
     },
 
     async getPlayerData(payload) {
-        console.log('HERE')
         let returnData = {
             playerClass: '',            
         }
@@ -148,17 +147,18 @@ const raiderFunctions = {
     },
 
     async getPlayerDataWithGearInfo(payload) {
-        console.log('HERE')
         let returnData = {
             itemLvl: 0,
             playerClass: '',
-            avatarImg: '',           
+            avatarImg: '',
+            raiderLink: '',        
         }
         await axios.get(`https://raider.io/api/v1/characters/profile?region=eu&realm=${payload.server}&name=${payload.name}&fields=gear`
         ).then(data => {
             returnData.avatarImg = data.data.thumbnail_url;
             returnData.playerClass = data.data.class;
             returnData.itemLvl = data.data.gear.item_level_equipped;
+            returnData.raiderLink = data.data.profile_url;
         });
         return returnData;
     },
