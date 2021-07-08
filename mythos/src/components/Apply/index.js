@@ -343,7 +343,6 @@ class Apply extends Component {
   }
 
   async saveApplication(payload) {
-    console.log(payload);
     await service.createApplication(payload)
     .then(response => {
       return response;

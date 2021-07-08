@@ -4,7 +4,6 @@
 .detail {
     color: var(--mainSyntaxColor);
     padding: 25px;
-    overflow-y: scroll;
     height: var(--detailContainerHeight);
 }
 

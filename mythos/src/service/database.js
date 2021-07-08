@@ -45,6 +45,7 @@ const serviceFunctions = {
                   Server
                   WarcraftLogTag
                   WhyMythos
+                  AppliedOn
                 }
               }`,
       }, {
@@ -192,6 +193,7 @@ const serviceFunctions = {
   },
 
   async createApplication(payload) {
+    var date = new Date();
       await axios.post(`https://light-jackal-86.hasura.app/v1/graphql`, {
           query: `mutation insert_Application {
               insert_Application(objects: {
@@ -202,6 +204,7 @@ const serviceFunctions = {
               DiscordTag: "${payload.discordtag}", 
               Name: "${payload.name}", 
               RaidingExperience: "${payload.experience}", 
+              AppliedOn: "${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}",
               Role: "${payload.spec}", 
               Server: "${payload.server}", 
               WarcraftLogTag: "${payload.log}", 

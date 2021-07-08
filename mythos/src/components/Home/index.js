@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import style from './home.module.css';
 import logo from '../../images/logo.png';
-import killpic from '../../images/killpics/sun.jpg'
-import killpic1 from '../../images/killpics/huntsman.jpg'
-import killpic2 from '../../images/killpics/hung.png'
+import killpic5 from '../../images/killpics/huntsman.jpg'
+import killpic4 from '../../images/killpics/hung.png'
+import killpic3 from '../../images/killpics/sun.jpg'
+import killpic2 from '../../images/killpics/arti.jpg'
+import killpic1 from '../../images/killpics/inerva.jpg';
+import killpic from '../../images/killpics/blood.jpg';
 
 import Recruitment from './Recruitment';
 import Progress from '../Progress';
@@ -20,15 +23,18 @@ class HomePage extends Component {
   }
 
   tick() {
-    console.log(this.state.seconds)
     if(this.state.seconds >= 60) {
       if(this.state.currentKillPic === killpic) {
         this.state.currentKillPic = killpic1;
-      }
-      else if(this.state.currentKillPic === killpic1) {
+      } else if(this.state.currentKillPic === killpic1) {
         this.state.currentKillPic = killpic2;
-      }
-      else if(this.state.currentKillPic === killpic2) {
+      } else if(this.state.currentKillPic === killpic2) {
+        this.state.currentKillPic = killpic3;
+      } else if(this.state.currentKillPic === killpic3) {
+        this.state.currentKillPic = killpic4;
+      }else if(this.state.currentKillPic === killpic4) {
+        this.state.currentKillPic = killpic5;
+      }else if(this.state.currentKillPic === killpic5) {
         this.state.currentKillPic = killpic;
       }
       this.setState(state => ({

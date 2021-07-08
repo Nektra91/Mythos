@@ -75,6 +75,7 @@ class Applications extends Component {
             avatar: "",
             applicationId: application.Id,
             completed: application.Completed,
+            applied: application.AppliedOn
         }
         await this.fetchPlayerProfile(name, server).then(profile => {
         applicationDto.playerName = name;
@@ -174,7 +175,7 @@ class Applications extends Component {
                         <div className="section">
                           <div className="container">
                             <div className="label">
-                              Average item level:{' '}
+                              Item level:{' '}
                             </div>
                             <div className="content">
                               {application.avgItemLvl}
@@ -183,12 +184,10 @@ class Applications extends Component {
                           </div>
                           <div className="container">
                             <div className="label">
-                              Equipped item level:{' '}
+                              Applied on:{' '}
                             </div>
                             <div className="content">
-                              {
-                                application.equippedItemLvl
-                              }
+                              {application.applied}
                             </div>
                             <div className="emptyContent"></div>
                           </div>

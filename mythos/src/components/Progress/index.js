@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import bosses from '../../images/CastleNathria/castle-nathria.js';
+import bosses from '../../images/SoD/sanctum.js';
 import styles from './progress.module.css';
 import BossIcon from './BossIcon';
 
