@@ -83,7 +83,9 @@ class Applications extends Component {
         applicationDto.playerClass = profile.playerClass;
         applicationDto.avgItemLvl = profile.itemLvl;
         applicationDto.avatar = profile.avatarImg;
-        });
+        }).catch(err => {
+          console.log(err)
+        })
         result.push(applicationDto);
       }
       return result;

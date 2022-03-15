@@ -16,9 +16,9 @@ const raiderFunctions = {
                 raidProgression.heroic = "Heroic " + data.data.raid_progression[key].heroic_bosses_killed + "/" + data.data.raid_progression[key].total_bosses
             })
         });
-        await this.getSingleBossKill('the-tarragrue'
+        await this.getSingleBossKill('vigilant-guardian'
         ).then(bossKill => {
-            if(bossKill !== '') {
+            if(bossKill !== '' && bossKill.defeated) {
                 raidProgression.bossKill.push(bossKill.bossName)
             }
             if(!bossKill.defeated) {
@@ -26,7 +26,7 @@ const raiderFunctions = {
             }
         })
         if(shouldTryNext) {
-            await this.getSingleBossKill('the-eye-of-the-jailer'
+            await this.getSingleBossKill('skolex'
             ).then(bossKill => {
                 if(bossKill !== '') {
                     raidProgression.bossKill.push(bossKill.bossName)
@@ -35,7 +35,62 @@ const raiderFunctions = {
                     shouldTryNext = false;
                 }
             })
-            await this.getSingleBossKill('the-nine'
+            await this.getSingleBossKill('artificer-xymox'
+            ).then(bossKill => {
+                if(bossKill !== '') {
+                    raidProgression.bossKill.push(bossKill.bossName)
+                }
+                if(!bossKill.defeated) {
+                    shouldTryNext = false;
+                }
+            })
+            await this.getSingleBossKill('halondrus'
+            ).then(bossKill => {
+                if(bossKill !== '') {
+                    raidProgression.bossKill.push(bossKill.bossName)
+                    shouldTryNext = true;
+                }
+                if(!bossKill.defeated) {
+                    shouldTryNext = false;
+                }
+            })
+            await this.getSingleBossKill('dausegne'
+            ).then(bossKill => {
+                if(bossKill !== '') {
+                    raidProgression.bossKill.push(bossKill.bossName)
+                    shouldTryNext = true;
+                }
+                if(!bossKill.defeated) {
+                    shouldTryNext = false;
+                }
+            })
+            if(shouldTryNext) {
+                await this.getSingleBossKill('prototype-pantheon'
+                ).then(bossKill => {
+                    if(bossKill !== '') {
+                        raidProgression.bossKill.push(bossKill.bossName)
+                        shouldTryNext = true;
+                    }
+                    if(!bossKill.defeated) {
+                        shouldTryNext = false;
+                    }
+                })
+                if(shouldTryNext) {
+                    await this.getSingleBossKill('lihuvim'
+                    ).then(bossKill => {
+                        if(bossKill !== '') {
+                            raidProgression.bossKill.push(bossKill.bossName)
+                            shouldTryNext = true;
+                        }
+                        if(!bossKill.defeated) {
+                            shouldTryNext = false;
+                        }
+                    })
+                }
+            }
+        }
+        if(shouldTryNext) {
+            await this.getSingleBossKill('anduin-wrynn'
             ).then(bossKill => {
                 if(bossKill !== '') {
                     raidProgression.bossKill.push(bossKill.bossName)
@@ -46,7 +101,7 @@ const raiderFunctions = {
             })
         }
         if(shouldTryNext) {
-            await this.getSingleBossKill('remnant-of-nerzhul'
+            await this.getSingleBossKill('rygelon'
             ).then(bossKill => {
                 if(bossKill !== '') {
                     raidProgression.bossKill.push(bossKill.bossName)
@@ -55,18 +110,7 @@ const raiderFunctions = {
                     shouldTryNext = false;
                 }
             })
-            await this.getSingleBossKill('soulrender-dormazain'
-            ).then(bossKill => {
-                if(bossKill !== '') {
-                    raidProgression.bossKill.push(bossKill.bossName)
-                }
-                if(!bossKill.defeated) {
-                    shouldTryNext = false;
-                }
-            })
-        }
-        if(shouldTryNext) {
-            await this.getSingleBossKill('painsmith-raznal'
+            await this.getSingleBossKill('lords-of-dread'
             ).then(bossKill => {
                 if(bossKill !== '') {
                     raidProgression.bossKill.push(bossKill.bossName)
@@ -77,38 +121,7 @@ const raiderFunctions = {
             })
         }
         if(shouldTryNext) {
-            await this.getSingleBossKill('guardian-of-the-first-ones'
-            ).then(bossKill => {
-                if(bossKill !== '') {
-                    raidProgression.bossKill.push(bossKill.bossName)
-                }
-                if(!bossKill.defeated) {
-                    shouldTryNext = false;
-                }
-            })
-            await this.getSingleBossKill('fatescribe-rohkalo'
-            ).then(bossKill => {
-                if(bossKill !== '') {
-                    raidProgression.bossKill.push(bossKill.bossName)
-                }
-                if(!bossKill.defeated) {
-                    shouldTryNext = false;
-                }
-            })
-        }
-        if(shouldTryNext) {
-            await this.getSingleBossKill('kelthuzad'
-            ).then(bossKill => {
-                if(bossKill !== '') {
-                    raidProgression.bossKill.push(bossKill.bossName)
-                }
-                if(!bossKill.defeated) {
-                    shouldTryNext = false;
-                }
-            })
-        }
-        if(shouldTryNext) {
-            await this.getSingleBossKill('sylvanas-windrunner'
+            await this.getSingleBossKill('the-jailer'
             ).then(bossKill => {
                 if(bossKill !== '') {
                     raidProgression.bossKill.push(bossKill.bossName)
@@ -127,7 +140,7 @@ const raiderFunctions = {
             defeated: true,
             bossName: '',
         }
-        await axios.get(`https://raider.io/api/v1/guilds/boss-kill?region=eu&realm=Kazzak&guild=Mythos&raid=sanctum-of-domination&boss=${payload}&difficulty=mythic`
+        await axios.get(`https://raider.io/api/v1/guilds/boss-kill?region=eu&realm=Kazzak&guild=Mythos&raid=sepulcher-of-the-first-ones&boss=${payload}&difficulty=mythic`
         ).then(bossData => {
             if(Object.entries(bossData.data).length === 0) {
                 returnObject.defeated = false;

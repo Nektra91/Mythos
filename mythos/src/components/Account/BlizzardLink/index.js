@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Spinner from '../../Spinner';
 
 import service from '../../../service/database';
-import blizzard from '../../../service/blizzard';
+import raider from '../../../service/raider';
 import styles from './account.module.css';
 
 class BlizzardLink extends Component {
@@ -209,18 +209,8 @@ class BlizzardLink extends Component {
     }
 
     async getPlayerDataFromBlizzard(payload) {
-        let success = false;
-        await this.getPlayerAvatar(payload)
-        .then(response => {
-            const key = 'avatar';
-            let avatar = null;
-            if(response.data.assets) {
-                // some times the api returns a asset array 
-                avatar = response.data.assets.filter(asset => asset.key === key)[0];
-            }
-            this.setState({avatarUrl: avatar && avatar.value ? avatar.value : response.data.avatar_url})
-        });        
-        await blizzard.getPlayerData(payload)
+        let success = false;     
+        await raider.getPlayerData(payload)
         .then(response => {
             this.setState({playerClass: response.playerClass})
             success = true;
@@ -236,15 +226,6 @@ class BlizzardLink extends Component {
         .then(response => {
             this.setState({userInfo: response})
         })
-    }
-
-    async getPlayerAvatar(payload) {  
-        let data;      
-        await blizzard.fetchPlayerMedia(payload.name, payload.server)
-        .then(response => {
-            data = response
-        });
-        return data;
     }
 }
 

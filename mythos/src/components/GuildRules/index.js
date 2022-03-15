@@ -62,7 +62,7 @@ const Rules = () => (
             <div>
               <ul>
                 <li>
-                  <p>On trash we can chat/banter a bit on Teamspeak unless the Raid leader says otherwise (i.e. is recapping or providing an explanation for next pull)</p>
+                  <p>On trash we can chat/banter a bit on Discord unless the Raid leader says otherwise (i.e. is recapping or providing an explanation for next pull)</p>
                 </li>
                 <li>
                   <p>On bosses stay silent, unless you have something important to say.</p>
@@ -84,7 +84,7 @@ const Rules = () => (
                   <p>If you do not need an item and it is tradeable please let an officer know so it can be distributed.</p>
                 </li>
                 <li>
-                  <p>BoE items will be sold at the auctions house for the first few weeks to support the guild back.</p>
+                  <p>BoE items are the guilds to do with as we see fit, distribute to raid members or sell on the AH to support the guild bank.</p>
                 </li>
                 <li>
                   <p>Raiders have higher priority for non personal loot than Trials.</p>
@@ -97,7 +97,7 @@ const Rules = () => (
             <div>
               <ul>
                 <li>
-                  <p>Cauldrons and feasts will be provided if the guild bank can cover it.</p>
+                  <p>Cauldrons and feasts are provided with materials collect from raiders with support from the guild bank.</p>
                 </li>
                 <li>
                   <p>After the AH price for BoE drop they can be sold by it's owner.</p>

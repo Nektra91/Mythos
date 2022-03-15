@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import bosses from '../../images/SoD/sanctum.js';
+import bosses from '../../images/Sotfo/sepulter.js';
 import styles from './progress.module.css';
 import BossIcon from './BossIcon';
 
